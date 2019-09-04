@@ -1,0 +1,27 @@
+.logo{
+  height: 150px;
+}
+
+nav li a{
+  font-size: 18px !important;
+}
+
+.carousel .carousel-item>img{
+  height: 100%;
+  width: 100%;
+
+}
+.next, .prev{
+  position: absolute;
+  top:45%;
+  color:white;
+  cursor: pointer;
+}
+
+.prev{
+  left: 0px;
+}
+
+.next{
+  right:0px;
+}

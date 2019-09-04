@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <!--Sesion de las meta etiquetas-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <meta name="description" content="Sistema de gestion para Clinica Domingo Guzman Silva, para facilitar la busquedad de profesionales de la salud, organizacion de administrativos de la clinica y atencion de los pacientes">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Alejandro Iorlano, Carlos Gonzalez, Esteban Cantale">
+    
+    <!--Importar la fuente de los íconos de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!--Importar la hojas de estilos de materialize css-->
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    
+    <!--Importar la hojas de estilos-->
+    <link rel="stylesheet" href="css/estilos.css">
+    
+    <title>Clinica</title>
+    
+</head>
+
+<body>
+    
+    <!--SESION DEL MENU, LOGO Y OPCIONES-->
+    
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">Obras Sociales</a></li>
+      <li><a href="#!">Especialistas</a></li>
+    </ul>
+    
+    <!--Nav que contiene la opciones del menú-->
+    <nav class="teal lighten-2" style="min-height: 150px">
+    
+    <div class="row">
+        <div class="col l12 m12 s12">
+            <div class="col l5 m5 s5">
+            <a href="index.html" class="brand-logo valign-wrapper"><img class="logo" src="img/logo.png"></a>
+            </div>
+            
+            
+            <div class="col l7 m7 s7">
+                <div class="nav-wrapper right">
+                    <ul class="right hide-on-med-and-down">
+                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Inicio</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Solicitar turno</a></li>
+                        <li><a href="#">Quienes Somos</a></li>
+                        <li><a href="#">Especialidades</a></li>
+            
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Información para el paciente<i class="material-icons right">arrow_drop_down</i></a></li>
+                    </ul>
+                        
+                </div>
+            </div>
+         
+        </div>
+    </div>
+        
+    </nav>
+    
+    <!--SESION DEL BANNER Y SUS IMAGENES-->
+    <div class="full-silder">
+    	<div class="carousel carousel-slider" data-indicators="true">
+    		<a href="#" class="carousel-item"><img src="img/a.jpg"></a>
+    		<a href="#" class="carousel-item"><img src="img/b.jpg"></a>
+    		<a href="#" class="carousel-item"><img src="img/c.jpg"></a>
+    		<a href="#" class="carousel-item"><img src="img/d.jpg"></a>
+    		<a href="#" class="carousel-item"><img src="img/e.jpg"></a>
+    	</div>
+      <div class="next"><i class="material-icons large">navigate_next</i></div>
+     	<div class="prev"><i class="material-icons large">navigate_before</i></div>
+    </div>
+    
+    
+    <!--SESION DE LOS SCRIPTS-->
+    
+    <!--Files of JQuery (Importante > los jquery tiene que estar en primer lugar) -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    
+    <!--File of js-->
+    <script type="text/javascript" src="js/app.js"></script>
+    
+    <!--File of Materialize-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+</body>
+    
+</html>
