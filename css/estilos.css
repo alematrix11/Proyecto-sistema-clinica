@@ -27,10 +27,10 @@ nav li a{
 }
 
 
-/* <<<< ---- Sesion de las tarjetas de otras especialidades ---- > */ 
+/* <<<< ---- Sesion de las tarjetas de otras especialidades ---- > */
 
 .contenedor-carta{
-    height: 250px; 
+    height: 250px;
     width: : 250px;
     margin: auto;
     -webkit-perspective: 800;
@@ -41,7 +41,7 @@ nav li a{
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: 2s;
+    transition: 1s;
 }
 
 .contenedor-especialidad:hover{
@@ -64,4 +64,3 @@ nav li a{
     background: #4dd0e1;
     transform: rotateY(180deg);
 }
-
