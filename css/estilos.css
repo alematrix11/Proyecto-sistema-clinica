@@ -7,10 +7,37 @@ nav li a{
 }
 
 .carousel .carousel-item>img{
-  height: 100%;
-  width: 100%;
-
+    height: 100%;
+    width: 100%;
 }
+
+/*Imagenes nuevas para el carrusel y se medofico para que tomen todo el ancho y alto*/
+
+.clinica-img1{
+    background-image: url(../img/img-banner/Alta-resolucion/clinica-chequeo.jpg);
+    background-size: 100% 100%;
+}
+
+.clinica-img2{
+    background-image: url(../img/img-banner/Alta-resolucion/clinica-atencion.jpg);
+    background-size: 100% 100%;
+}
+
+.clinica-img3{
+    background-image: url(../img/img-banner/Alta-resolucion/clinica-odontologia.jpg);
+    background-size: 100% 100%;
+}
+
+.clinica-img4{
+    background-image: url(../img/img-banner/Alta-resolucion/clinica-kinesiologia.jpg);
+    background-size: 100% 100%;
+}
+
+.clinica-img5{
+    background-image: url(../img/img-banner/Alta-resolucion/background8.jpg);
+    background-size: 100% 100%;
+}
+
 .next, .prev{
   position: absolute;
   top:45%;
