@@ -22,3 +22,7 @@
         print "¡Error!: " . $e->getMessage() . "<br>";
         die();
     }
+
+    /*Se puede dejar sin cerrar como medida de seguridad*/
+    
+    
