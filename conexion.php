@@ -15,14 +15,16 @@
     //5_ Se establece una verificacion de datos del servidor y del usuario para realizar conexion
     $conexion_bdd = new PDO ($datos_conexion, $usuario, $contrasena);
         
-        echo 'La conexion a la base de datos de la clinica se realizo exitosamente';
+        //Se muestra una alerta con codigo js para mostrar un mensaje de conexion correcta con la base de datos
+        echo "<script>
+                alert('La conexion a la base de datos de la clinica se realizo exitosamente');
+            </script>";
+        
+        //echo 'La conexion a la base de datos de la clinica se realizo exitosamente';
         
     }
     catch (PDOExeption $e){
         print "¡Error!: " . $e->getMessage() . "<br>";
         die();
     }
-
-    /*Se puede dejar sin cerrar como medida de seguridad*/
-    
     

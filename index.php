@@ -1,10 +1,3 @@
-<?php 
-
-    include_once 'conexion.php';
-
-
-?>
-
 <!DOCTYPE html>
 
 <html lang="es">
@@ -43,7 +36,7 @@
     <div class="row">
         <div class="col l12 m12 s12">
             <div class="col l5 m5 s5">
-            <a href="index.html" class="brand-logo valign-wrapper"><img class="logo" src="img/logo.png"></a>
+            <a href="index.php" class="brand-logo valign-wrapper"><img class="logo" src="img/logo.png"></a>
             </div>
 
 
@@ -201,8 +194,8 @@
     <br>
 
     </section>
-
-
+    
+    
     <!--SECCION DE PARALLAX 06/09/19-->
     <section class="parallax-container">
         <div class="parallax">
@@ -216,11 +209,92 @@
         <br><br>
         <h2>Registro de usuarios</h2>
         <br><br>
+        
+          <a href="iniciar.php" class="black-text">Iniciar Sesion</a>
+          <a href="paciente.php" class="black-text">Contenido protegido</a>
+          
+        <div class="row white">
+            
+            <br><br>
+            
+            <form class="col s12" action="agregar_paciente.php" method="POST">
+                <div class="row">
+                
+                    <div class="input-field col s6">
+                      <input id="first_name" type="text" class="validate" name="nombre_paciente" placeholder="Ingrese aquí su nombre" required>
+                      <label for="first_name">Nombre</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <input id="first_name" type="text" class="validate" name="apellido_paciente" placeholder="Ingrese aquí su nombre" required>
+                      <label for="first_name">Apellido</label>
+                    </div>                  
+              
+                </div>
+              
+                <div class="row">
+                    
+                    <div class="input-field col s6">
+                        <input id="password" type="password" class="validate" name="nueva_contrasena" placeholder="Ingrese aquí su contraseña" required>
+                        <label for="password">Nueva contraseña</label>
+                    </div>
+                    
+                    <div class="input-field col s6">
+                        <input id="password" type="password" class="validate" name="confirmacion_contrasena" placeholder="Ingrese aquí nuevamente su contraseña" required>
+                        <label for="password">Confirmacion contraseña</label>
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" name="email_paciente" placeholder="Ingrese su email aquí" required>
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="dni" type="number" class="validate" name="dni_paciente" placeholder="Ingrese su DNI aquí">
+                        <label for="dni">DNI</label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="telefono" type="tel" class="validate" name="telefono_paciente" placeholder="Ingrese su telefono aquí">
+                        <label for="telefono">Telefono</label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="obraSocial" type="text" class="validate" name="obra_social_paciente" placeholder="Ingrese su obra social aquí">
+                        <label for="obraSocial">Obra social</label>
+                    </div>
+                </div>
+                
+                <div class="row center">
+                    <button class="btn waves-effect waves-light" type="submit" name="registrar">Registrar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                    
+                <br><br>
+                
+            </form>
+            
+            <br><br>
+        
+          </div>
+          
         <br><br>
+          
       </div>
 
     </section>
-
+    
+    
     <!--SECCION DE PARALLAX 06/09/19-->
     <section class="parallax-container">
         <div class="parallax">
@@ -265,3 +339,10 @@
 </body>
 
 </html>
+
+<?php 
+    
+    //6_ Se llama al archivo de conexion a la base de datos (si se coloca en el comienzo del index desconfigura el tamaño de las imagenes del banner)
+    include_once 'conexion.php';
+
+?>

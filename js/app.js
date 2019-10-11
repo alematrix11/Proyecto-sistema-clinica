@@ -29,4 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 fullWidth: true,
                 indicators: true
               });
+      
+    //Se inicializa el formulario para el registro  
+    $('input#input_text, textarea#textarea2').characterCounter();
+      
   });
