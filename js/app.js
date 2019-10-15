@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     let sidenav = document.querySelectorAll('.sidenav');
     let instancia_sidenav = M.Sidenav.init(sidenav,{});
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   $(document).ready(function(){
-
+      
     $('.carousel').carousel({fullWidth:true}).css("height", $(window).height());
 
     // for next slide

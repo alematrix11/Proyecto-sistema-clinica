@@ -15,13 +15,20 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/estilos.css">
-
+    
+    <!--File of modal Materialize-->
+    <script type="text/javascript" src="js/modal-materialize.js"></script>
+    
+    
+    
     <title>Clinica</title>
 
 </head>
 
 <body>
 
+    
+    
     <!--SECCION DEL MENU, LOGO Y OPCIONES 03/09/19-->
 
     <!-- Dropdown Structure -->
@@ -44,7 +51,45 @@
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Inicio</a></li>
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Solicitar turno</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="#solicitar_turno">Solicitar turno</a></li>
+                        
+                            <!-- Solicitar turno - Iniciar sesion 14/10/2019 -->
+                            <div id="solicitar_turno" class="modal">
+                                <div class="modal-content">
+                                    <h4 class="black-text center">Debes iniciar sesion para poder solicitar turnos</h4>
+                                    <p class="black-text">Para iniciar sesion debes ingresar con tu usuario y contraseña</p>
+                                    
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    <!--Formulario de login de los paciente-->
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    
+                                    <form action="loguear-paciente.php" method="POST">
+                                        
+                                        <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
+                                        <label for="loginEmail"></label>
+                                        
+                                        <input id="loginContrasena" type="password" name="contrasena_paciente" placeholder="Ingrese su contraseña">
+                                        <label for="loginContrasena"></label>
+                                        
+                                        <button type="submit">Iniciar sesion</button>
+                                        
+                                    </form>
+                                    
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    <!--Finaliza el formulario de login de los pacientes-->
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Iniciar sesion</a>
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                </div>
+                            </div>
+                        
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
 
@@ -54,6 +99,8 @@
 
                 </div>
             </div>
+
+            
 
         </div>
     </div>
@@ -202,8 +249,12 @@
             <img src="img/img-parallax/estetoscopio.jpg">
         </div>
     </section>
-
+    
+    <!----------------------------------->
+    <!----------------------------------->
     <!--SECCION DEL FORMULARIO 06/09/19-->
+    <!----------------------------------->
+    <!----------------------------------->
     <section class="blue">
       <div class="container blue darken-1 z-depth-4 registro">
         <br><br>
@@ -294,6 +345,12 @@
 
     </section>
     
+    <!----------------------------------------------->
+    <!----------------------------------------------->
+    <!--FINALIZA LA SECCION DEL FORMULARIO 06/09/19-->
+    <!----------------------------------------------->
+    <!----------------------------------------------->
+    
     
     <!--SECCION DE PARALLAX 06/09/19-->
     <section class="parallax-container">
@@ -314,7 +371,7 @@
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Opciones</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Inicio</a></li>
+                  <li><a class="grey-text text-lighten-3" href="index.php">Inicio</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Turnos</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Especialidades</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Profesionales</a></li>
@@ -330,12 +387,13 @@
         </div>
     </footer>
 
-
+    
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-
+    <!--File of JS (Se debe cargar ultimo para que se visualize correctamente el carrusel)-->
+    <script type="text/javascript" src="js/app.js"></script>
+    
 </body>
 
 </html>
