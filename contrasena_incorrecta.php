@@ -15,7 +15,7 @@
     <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/estilos.css">
 
-    <title>Registro no valido</title>
+    <title>Contraseña incorrecta</title>
 
 </head>
 
@@ -65,8 +65,14 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
-                    <span class="card-title">Email incorrecto</span>
-                    <p>Usted ha ingresado una direccion de correo electronico que ya existe en nuestro sistema. Debe realizar el registro nuevamente</p>
+                    <span class="card-title">La contraseña ingresada es incorrecta</span>
+                    <p>Usted ha ingresado una contraseña que no se encuentra en el sistema.</p>
+                    <p>Por favor ingrese con su usuario y contraseña nuevamente</p>
+                    
+                    <br>
+                    
+                    <strong><a href="#">¿Usted todavia no se ha registrado en la clinica?</a></strong>
+                    
                 </div>
                 <div class="card-action">
                     <a href="index.php">Regresar a la pagina principal</a>

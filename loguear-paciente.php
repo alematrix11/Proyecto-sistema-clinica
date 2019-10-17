@@ -49,7 +49,8 @@
         
     }
     else{
-        echo '<br>Su contraseña es incorrecta';
+        
+        header("location:contrasena_incorrecta.php");
         
         die();
         

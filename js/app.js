@@ -6,10 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let instancia_dropwdown = M.Dropdown.init(dropdowns,{
     hover:false});
   });
-  document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.parallax');
-      var instances = M.Parallax.init(elems);
-  });
+  
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.parallax');
+        var instances = M.Parallax.init(elems);
+    });
+
+   
 
 
   $(document).ready(function(){

@@ -16,18 +16,26 @@
     <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/estilos.css">
     
-    <!--File of modal Materialize-->
-    <script type="text/javascript" src="js/modal-materialize.js"></script>
+    <!--File of Materialize-->
+    <script type="text/javascript" src="js/inicializadores-para-materialize.js"></script>
     
+    <!--File of Scroll-->
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
     
+    <!--Setting of Scroll-->
+    <script>
+        var scroll = new SmoothScroll('a[href*="#"]', {
+            speed: 3000,
+            speedAsDuration: true,
+            offset: 160
+        });
+    </script>
     
     <title>Clinica</title>
 
 </head>
 
 <body>
-
-    
     
     <!--SECCION DEL MENU, LOGO Y OPCIONES 03/09/19-->
 
@@ -50,7 +58,7 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Inicio</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#quieroRegistrarme" data-scroll>Quiero registrarme</a></li>
                         <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="#solicitar_turno">Solicitar turno</a></li>
                         
                             <!-- Solicitar turno - Iniciar sesion 14/10/2019 -->
@@ -261,10 +269,10 @@
         <h2>Registro de usuarios</h2>
         <br><br>
         
-          <a href="iniciar.php" class="black-text">Iniciar Sesion</a>
-          <a href="paciente.php" class="black-text">Contenido protegido</a>
+          <!--<a href="iniciar.php" class="black-text">Iniciar Sesion</a>-->
+          <!--<a href="paciente.php" class="black-text">Contenido protegido</a>-->
           
-        <div class="row white">
+        <div class="row white section scrollspy" id="quieroRegistrarme">
             
             <br><br>
             
@@ -386,8 +394,9 @@
             </div>
         </div>
     </footer>
-
     
+    
+    <!--Files of JQuery-->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>

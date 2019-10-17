@@ -15,7 +15,7 @@
     <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/estilos.css">
 
-    <title>Registro no valido</title>
+    <title>Inicio de sesion incorrecto</title>
 
 </head>
 
@@ -42,7 +42,7 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Inicio</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="index.php">Inicio</a></li>
                         <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Solicitar turno</a></li>
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
