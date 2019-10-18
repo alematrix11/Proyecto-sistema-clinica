@@ -15,7 +15,7 @@
     <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/estilos.css">
 
-    <title>Inicio de sesion incorrecto</title>
+    <title>Sesion iniciada</title>
 
 </head>
 
@@ -65,14 +65,22 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
-                    <span class="card-title">Usuario incorrecto</span>
-                    <p>Usted ha ingresado una direccion de correo electronico que no se encuentra en el sistema o intento ingresar al sistema sin loguearse primero.</p>
-                    <p>Debe ingresar con su usuario y contraseña nuevamente.</p>
-                    
-                    <br>
-                    
-                    <strong><a href="#">¿Usted todavia no se ha registrado en la clinica? Puede hacer desde la pagina pincipal presionando en el boton "Quiero registrame".</a></strong>
-                    
+                    <span class="card-title">
+                    <?php 
+                        
+                        //31_ Continuamos con la sesion de los usuarios y mostramos un mensaje con el nombre del usuario que inicio sesion
+                        
+                        session_start();
+                        
+                        echo "Inicio sesion correctamente ".$_SESSION['usuario']; 
+                        
+                        //32_ Tambien agregamos la opcion para que el usuario pueda cerrar sesion
+                        
+                        echo '<br><br><a href="cerrar.php">Cerrar sesión</a>';
+                        
+                    ?>
+                    </span>
+                    <p>Bienvenido al sistema de turnos de la clinica!</p>
                 </div>
                 <div class="card-action">
                     <a href="index.php">Regresar a la pagina principal</a>

@@ -58,7 +58,11 @@
         $sql_agregar_usuarios = 'INSERT INTO registro_pacientes(nombre, apellido, contrasena, email, dni, telefono, obra_social) VALUES (?,?,?,?,?,?,?)';
         $agregando_usuarios = $conexion_bdd -> prepare($sql_agregar_usuarios);
         if( $agregando_usuarios -> execute(array($nombre_nuevo, $apellido_nuevo, $contrasena_nueva, $email_nuevo, $dni_nuevo, $telefono, $obra_social_nueva)) ){
+            
             echo 'Se agrego un nuevo usuario<br>';
+            
+            echo '<a href="index.php">Volver a la pagina principal</a>';
+            
         }else{
             echo 'No se agrego correctamente<br>';
         }

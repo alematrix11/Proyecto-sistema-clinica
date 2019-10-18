@@ -25,9 +25,12 @@
 
     /*echo '<pre>';
     
-    var_dump($resultado_verificacion);
+    var_dump($resultado_verificacion['nombre']);
 
     echo '</pre>';*/
+    
+    //Guadamos el nombre del usuario que inicio sesion en una variable
+    $usuarioNombre = $resultado_verificacion['nombre'];
 
     //26_ Si el resultado es distinto de verdadero, quiere decir que el usuario no existe, y ejecuta el contenido del condicional para finalizar la operacion
     if(!$resultado_verificacion){
@@ -40,10 +43,10 @@
 
     //27_ Realizamos una verificacion para que la contraseña que se ingreso en el logueo coincida con la del registro del usuario
     if (password_verify($contrasenaLogin, $resultado_verificacion['contrasena'])){
-       echo '<br>Su contraseña es correcta';
+       //echo '<br>Su contraseña es correcta';
         
         //29_ Cuando la verificacion de contraseña es correcta, se establece el nombre de usuario a la sesion
-        $_SESSION['usuario'] = $usuarioLogin;
+        $_SESSION['usuario'] = $usuarioNombre;
         
         header("location:navegacion_usuario.php");
         

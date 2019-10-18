@@ -7,6 +7,9 @@
     $usuario = 'root';
     $contrasena = '';
     
+    //Tambien podemos tener la tabla de registro en una variable
+    $tabla_registro = "registro_pacientes";
+
     //3_ Se usan los metodos de PDO try y catch, los cuales cumplen la funcion de se ser condicionales, para la conexion correcta, y la conexion con errores 
     
     try{
