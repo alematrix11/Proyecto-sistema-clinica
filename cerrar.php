@@ -18,7 +18,17 @@
     //Se finaliza la sesión
     session_destroy();
     
+    //Mostramos un mensaje y se redireciona con javascript
+
+    echo "<script>
+        
+        alert('Su sesion ha sido cerrada correctamente');
+        
+        window.location.href='index.php';
+        
+    </script>";
+
     //Se redirecciona a la pagina principal
-    header("location:index.php");
+    //header("location:index.php");
 
 ?>

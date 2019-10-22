@@ -15,7 +15,7 @@
     <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/estilos.css">
 
-    <title>Sesion iniciada</title>
+    <title>No se logro registrar el usuario</title>
 
 </head>
 
@@ -46,12 +46,9 @@
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
                         
-                            
-                            
-                            
                         <!-- Dropdown Trigger -->
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Más Información<i class="material-icons right">arrow_drop_down</i></a></li>
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="cerrar.php">Cerrar sesión</a></li>
+                        
                     </ul>
 
                 </div>
@@ -68,23 +65,12 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
-                    <span class="card-title">
-                    <?php 
-                        
-                        //31_ Continuamos con la sesion de los usuarios y mostramos un mensaje con el nombre del usuario que inicio sesion
-                        
-                        session_start();
-                        
-                        echo "Inicio sesion correctamente ".$_SESSION['usuario']; 
-                        
-                        //32_ Tambien agregamos la opcion para que el usuario pueda cerrar sesion
-                        
-                        //echo '<br><br><a href="cerrar.php">Cerrar sesión</a>';-->
-                        
-                    ?>
-                    </span>
                     
-                    <p>Bienvenido al sistema de turnos de la clinica!</p>
+                        <span class="card-title">No se logro registrar su usuario debido que falto compretar datos del formulario de registro</span>
+                    
+                    <br>
+                    
+                    <p>Intente registrarse nuevamente desde la pagina principal, completando todos los datos requeridos</p>
                     
                 </div>
                 <div class="card-action">
@@ -96,9 +82,6 @@
 
     <!--SECCION DEL BANNER Y SUS IMAGENES 04/09/19-->
     <div class="full-silder">
-        <?php 
-        include_once 'crud-profesionales/crud-profesionales.html';
-        ?>
         <div class="carousel carousel-slider" data-indicators="true">
     		<a href="#" class="carousel-item"><img class="responsive-img clinica-img1"></a>
     		<a href="#" class="carousel-item"><img class="responsive-img clinica-img2"></a>

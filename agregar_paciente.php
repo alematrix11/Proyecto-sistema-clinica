@@ -48,7 +48,8 @@
     
     //16_ Se realiza una verficicacion de las contraseñas que ingreso el usuario, se verifica que sean iguales
     if (password_verify($contrasena2_nueva, $contrasena_nueva)){
-        echo '¡La contraseña es válida!';
+        
+        //echo '¡La contraseña es válida!';
         
         //17_ Si la verificacion de contraseñas es correcta, se procede a llamar a la conexion para empezar a guardar los usuarios de los pacientes en la base de datos
         //include_once 'conexion.php';
@@ -59,12 +60,19 @@
         $agregando_usuarios = $conexion_bdd -> prepare($sql_agregar_usuarios);
         if( $agregando_usuarios -> execute(array($nombre_nuevo, $apellido_nuevo, $contrasena_nueva, $email_nuevo, $dni_nuevo, $telefono, $obra_social_nueva)) ){
             
-            echo 'Se agrego un nuevo usuario<br>';
+            //echo '<br><br>Se agrego un nuevo usuario';
             
-            echo '<a href="index.php">Volver a la pagina principal</a>';
+            //echo '<a href="index.php">Volver a la pagina principal</a>';
+            
+            header("location: usuarios_registrados.php");
+            
             
         }else{
-            echo 'No se agrego correctamente<br>';
+            
+            //echo '<br><br>No se agrego correctamente, debe completar todos los datos';
+            
+            header("location: usuarios_registrados_incorrectamente.php");
+            
         }
         
         //19_ Para seguridad de la navegacion del sitio web se debe cerrar la sentencia y la conexion con la base de datos

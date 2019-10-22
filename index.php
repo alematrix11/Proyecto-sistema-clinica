@@ -24,7 +24,7 @@
     
     <!--Setting of Scroll-->
     <script>
-        var scroll = new SmoothScroll('a[href*="#"]', {
+        var scroll = new SmoothScroll('a[href*="#quieroRegistrarme"]', {
             speed: 3000,
             speedAsDuration: true,
             offset: 160
@@ -371,20 +371,76 @@
     <footer class="page-footer teal lighten-2">
         <div class="container">
             <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Información</h5>
-                <p class="grey-text text-lighten-4 valign-wrapper"><i class="material-icons">access_time</i>&nbsp Atencion al publico de lunes a sabados</p>
-                <p class="grey-text text-lighten-4 valign-wrapper"><i class="material-icons">location_on</i>&nbsp Provincia de Santa Fe, ciudad de Santa Fe</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Opciones</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="index.php">Inicio</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Turnos</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Especialidades</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Profesionales</a></li>
-                </ul>
-              </div>
+            
+                <div class="col l6 s12">
+                    <h5 class="white-text">Información</h5>
+                    <p class="grey-text text-lighten-4 valign-wrapper"><i class="material-icons">access_time</i>&nbsp Atencion al publico de lunes a sabados</p>
+                    <p class="grey-text text-lighten-4 valign-wrapper"><i class="material-icons">location_on</i>&nbsp Provincia de Santa Fe, ciudad de Santa Fe</p>
+                </div>
+              
+                <div class="col l3 s12">
+                    <h5 class="white-text">Opciones</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="index.php">Inicio</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Turnos</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Especialidades</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Profesionales</a></li>
+                    </ul>
+                </div>
+                  
+                <div class="col l3 s12">
+                    <h5 class="white-text">Sistema</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="index.php">Actualizaciones</a></li>
+                        <li><a class="grey-text text-lighten-3 modal-trigger" href="#loginAdministrador">Administracion</a></li>
+
+                              <!-- Se agrega el login de administrador 20/10/19 -->
+                              <div id="loginAdministrador" class="modal">
+                                <div class="modal-content">
+                                    
+                                    <h3 class="black-text center-align">Ingrese los datos de administrador</h3>
+                                    
+                                    <br><br>
+                                    
+                                    <form action="administrador/loguear-admin.php" method="POST">
+                                    
+                                    <div class="input-field col l12 s12">
+                                        <input type="text" id="adminNombre" name="nombre_administrador" placeholder="Usuario de administrador">
+                                        <label for="adminNombre">Administrador</label>
+                                    </div>
+                                        
+                                    <div class="input-field col l12 s12">
+                                        <input type="text" id="adminInstitucion" name="institucion_administrador" placeholder="Institucion de administrador">
+                                        <label for="adminInstitucion">Institucion</label>
+                                    </div>
+                                        
+                                    <div class="input-field col l12 s12">
+                                        <input type="password" id="adminContrasena" name="contrasena_administrador" placeholder="Contraseña de administrador">
+                                        <label for="adminContrasena">Contraseña</label>
+                                    </div>
+                                        
+                                    <div class="center-align">
+                                        
+                                        <button class="btn blue waves-effect waves-light" type="submit">Ingresar</button>
+                                        
+                                    </div>
+                                        
+                                    </form>
+                                        
+                                </div>
+                                
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                    </div>
+                                  
+                              </div>
+                        
+                        
+                        <li><a class="grey-text text-lighten-3" href="#!">Desarrolladores</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Tecnologias</a></li>
+                    </ul>
+                </div>
+            
             </div>
         </div>
         <div class="footer-copyright">
