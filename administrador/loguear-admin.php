@@ -38,9 +38,9 @@
     //Si el resultado es distinto de verdadero, quiere decir que el usuario administrador no existe, y ejecuta el contenido del condicional para finalizar la operacion
     if(!$resultado_verificacion_admin){
         
-        echo 'Su usuario administrador es incorrecto';
+        //echo 'Su usuario administrador es incorrecto';
         
-        //header("location:administrador_no_valido.php");
+        header("location:administrador_no_valido.php");
         
         die();
         
@@ -53,7 +53,7 @@
         //Cuando la verificacion de contraseña es correcta, se establece el nombre de usuario a la sesion
         $_SESSION['admin'] = $usuarioAdminNombre;
         
-        //header("location:navegacion_usuario.php");
+        header("location:navegacion_admin.php");
         
     }
     else{

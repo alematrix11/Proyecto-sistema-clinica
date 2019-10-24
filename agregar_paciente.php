@@ -81,6 +81,10 @@
         
         
         
-    }else {
-        echo 'La contraseña no es válida.';
+    }else{
+        
+        //echo 'La contraseña no es válida.';
+        
+        header("location: contrasenas_no_coinciden.php");
+        
     }
