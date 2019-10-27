@@ -14,11 +14,8 @@
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="../css/estilos.css">
-    
-    <!--File of Materialize-->
-    <script type="text/javascript" src="../js/inicializadores-para-materialize.js"></script>
-    
-    <title>Usted ha ingresado al usuario administrador</title>
+
+    <title>Contraseña incorrecta</title>
 
 </head>
 
@@ -38,9 +35,8 @@
     <div class="row">
         <div class="col l12 m12 s12">
             <div class="col l5 m5 s5">
-            <a href="index.php" class="brand-logo valign-wrapper"><img class="logo" src="../img/logo.png"></a>
+            <a href="../index.php" class="brand-logo valign-wrapper"><img class="logo" src="../img/logo.png"></a>
             </div>
-
 
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
@@ -48,9 +44,6 @@
                         <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Solicitar turno</a></li>
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
-
-                    <!-- Dropdown Trigger -->
-                    <li><a class="waves-effect waves-light blue darken-2 btn-large" href="cerrar_admin.php">Cerrar sesión</a></li>
                     </ul>
 
                 </div>
@@ -67,48 +60,14 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
-                    <span class="card-title">
-                        <?php 
-                        
-                            //Continuamos con la sesion del administrado y mostramos un mensaje con el nombre del usuario admin
-                        
-                            session_start();
-                        
-                            echo "Accedio correctamente a la sesion del ".$_SESSION['admin']; 
-                        
-                            //Tambien agregamos la opcion para que el admin pueda cerrar sesion
-                        
-                            //echo '<br><br><a href="cerrar_admin.php">Cerrar sesión</a>';-->
-                        
-                        ?>
+                    <span class="card-title">No accedio correctamente a su usuario
                     </span>
-                    <p>Usted ha ingresado con un usuario admin, ya puede realizar actualizaciones y modificaciones del personal</p>
+                    <p>Su contraseña del usuario administrador no es valida, vuelva a intentar iniciar sesion nuevamente por favor</p>
                     
                     <br>
                     
-                    <button data-target="actualizaciones-de-profesionales" class="waves-effect waves-light btn blue modal-trigger">Actualizar Profesionales</button>
-
-                    <!-- Modal de botones de profesionales -->
-                    <div id="actualizaciones-de-profesionales" class="modal">
-                        <div class="modal-content">
-                            <h4 class="black-text">Administracion de personal</h4>
-                            <p class="black-text">En esta sesion puede agregar nuevos profesionales al sistema de la clinica, realizar modificaciones y dar de baja profesionales.</p>
-                            
-                            <br>
-                            
-                            
-                            <!--Botones para actualizar el personal de la clinica 26/10/19-->
-                            
-                            <a class="waves-effect waves-light btn blue" >Ver listado de profesionales</a>
-                            <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_nuevo.php">Nuevo profesional</a>
-                            <a class="waves-effect waves-light btn yellow accent-4">Editar profesional</a>
-                            <a class="waves-effect waves-light btn red">Eliminar profesional</a>
-                        
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-                        </div>
-                    </div>
+                    <!--Agregar modal para pasos a seguir con problemas de logue con el administrador-->
+                    <strong><a href="#">¿Usted no logra acceder con el usuario administrador?</a></strong>
                     
                     <br>
                     
@@ -164,11 +123,10 @@
         </div>
     </footer>
 
-    <!--Files of JQuery-->
+
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../js/app.js"></script>
-    <!--File of JS (Se debe cargar ultimo para que se visualize correctamente el carrusel)-->
     <script type="text/javascript" src="../js/materialize.min.js"></script>
 
 </body>

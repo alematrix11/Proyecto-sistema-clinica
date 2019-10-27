@@ -20,9 +20,9 @@
     $conexion_bdd_admin = new PDO ($datos_conexion, $usuario, $contrasena);
         
         //Se muestra una alerta con codigo js para mostrar un mensaje de conexion correcta con la base de datos
-        echo "<script>
+        /*echo "<script>
                 alert('La conexion a la base de datos de la clinica con el administrador, se realizo con exito');
-            </script>";
+            </script>";*/
         
     }
     catch (PDOExeption $e){

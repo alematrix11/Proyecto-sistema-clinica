@@ -19,7 +19,7 @@
     $verificando -> execute(array($email_nuevo));
     $resultado_verificacion = $verificando->fetch();
     
-    //22_ Establecemos un codicional para los resultado de la Query, si el resultado es verdadero, no permitira el registro, si es falso continuara el registro
+    //22_ Establecemos un condicional para los resultado de la Query, si el resultado es verdadero, no permitira el registro, si es falso continuara el registro
     if($resultado_verificacion){
         
         //23_ Cuando el usuario ingresa un mail que ya fue registrado, se redireciona a una pagina con un mensaje

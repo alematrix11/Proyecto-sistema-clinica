@@ -19,9 +19,9 @@
     $conexion_bdd = new PDO ($datos_conexion, $usuario, $contrasena);
         
         //Se muestra una alerta con codigo js para mostrar un mensaje de conexion correcta con la base de datos
-        echo "<script>
+        /*echo "<script>
                 alert('La conexion a la base de datos de la clinica se realizo exitosamente');
-            </script>";
+            </script>";*/
         
         //echo 'La conexion a la base de datos de la clinica se realizo exitosamente';
         

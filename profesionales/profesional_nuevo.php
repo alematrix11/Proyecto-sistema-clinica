@@ -18,7 +18,7 @@
     <!--File of Materialize-->
     <script type="text/javascript" src="../js/inicializadores-para-materialize.js"></script>
     
-    <title>Usted ha ingresado al usuario administrador</title>
+    <title>Agregar nuevo profesional</title>
 
 </head>
 
@@ -38,9 +38,8 @@
     <div class="row">
         <div class="col l12 m12 s12">
             <div class="col l5 m5 s5">
-            <a href="index.php" class="brand-logo valign-wrapper"><img class="logo" src="../img/logo.png"></a>
+                <a href="index.php" class="brand-logo valign-wrapper"><img class="logo" src="../img/logo.png"></a>
             </div>
-
 
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
@@ -50,7 +49,7 @@
                         <li><a href="#">Especialidades</a></li>
 
                     <!-- Dropdown Trigger -->
-                    <li><a class="waves-effect waves-light blue darken-2 btn-large" href="cerrar_admin.php">Cerrar sesión</a></li>
+                    <li><a class="waves-effect waves-light blue darken-2 btn-large" href="../administrador/cerrar_admin.php">Cerrar sesión</a></li>
                     </ul>
 
                 </div>
@@ -74,7 +73,7 @@
                         
                             session_start();
                         
-                            echo "Accedio correctamente a la sesion del ".$_SESSION['admin']; 
+                            echo "Actualizaciones del personal de la clinica con el usuario ".$_SESSION['admin']; 
                         
                             //Tambien agregamos la opcion para que el admin pueda cerrar sesion
                         
@@ -82,33 +81,7 @@
                         
                         ?>
                     </span>
-                    <p>Usted ha ingresado con un usuario admin, ya puede realizar actualizaciones y modificaciones del personal</p>
-                    
-                    <br>
-                    
-                    <button data-target="actualizaciones-de-profesionales" class="waves-effect waves-light btn blue modal-trigger">Actualizar Profesionales</button>
-
-                    <!-- Modal de botones de profesionales -->
-                    <div id="actualizaciones-de-profesionales" class="modal">
-                        <div class="modal-content">
-                            <h4 class="black-text">Administracion de personal</h4>
-                            <p class="black-text">En esta sesion puede agregar nuevos profesionales al sistema de la clinica, realizar modificaciones y dar de baja profesionales.</p>
-                            
-                            <br>
-                            
-                            
-                            <!--Botones para actualizar el personal de la clinica 26/10/19-->
-                            
-                            <a class="waves-effect waves-light btn blue" >Ver listado de profesionales</a>
-                            <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_nuevo.php">Nuevo profesional</a>
-                            <a class="waves-effect waves-light btn yellow accent-4">Editar profesional</a>
-                            <a class="waves-effect waves-light btn red">Eliminar profesional</a>
-                        
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-                        </div>
-                    </div>
+                    <p>Usted ha ingresado a la sesion donde se agregan nuevos profesionales</p>
                     
                     <br>
                     
@@ -119,23 +92,73 @@
             </div>
         </div>
     </div>
-
-    <!--SECCION DEL BANNER Y SUS IMAGENES 04/09/19-->
-    <div class="full-silder">
-        
-        <div class="carousel carousel-slider" data-indicators="true">
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img1"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img2"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img3"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img4"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img5"></a>
-    	</div>
-        
-        <div class="next"><i class="material-icons large">navigate_next</i></div>
-     	<div class="prev"><i class="material-icons large">navigate_before</i></div>
-        
-    </div>
     
+    <!--Se agrega sesion del formulario para agregar profesionales de la clinica 26/10/2019-->
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="card blue-grey darken-1 z-depth-4">
+                <div class="card-content blue darken-4">
+                    <form action="profesional_guardar.php" method="POST">
+                        
+                        <div class="row">
+                
+                            <div class="input-field col s6">
+                              <input id="first_name" type="text" class="validate" name="nombre_profesional" placeholder="Ingrese el nombre" required>
+                              <label for="first_name">Nombre:</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                              <input id="first_name" type="text" class="validate" name="apellido_profesional" placeholder="Ingrese el apellido" required>
+                              <label for="first_name">Apellido:</label>
+                            </div>                  
+
+                        </div>
+                        
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="especialidad" type="text" class="validate" name="especialidad_profesional" placeholder="Ingrese la especialidad aquí" required>
+                                <label for="especialidad">Especialidad:</label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="dni" type="number" class="validate" name="dni_profesional" placeholder="Ingrese el numero de DNI aquí" required>
+                                <label for="dni">DNI:</label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="telefono" type="tel" class="validate" name="telefono_profesional" placeholder="Ingrese telefono aquí" required>
+                                <label for="telefono">Telefono:</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="email" type="email" class="validate" name="email_profesional" placeholder="Ingrese el email del profesional" required>
+                                <label for="email">Email:</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="matricula" type="number" class="validate" name="matricula_profesional" placeholder="Ingrese numero de matricula aquí" required>
+                                <label for="matricula">Matricula</label>
+                            </div>
+                        </div>
+
+                        <div class="row center">
+                            <button class="btn waves-effect waves-light" type="submit" name="registrar">Agregar nuevo<i class="material-icons right">send</i></button>
+                        </div>
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
     <!--SECCION DEL FOOTER 06/09/19-->
     <footer class="page-footer teal lighten-2">
         <div class="container">
@@ -174,3 +197,9 @@
 </body>
 
 </html>
+
+<?php 
+    
+    include_once '../conexion.php';
+
+?>
