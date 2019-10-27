@@ -29,21 +29,21 @@
         
     }
         
-        //Creamos una query para agregar los datos de cada profesional a la base de datos
-        //A la consulta de se le pasan los nombres de las columnas de la base de datos
+    //Creamos una query para agregar los datos de cada profesional a la base de datos
+    //A la consulta de se le pasan los nombres de las columnas de la base de datos
 
-        $agregar_profesional = 'INSERT INTO profesionales (nombre_p, apellido_p, especialidad_p, dni_p, telefono_p, email_p, matricula_p) VALUES (?,?,?,?,?,?,?)';
-        $agregando_profesional = $conexion_bdd -> prepare($agregar_profesional);
-        if($agregando_profesional -> execute(array($nombre_profe, $apellido_profe, $especialidad_profe, $dni_profe, $telefono_profe, $email_profe, $matricula_profe)) ){
+    $agregar_profesional = 'INSERT INTO profesionales (nombre_p, apellido_p, especialidad_p, dni_p, telefono_p, email_p, matricula_p) VALUES (?,?,?,?,?,?,?)';
+    $agregando_profesional = $conexion_bdd -> prepare($agregar_profesional);
+    if($agregando_profesional -> execute(array($nombre_profe, $apellido_profe, $especialidad_profe, $dni_profe, $telefono_profe, $email_profe, $matricula_profe)) ){
             
-            echo 'Se agrego el profesional con exito';
+        echo 'Se agrego el profesional con exito';
             
-        }
-        else{
-            echo 'No se agrego correctamente el profesional, es posible que el email que ingreso ya se encuentre registrado en nuestro sistema';
-        }
+    }
+    else{
+        echo 'No se agrego correctamente el profesional, es posible que el email que ingreso ya se encuentre registrado en nuestro sistema';
+    }
         
 
-        //Se vacia la variable que agrega profesionales y se vacia la conexion, para evitar problemas cuando se tiene que seguir agregando nuevos profesionales
-        $agregar_profesional = null;
-        $conexion_bdd = null;
+    //Se vacia la variable que agrega profesionales y se vacia la conexion, para evitar problemas cuando se tiene que seguir agregando nuevos profesionales
+    $agregar_profesional = null;
+    $conexion_bdd = null;
