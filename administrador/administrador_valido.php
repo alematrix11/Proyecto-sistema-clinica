@@ -99,7 +99,7 @@
                             
                             <!--Botones para actualizar el personal de la clinica 26/10/19-->
                             
-                            <a class="waves-effect waves-light btn blue" >Ver listado de profesionales</a>
+                            <a class="waves-effect waves-light btn blue" href="../profesionales/profesional_leer.php">Ver listado de profesionales</a>
                             <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_nuevo.php">Nuevo profesional</a>
                             <a class="waves-effect waves-light btn yellow accent-4">Editar profesional</a>
                             <a class="waves-effect waves-light btn red">Eliminar profesional</a>
@@ -163,10 +163,11 @@
             </div>
         </div>
     </footer>
-
+    
+    
     <!--Files of JQuery-->
     <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
     <script type="text/javascript" src="../js/app.js"></script>
     <!--File of JS (Se debe cargar ultimo para que se visualize correctamente el carrusel)-->
     <script type="text/javascript" src="../js/materialize.min.js"></script>
