@@ -58,8 +58,6 @@
         die();
         
     }
-
-    
     
     echo '<br>Usted ha iniciado sesion correctamente';
 

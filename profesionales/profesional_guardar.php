@@ -1,4 +1,6 @@
 <?php 
+
+    session_start();
     
     include_once '../conexion.php';
     
@@ -18,6 +20,11 @@
     $verificando_profesional -> execute(array($matricula_profe));
     $resultado_verificacion_profesional = $verificando_profesional -> fetch();
     
+    /*echo '<pre>';
+    var_dump($resultado_verificacion_profesional['nombre_p']);
+    echo '</pre>';*/
+
+
     //Se estable un condicional para crear mensajes si es verdadero o falso
     if($resultado_verificacion_profesional){
         
@@ -36,14 +43,25 @@
         $agregando_profesional = $conexion_bdd -> prepare($agregar_profesional);
         if($agregando_profesional -> execute(array($nombre_profe, $apellido_profe, $especialidad_profe, $dni_profe, $telefono_profe, $email_profe, $matricula_profe)) ){
             
-            echo 'Se agrego el profesional con exito';
+            //echo 'Se agrego el profesional con exito';
+            
+            $_SESSION['admin'] = $nombre_profe.' '.$apellido_profe;
+            
+            header("location: profesionales_validos.php");
             
         }
         else{
-            echo 'No se agrego correctamente el profesional, es posible que el email que ingreso ya se encuentre registrado en nuestro sistema';
+            
+            $conexion_bdd = null;
+            $agregar_profesional = null;
+            
+            header("location: profesionales_no_validos.php");
+            
+            die();
+            
         }
         
-
         //Se vacia la variable que agrega profesionales y se vacia la conexion, para evitar problemas cuando se tiene que seguir agregando nuevos profesionales
-        $agregar_profesional = null;
         $conexion_bdd = null;
+        $agregar_profesional = null;
+
