@@ -97,7 +97,7 @@
     <!--SECCION DEL BANNER Y SUS IMAGENES 04/09/19-->
     <div class="full-silder">
         <?php 
-        include_once 'crud-profesionales/crud-profesionales.html';
+        //include_once 'crud-profesionales/crud-profesionales.html';
         ?>
         <div class="carousel carousel-slider" data-indicators="true">
     		<a href="#" class="carousel-item"><img class="responsive-img clinica-img1"></a>

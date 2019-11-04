@@ -44,10 +44,47 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Solicitar turno</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#solicitar_turno">Solicitar turno</a></li>
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
-
+                        
+                        <!-- Solicitar turno - Iniciar sesion 14/10/2019 -->
+                            <div id="solicitar_turno" class="modal">
+                                <div class="modal-content">
+                                    <h4 class="black-text center">Debes iniciar sesion para poder solicitar turnos</h4>
+                                    <p class="black-text">Para iniciar sesion debes ingresar con tu usuario y contraseña</p>
+                                    
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    <!--Formulario de login de los paciente-->
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    
+                                    <form action="loguear-paciente.php" method="POST">
+                                        
+                                        <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
+                                        <label for="loginEmail"></label>
+                                        
+                                        <input id="loginContrasena" type="password" name="contrasena_paciente" placeholder="Ingrese su contraseña">
+                                        <label for="loginContrasena"></label>
+                                        
+                                        <button type="submit">Iniciar sesion</button>
+                                        
+                                    </form>
+                                    
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    <!--Finaliza el formulario de login de los pacientes-->
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Iniciar sesion</a>
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                </div>
+                            </div>
+                        
                     <!-- Dropdown Trigger -->
                     <li><a class="waves-effect waves-light blue darken-2 btn-large" href="../administrador/cerrar_admin.php">Cerrar sesión</a></li>
                     </ul>
@@ -68,13 +105,17 @@
                 <div class="card-content white-text">
                     <span class="card-title"> Actualizaciones del personal de la clinica</span>
                     
-                    <p>Se ha registrado correctamente en el sistema el profesional <?php
+                    <p><?php
                             
                             session_start();
                         
                             echo 'Se ha registrado correctamente el usuario '.$_SESSION['admin'];
                         
                     ?></p>
+                    
+                    <br>
+                    
+                    <img src="iconos/check.png">
                     
                     <br>
                     

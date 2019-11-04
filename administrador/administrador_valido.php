@@ -3,7 +3,7 @@
 <html lang="es">
 
 <head>
-
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <meta name="description" content="Sistema de gestion para Clinica Domingo Guzman Silva, para facilitar la busquedad de profesionales de la salud, organizacion de administrativos de la clinica y atencion de los pacientes">
@@ -45,7 +45,10 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Solicitar turno</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="#agregar_turno">Agregar turno</a></li>
+                        
+                        
+                        
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
 
@@ -101,7 +104,7 @@
                             
                             <a class="waves-effect waves-light btn blue" href="../profesionales/profesional_leer.php">Ver listado de profesionales</a>
                             <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_nuevo.php">Nuevo profesional</a>
-                            <a class="waves-effect waves-light btn yellow accent-4">Editar profesional</a>
+                            <a class="waves-effect waves-light btn yellow accent-4" href="../profesionales/profesional_editar.php">Editar profesional</a>
                             <a class="waves-effect waves-light btn red">Eliminar profesional</a>
                         
                         </div>
@@ -109,6 +112,46 @@
                             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                         </div>
                     </div>
+                    
+                    
+                    <!-- Solicitar turno - Iniciar sesion 14/10/2019 -->
+                    <!-- El modal de iniciar sesion se debe agregar despues del modal de actualizar profesionales para evitar errores con el mensaje de la sesion del usuario administrador cuando ingresa al sistema 02/11/2019-->
+                            <div id="agregar_turno" class="modal">
+                                <div class="modal-content">
+                                    <h4 class="black-text center">Debes iniciar sesion para poder solicitar turnos</h4>
+                                    <p class="black-text">Para iniciar sesion debes ingresar con tu usuario y contraseña</p>
+                                    
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    <!--Formulario de login de los paciente-->
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    
+                                    <form action="../loguear-paciente.php" method="POST">
+                                        
+                                        <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
+                                        <label for="loginEmail"></label>
+                                        
+                                        <input id="loginContrasena" type="password" name="contrasena_paciente" placeholder="Ingrese su contraseña">
+                                        <label for="loginContrasena"></label>
+                                        
+                                        <button type="submit">Iniciar sesion</button>
+                                        
+                                    </form>
+                                    
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    <!--Finaliza el formulario de login de los pacientes-->
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Iniciar sesion</a>
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                </div>
+                            </div>
+                    
                     
                     <br>
                     
