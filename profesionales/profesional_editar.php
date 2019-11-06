@@ -211,13 +211,12 @@
                                                         <label for="matriculaP">Matricula</label>
                                                         </div>
                                                         
+                                                        <div class="center">
+                                                        <button class="btn" type="submit">Actualizar profesional</button>
+                                                        </div>
+                                                        
                                                     </form>
                                                     
-                                                    
-                                                    <div class="center">
-                                                    <button class="btn" type="submit">Actualizar profesional</button>
-                                                    </div>
-                                                        
                                                     </div>
                                                     
                                                 </div>
@@ -290,7 +289,9 @@
             
             $tr=$(this).closest('tr');
             
+            //Se declara la variable datos, donde se guarda la funcion map, que se encarga de reporrer todos los datos
             var datos = $tr.children("td").map(function(){
+                //Con la funcion return obtenemos los textos de cada elemento
                 return $(this).text();    
             });
             

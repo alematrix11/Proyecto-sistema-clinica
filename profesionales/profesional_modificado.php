@@ -1,5 +1,8 @@
-<?php    
+<?php
+    
+    //Se llama a la sesion, que traera los datos del profesional que se actualizo
     session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +25,7 @@
     <!--File of Materialize-->
     <script type="text/javascript" src="../js/inicializadores-para-materialize.js"></script>
     
-    <title>El profesional se agrego correctamente</title>
+    <title>El profesional fue actualizado</title>
 
 </head>
 
@@ -48,7 +51,7 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#solicitar_turno">Solicitar turno</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn-large modal-trigger" href="#solicitar_turno">Solicitar turno</a></li>
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
                         
@@ -64,7 +67,7 @@
                                     <!--------------------------------------->
                                     <!--------------------------------------->
                                     
-                                    <form action="loguear-paciente.php" method="POST">
+                                    <form action="../loguear-paciente.php" method="POST">
                                         
                                         <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
                                         <label for="loginEmail"></label>
@@ -84,7 +87,6 @@
                                     
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Iniciar sesion</a>
                                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                                 </div>
                             </div>
@@ -107,11 +109,11 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
-                    <span class="card-title"> Actualizaciones del personal de la clinica</span>
+                    <span class="card-title">El profesional se actualizo con exito!</span>
                     
                     <p><?php
-                        
-                            echo 'Se ha registrado correctamente el usuario '.$_SESSION['admin'];
+                            
+                            echo 'Se ha actualizado correctamente el profesional '.$_SESSION['admin'];
                         
                     ?></p>
                     
