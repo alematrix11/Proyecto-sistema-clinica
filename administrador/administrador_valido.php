@@ -105,7 +105,7 @@
                             <a class="waves-effect waves-light btn blue" href="../profesionales/profesional_leer.php">Ver listado de profesionales</a>
                             <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_nuevo.php">Nuevo profesional</a>
                             <a class="waves-effect waves-light btn yellow accent-4" href="../profesionales/profesional_editar.php">Editar profesional</a>
-                            <a class="waves-effect waves-light btn red">Eliminar profesional</a>
+                            <a class="waves-effect waves-light btn red" href="../profesionales/profesional_eliminado.php">Eliminar profesional</a>
                         
                         </div>
                         <div class="modal-footer">
