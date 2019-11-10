@@ -89,25 +89,17 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
-                    <span class="card-title">El profesional ha sido dado baja profesional</span>
+                    <span class="card-title">Dar de baja profesionales</span>
                     
-                    <p>Se ha eliminado correctamente los datos del profesional 
+                    <p>Ingreso a la sesion donde podra dar de baja los profesionales</p>
                         
-                        <br>
                         
-                        <?php
-                        
-                        echo 'Usted dio de baja al profesional '.$_SESSION['admin'];
-                        
-                        ?>
-                    
-                    </p>
                     
                     <br>
                     
                 </div>
                 <div class="card-action">
-                    <a href="../index.php">Regresar a la pagina principal</a>
+                    <a href="../administrador/administrador_valido.php">Regresar a administrar</a>
                 </div>
             </div>
         </div>
@@ -157,7 +149,7 @@
                                                 include_once '../conexion.php';
                                                 
                                                 //Establecemos una sentencia para seleccionar la tabla de los profesionales
-                                                $seleccionar_profesionales = "SELECT * FROM profesionales";
+                                                $seleccionar_profesionales = "SELECT * FROM profesionales ORDER BY `id_profesional` ASC";
                                                 $resultados_profesionales = $conexion_bdd->query($seleccionar_profesionales);
                                             
                                                 //Recorremos todos los datos de la tabla con un while

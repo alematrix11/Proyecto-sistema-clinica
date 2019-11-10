@@ -21,7 +21,7 @@
         
         $_SESSION['admin'] = $nombre_eliminado;
         
-        return header ("Location: profesional_eliminado.php");
+        return header ("Location: profesional_eliminado_actualizado.php");
     
     }
     else{

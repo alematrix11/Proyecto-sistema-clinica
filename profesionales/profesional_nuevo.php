@@ -87,7 +87,7 @@
                     
                 </div>
                 <div class="card-action">
-                    <a href="../index.php">Regresar a la pagina principal</a>
+                    <a href="../administrador/administrador_valido.php">Regresar a administrar</a>
                 </div>
             </div>
         </div>

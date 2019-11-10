@@ -7,7 +7,7 @@
     $connection = $object ->Connect();
     
     //Se realiza una consultando selecionando los datos de la tabla de los profesionales
-    $consulta_profesionales = "SELECT id_profesional, nombre_p, apellido_p, especialidad_p, dni_p, telefono_p, email_p, matricula_p FROM profesionales";
+    $consulta_profesionales = "SELECT id_profesional, nombre_p, apellido_p, especialidad_p, dni_p, telefono_p, email_p, matricula_p FROM profesionales ORDER BY `id_profesional` ASC";
     $consultando_profesionales = $connection-> prepare($consulta_profesionales);
     $consultando_profesionales -> execute();
     $datos_profesionales = $consultando_profesionales -> fetchALL(PDO::FETCH_ASSOC);
@@ -122,7 +122,7 @@
                     
                 </div>
                 <div class="card-action">
-                    <a href="../index.php">Regresar a la pagina principal</a>
+                    <a href="../administrador/administrador_valido.php">Regresar a administrar</a>
                 </div>
             </div>
         </div>

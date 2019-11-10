@@ -1,3 +1,9 @@
+<?php
+    
+    session_start();
+    
+?>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -35,7 +41,7 @@
     <!--File of FontAwesome-->
     <script src="https://kit.fontawesome.com/efb8f76515.js" crossorigin="anonymous"></script>
     
-    <title>Editar profesional</title>
+    <title>Eliminar profesional</title>
 
 </head>
 
@@ -83,9 +89,19 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
-                    <span class="card-title">Modificar datos</span>
+                    <span class="card-title">Ingreso a la sesion donde podra dar de baja los profesionales</span>
                     
-                    <p>Usted ha ingresado a la sesion donde se modifican los datos de los profesionales que tiene la clinica</p>
+                        <p>Se ha eliminado correctamente los datos del profesional
+                        
+                        <br>
+                        
+                        <?php
+                        
+                        echo 'Usted dio de baja al profesional '.$_SESSION['admin'];
+                        
+                        ?>
+                    
+                        </p>
                     
                     <br>
                     
@@ -103,11 +119,13 @@
         <div class="row">
             <div class="col s12 m12">
               <div class="card">
-                <div class="card-content white-text amber darken-2">
+                <div class="card-content white-text red darken-4">
                   <span class="card-title"><i class="far fa-list-alt"></i>&nbsp Listado de profesionales</span>
-                  <p>En la siguiente tabla se puede actualizar los datos de todos los profesionales</p> 
+                  
+                    <p>En la siguiente tabla se puede eliminar los datos de todos los profesionales</p> 
+                    
                 </div>
-                <div class="card-content white-text amber darken-1">
+                <div class="card-content white-text red darken-2">
                     
                     <div class="tablaProfesionales">
                         <nav class="white">
@@ -155,64 +173,40 @@
                                                     <td><?php echo $filas_profesionales['telefono_p'] ?></td>
                                                     <td><?php echo $filas_profesionales['email_p'] ?></td>
                                                     <td><?php echo $filas_profesionales['matricula_p'] ?></td>
-                                                    <td><?php echo '<a class="waves-effect waves-light btn btn-editar modal-trigger" href="#actualizar_profesionales">Editar</a>' ?></td>
+                                                    <td><?php echo '<a class="waves-effect waves-light btn btn-eliminar modal-trigger" href="#eliminar_profesionales">Eliminar</a>' ?></td>
                                                 </tr>
                                                 
                                                 <?php } ?>
                                             
-                                            <!--Sesion de formulario para actualizar datos-->
-                                            <div id="actualizar_profesionales" class="modal">
+                                            <!--Sesion de formulario para eliminar datos-->
+                                            <div id="eliminar_profesionales" class="modal">
                                                 
                                                 <div class="modal-content">
                                                   
                                                     <div class="row">
                                                     
-                                                    <h4 class="black-text">Actualizar datos del profesional</h4>
-                                                    
+                                                    <h4 class="black-text">Eliminar datos del profesional</h4>
                                                         
-                                                    <!--Formulario para editar datos de los profesionales-->
-                                                    <form action="profesional_modificar.php" id="frmAgregarDatosu" method="POST">
+                                                        <br><br>
                                                         
+                                                        <div class="center-align">
+                                                            <span class="black-text">¿Esta seguro de eliminar los datos del profesional?</span>
+                                                        </div>
                                                         
-                                                        <input type="hidden" id="actualizarId" name="idP">
+                                                        <br><br><br><br>
+                                                        
+                                                    <!--Formulario para eliminar datos de los profesionales-->
+                                                    <form action="profesional_eliminar.php" id="" method="POST">
+                                                        
+                                                        <input type="hidden" id="deleteId" name="idP">
                                                         
                                                         <div class="input-field col l6 m6 s12">
                                                         <input type="text" id="nombreP" name="nombreP" class="validate" placeholder="" required>
                                                         <label for="nombreP">Nombre:</label>
                                                         </div>
-                                                            
-                                                        <div class="input-field col l6 m6 s12">
-                                                        <input type="text" id="apellidoP" name="apellidoP" class="validate" placeholder="" required>
-                                                        <label for="apellidoP">Apellido:</label>
-                                                        </div>
-                                                        
-                                                        <div class="input-field col l12 m12 s12">
-                                                        <input type="text" id="especialidadP" name="especialidadP" class="validate" placeholder="" required>
-                                                        <label for="especialidadP">Especialidad:</label>
-                                                        </div>
-                                                        
-                                                        <div class="input-field col l12 m12 s12">
-                                                        <input type="number" id="DNIP" name="DNIP" class="validate" placeholder="" required>
-                                                        <label for="DNIP">DNI:</label>
-                                                        </div>
-                                                        
-                                                        <div class="input-field col l12 m12 s12">
-                                                        <input type="tel" id="telefonoP" name="telefonoP" class="validate" placeholder="" required>
-                                                        <label for="telefonoP">Telefono:</label>
-                                                        </div>
-                                                        
-                                                        <div class="input-field col l12 m12 s12">
-                                                        <input type="email" id="emailP" name="emailP" class="validate" placeholder="" required>
-                                                        <label for="emailP">Email:</label>
-                                                        </div>
-                                                        
-                                                        <div class="input-field col l12 m12 s12">
-                                                        <input type="number" id="matriculaP" name="matriculaP" class="validate" placeholder="" required>
-                                                        <label for="matriculaP">Matricula</label>
-                                                        </div>
                                                         
                                                         <div class="center">
-                                                        <button class="btn" type="submit">Actualizar profesional</button>
+                                                        <button class="btn" type="submit">Eliminar profesional</button>
                                                         </div>
                                                         
                                                     </form>
@@ -222,7 +216,8 @@
                                                 </div>
                                                 
                                                 <div class="modal-footer">
-                                                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                                                 </div>
                                             
                                             </div>
@@ -281,11 +276,11 @@
     <!--File of JS Materialize (Se debe cargar ultimo para que se visualize correctamente el carrusel)-->
     <script type="text/javascript" src="../js/materialize.min.js"></script>
     
-    <!--Script de JavaScript para capturar con el boton editar los datos del registro 04/11/2019-->
+    <!--Script de JavaScript para capturar con el boton editar los datos del registro 07/11/2019-->
     <script>
         
-        //Se establece una funcion para cuando se hace click en un boton editar
-        $('.btn-editar').on('click', function(){
+        //Se establece una funcion para cuando se hace click en un boton eliminar
+        $('.btn-eliminar').on('click', function(){
             
             $tr=$(this).closest('tr');
             
@@ -295,14 +290,8 @@
                 return $(this).text();    
             });
             
-            $('#actualizarId').val(datos['0']);
+            $('#deleteId').val(datos['0']);
             $('#nombreP').val(datos['1']);
-            $('#apellidoP').val(datos['2']);
-            $('#especialidadP').val(datos['3']);
-            $('#DNIP').val(datos['4']);
-            $('#telefonoP').val(datos['5']);
-            $('#emailP').val(datos['6']);
-            $('#matriculaP').val(datos['7']);
             
         });
     </script>
