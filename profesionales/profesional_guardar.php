@@ -31,7 +31,6 @@
         echo 'El profesional ya se encuentra en el sistema, es posible que en el sistema ya se encuentro un profesional con ese numero de matricula';
         
         //Se finaliza el procedimiento
-        
         die();
         
     }
@@ -57,11 +56,8 @@
             
             header("location: profesionales_no_validos.php");
             
-            die();
-            
         }
         
         //Se vacia la variable que agrega profesionales y se vacia la conexion, para evitar problemas cuando se tiene que seguir agregando nuevos profesionales
         $conexion_bdd = null;
         $agregar_profesional = null;
-

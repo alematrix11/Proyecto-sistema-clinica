@@ -105,9 +105,9 @@
                         
                             //Continuamos con la sesion del administrado y mostramos un mensaje con el nombre del usuario admin
                         
-                            /*session_start();
+                            session_start();
                         
-                            echo "Actualizaciones del personal de la clinica con el usuario ".$_SESSION['admin'];*/ 
+                            echo "Actualizaciones del personal de la clinica con el usuario ".$_SESSION['admin'];
                         
                             //Tambien agregamos la opcion para que el admin pueda cerrar sesion
                         
@@ -116,7 +116,7 @@
                         ?>
                     </span>
                     
-                    <p>Usted ha ingresado a la sesion donde se modifican los datos de los profesionales que tiene la clinica</p>
+                    <p>Usted ha ingresado a la sesion donde puede controlar todos los datos de los profesionales que tiene la clinica</p>
                     
                     <br>
                     

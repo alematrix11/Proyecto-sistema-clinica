@@ -77,7 +77,11 @@
                         
                             session_start();
                         
-                            echo "Accedio correctamente a la sesion del ".$_SESSION['admin']; 
+                            $adminSesion = 'Administrador';
+                        
+                            $_SESSION['admin'] = $adminSesion;
+                        
+                            //echo "Accedio correctamente a la sesion del ".$_SESSION['admin']; 
                         
                             //Tambien agregamos la opcion para que el admin pueda cerrar sesion
                         

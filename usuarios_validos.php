@@ -86,6 +86,10 @@
                     
                     <p>Bienvenido al sistema de turnos de la clinica!</p>
                     
+                    <br>
+                    
+                    <button class="btn"><a href="calendario-usuarios/calendario.php">Solicitar turno</a></button>
+                    
                 </div>
                 <div class="card-action">
                     <a href="index.php">Regresar a la pagina principal</a>
@@ -139,8 +143,8 @@
             </div>
         </div>
     </footer>
-
-
+    
+    
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>

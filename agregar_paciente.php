@@ -1,5 +1,5 @@
 <?php
-    
+
     //20_ Se llama a la conexion en el principio del codigo para verificar a los usuarios registrados en la base de datos y evitar que se dupliquen cuando se creen usuarios
     include_once 'conexion.php';
 
