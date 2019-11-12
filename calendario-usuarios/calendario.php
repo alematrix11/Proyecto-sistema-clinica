@@ -25,14 +25,17 @@
     
     <title>Solicitar turno</title>
     
+    <!--File of Moment JS-->
+    <script src="Fullcalendar/moment.min.js"></script>
+    
+    
     <!--File of Bootstrap CSS-->
     <link rel="stylesheet" href="Fullcalendar/bootstrap.min.css">
     
     <!--File of JQuery JS-->
     <script src="Fullcalendar/jquery.min.js"></script>
     
-    <!--File of Moment JS-->
-    <script src="Fullcalendar/moment.min.js"></script>
+    
     
     <!--File of Fullcalendar CSS-->
     <link rel="stylesheet" href="Fullcalendar/fullcalendar.min.css">
@@ -91,6 +94,7 @@
                 
             },
                 
+                
                 //Se agregan los botones de eventos
                 customButtons:{
                     Miboton:{
@@ -102,50 +106,23 @@
                         }   
                     }
                 },
-                  
+                
+                
                 //Llamamos a una funcion cuando se presionan los botones del calendario
                 dayClick: function(date,jsEvent,view){
-                    alert("Usted esta por solicitar un turno para el dia: "+date.format());
-                    alert("Usted esta por solicitar un turno para el dia: "+view.name);
-                    $(this).css('background-color', 'gray');
-                    $("#modalCalendario").modal();
+                    
+                    //Le establecemos la fecha para que sea automatica
+                    $('#txtFecha').val(date.format());
+                    
+                    //Modal para realizar actualizaciones de turnos
+                    $("#modalCalendarioUsuario").modal('show');
+                    
                 },
                 
-                //Se establece los eventos
-                eventSources:[{
-                    events:[
-                        {
-                            title: 'Se inicio el sistema de turno por primera vez',
-                            descripcion: "El sistema esta listo para empezar a ser usado",
-                            start: '2019-11-10',
-                            color: "green",
-                            textColor: "yellow"
-                            
-                        },
-                        
-                        {
-                            title: 'Se empezo a usar el sistema de turnos',
-                            descripcion: "El sistema ya se encuentra en funcionamiento",
-                            start: '2019-11-10',
-                            end: '2019-11-11',
-                            color: "#FF0F0",
-                            textColor: "#FFFFFF"
-                        },
-                        {
-                            title: 'El sistema sigue funcionando correctamente',
-                            descripcion: "Actualmente el sistema funciona correctamente",
-                            start: '2019-11-12T12:30:00',
-                            allDay: false,
-                            color: "yellow",
-                            textColor: "blue"
-                        }  
-                    ],
-                    
-                    //Se establece los colores que son por defecto en el sistema
-                    color: "#FF0F0",
-                    textColor: "#FFFFFF"
-                    
-                }],
+                
+                //Se establece los eventos llamando al archivo de la conexion
+                events: 'http://localhost/investigacion-aplicada/calendario-usuarios/eventos-conexion.php',
+                
                 
                 //Se establece en el modal los datos de los eventos del calendario
                 eventClick: function(calEvent,jsEvent,view){
@@ -153,7 +130,7 @@
                     //Se pide el titulo y la descirpcion del evento
                     $('#tituloEvento').html(calEvent.title);
                     $('#descripcionEvento').html(calEvent.descripcion);
-                    $('#modalCalendario').modal('show');
+                    $('#modalCalendarioUsuario').modal();
                 
                 },
                 
@@ -164,8 +141,8 @@
     </script>
     
     
-    
     <!-- Modal para el calendario -->
+
     <div class="modal fade" id="modalCalendario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -192,6 +169,83 @@
       </div>
     </div>
     
+    
+    <!-- Modal para actualizar informacion del calendario -->
+    <div class="modal fade" id="modalCalendarioUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            
+          <div class="modal-header">
+            <h5 class="modal-title" id="tituloEvento">Complete los siguentes datos para solicitar el turno</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            
+            <div class="modal-body">
+                <div id="descripcionEvento"></div>
+                    
+                    <!--Formulario para agengar eventos de turnos a la base de datos 11/11/2019-->
+                    <form>
+                    
+                        <div class="form-group">
+                        Fecha:<input type="text" class="form-control" id="txtFecha" name="textFecha"><br><br>
+                        </div>
+
+                        <div class="form-group">    
+                        Profesional:<input type="text" class="form-control" id="txtTitulo"><br><br>
+                        </div>
+
+                        <div class="form-group">    
+                        Hora:<input type="text" class="form-control" id="txtHora" name="textFecha" value="06:30"><br><br>
+                        </div>
+
+                        <div class="form-group">
+                        Motivo: <textarea class="form-control" id="txtMotivo" rows="3"></textarea><br><br>
+                        </div>
+
+                        <div class="form-group">
+                        Color:<input type="color" class="form-control" value="#FF0000" id="textColor"><br><br>
+                        </div>
+                     
+                    </form>
+                    
+            </div>
+                    
+          <div class="modal-footer">
+            <button type="button" id="btnAgregarInfo" class="btn btn-success">Agregar</button>
+            <button type="button" class="btn btn-primary">Modificar</button>
+            <button type="button" class="btn btn-warning">Borrar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          </div>
+            
+        </div>
+      </div>
+    </div>
+    
+    
+    <script>
+        
+        //Se capturan los datos del modal para luego mandarlos a fullCalendar y guardarlos la base de datos
+        $('#btnAgregarInfo').click(function(){
+            
+            var NuevoEvento = {
+                
+                title: $('#txtTitulo').val(),
+                start: $('#txtFecha').val(),
+                color: $('#txtColor').val(),
+                descripcion: $('#txtMotivo').val(),
+                textColor: "#FFFFFF"
+            };
+            
+            //Se estable en el calendario el evente que se quiere agregar
+            $('#CalendarioWeb').fullCalendar('renderEvent',NuevoEvento);
+            
+            $("#modalCalendarioUsuario").modal('toggle');
+            
+        });
+        
+    </script>
     
 </body>
     
