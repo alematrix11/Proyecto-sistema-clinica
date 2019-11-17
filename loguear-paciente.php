@@ -31,6 +31,7 @@
     
     //Guadamos el nombre del usuario que inicio sesion en una variable
     $usuarioNombre = $resultado_verificacion['nombre'];
+    $usuarioId = $resultado_verificacion['id'];
 
     //26_ Si el resultado es distinto de verdadero, quiere decir que el usuario no existe, y ejecuta el contenido del condicional para finalizar la operacion
     if(!$resultado_verificacion){
@@ -47,6 +48,7 @@
         
         //29_ Cuando la verificacion de contraseña es correcta, se establece el nombre de usuario a la sesion
         $_SESSION['usuario'] = $usuarioNombre;
+        $_SESSION['usuarioId'] = $usuarioId;
         
         header("location:navegacion_usuario.php");
         

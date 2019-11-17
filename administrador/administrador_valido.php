@@ -81,7 +81,7 @@
                         
                             $_SESSION['admin'] = $adminSesion;
                         
-                            //echo "Accedio correctamente a la sesion del ".$_SESSION['admin']; 
+                            echo "<h4>Accedio correctamente a la sesion del ".$_SESSION['admin']."</h4>"; 
                         
                             //Tambien agregamos la opcion para que el admin pueda cerrar sesion
                         
@@ -93,24 +93,24 @@
                     
                     <br>
                     
-                    <button data-target="actualizaciones-de-profesionales" class="waves-effect waves-light btn blue modal-trigger">Actualizar Profesionales</button>
-
+                    <a class="waves-effect waves-light btn-large blue modal-trigger" href="#actualizaciones-de-profesionales"><i class="material-icons right">sync</i>Actualizar profesionales</a>
+                    
                     <!-- Modal de botones de profesionales -->
                     <div id="actualizaciones-de-profesionales" class="modal">
-                        <div class="modal-content">
-                            <h4 class="black-text">Administracion de personal</h4>
+                        <div class="modal-content center">
+                            <h4 class="black-text center">Administracion de personal</h4>
                             <p class="black-text">En esta sesion puede agregar nuevos profesionales al sistema de la clinica, realizar modificaciones y dar de baja profesionales.</p>
                             
                             <br>
                             
                             
                             <!--Botones para actualizar el personal de la clinica 26/10/19-->
+                            <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_leer.php" href="../profesionales/profesional_nuevo.php"><i class="material-icons right">list</i>Ver listado de profesionales</a>
+                            <a class="waves-effect waves-light btn blue" href="../profesionales/profesional_nuevo.php"><i class="material-icons right">add</i>Nuevo profesional</a>
+                            <a class="waves-effect waves-light btn yellow accent-4 modal-trigger" href="../profesionales/profesional_editar.php"><i class="material-icons right">edit</i>Editar profesional</a>
+                            <a class="waves-effect waves-light btn red" href="../profesionales/profesional_editar.php" href="../profesionales/profesional_eliminado.php"><i class="material-icons right">clear</i>Eliminar profesional</a>
                             
-                            <a class="waves-effect waves-light btn blue" href="../profesionales/profesional_leer.php">Ver listado de profesionales</a>
-                            <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_nuevo.php">Nuevo profesional</a>
-                            <a class="waves-effect waves-light btn yellow accent-4" href="../profesionales/profesional_editar.php">Editar profesional</a>
-                            <a class="waves-effect waves-light btn red" href="../profesionales/profesional_eliminado.php">Eliminar profesional</a>
-                        
+                           
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>

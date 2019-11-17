@@ -1,3 +1,16 @@
+<?php
+
+  include_once 'conexion.php';
+
+  //Se realiza una consulta selecionando los datos de la tabla de las obras sociales
+
+  $consulta_obra_social = "SELECT id, nombre FROM obra_social ORDER BY `id` ASC";
+  $consultando_obra_social = $conexion_bdd-> prepare($consulta_obra_social);
+  $consultando_obra_social -> execute();
+  $datos_obras_sociales = $consultando_obra_social -> fetchALL(PDO::FETCH_ASSOC);
+
+  ?>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -13,15 +26,14 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/estilos.css">
-    
+
     <!--File of Materialize-->
     <script type="text/javascript" src="js/inicializadores-para-materialize.js"></script>
-    
+
     <!--File of Scroll-->
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
-    
+
     <!--Setting of Scroll-->
     <script>
         var scroll = new SmoothScroll('a[href*="#quieroRegistrarme"]', {
@@ -29,14 +41,19 @@
             speedAsDuration: true,
             offset: 160
         });
+        document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems);
+        });
+
     </script>
-    
+
     <title>Clinica</title>
 
 </head>
 
 <body>
-    
+
     <!--SECCION DEL MENU, LOGO Y OPCIONES 03/09/19-->
 
     <!-- Dropdown Structure -->
@@ -60,44 +77,44 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#quieroRegistrarme" data-scroll>Quiero registrarme</a></li>
                         <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="#solicitar_turno">Solicitar turno</a></li>
-                        
+
                             <!-- Solicitar turno - Iniciar sesion 14/10/2019 -->
                             <div id="solicitar_turno" class="modal">
                                 <div class="modal-content">
                                     <h4 class="black-text center">Debes iniciar sesion para poder solicitar turnos</h4>
                                     <p class="black-text">Para iniciar sesion debes ingresar con tu usuario y contraseña</p>
-                                    
+
                                     <!--------------------------------------->
                                     <!--------------------------------------->
                                     <!--Formulario de login de los paciente-->
                                     <!--------------------------------------->
                                     <!--------------------------------------->
-                                    
+
                                     <form action="loguear-paciente.php" method="POST">
-                                        
+
                                         <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
                                         <label for="loginEmail"></label>
-                                        
+
                                         <input id="loginContrasena" type="password" name="contrasena_paciente" placeholder="Ingrese su contraseña">
                                         <label for="loginContrasena"></label>
-                                        
-                                        <button type="submit">Iniciar sesion</button>
+
+                                        <button class="btn" type="submit">Iniciar sesion</button>
                                         
                                     </form>
-                                    
+
                                     <!---------------------------------------------------->
                                     <!---------------------------------------------------->
                                     <!--Finaliza el formulario de login de los pacientes-->
                                     <!---------------------------------------------------->
                                     <!---------------------------------------------------->
-                                    
+
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Iniciar sesion</a>
                                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                                 </div>
                             </div>
-                        
+
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
 
@@ -108,7 +125,7 @@
                 </div>
             </div>
 
-            
+
 
         </div>
     </div>
@@ -137,7 +154,7 @@
     <!--SECCION DE LAS TARGETAS DE ESPECIALIDADES 04/09/19-->
     <div class="container blue darken-1 z-depth-4">
 
-        <h2>Nuestras Especialidades</h2>
+        <h2>Nuestras especialidades</h2>
 
         <div class="row ">
             <div class="col l4 m4 s4">
@@ -146,7 +163,7 @@
                         <img class="activator responsive-img" src="img/img-profesionales/doctor.jpg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Odontologia<i class="material-icons right">more_vert</i></span>
+                        <span class="card-title activator grey-text text-darken-4">Cargiología<i class="material-icons right">more_vert</i></span>
                         <p><a href="#">This is a link</a></p>
                     </div>
                     <div class="card-reveal">
@@ -161,7 +178,7 @@
                         <img class="activator responsive-img" src="img/img-profesionales/doctora.jpg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Pediatria<i class="material-icons right">more_vert</i></span>
+                        <span class="card-title activator grey-text text-darken-4">Nutricionista<i class="material-icons right">more_vert</i></span>
                         <p><a href="#">This is a link</a></p>
                     </div>
                     <div class="card-reveal">
@@ -173,10 +190,10 @@
             <div class="col l4 m4 s4">
                  <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator responsive-img" src="img/img-profesionales/laboratory.jpg">
+                        <img class="activator responsive-img" src="img/img-profesionales/traumatologo.jpg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Analista<i class="material-icons right">more_vert</i></span>
+                        <span class="card-title activator grey-text text-darken-4">Traumatólogo<i class="material-icons right">more_vert</i></span>
                         <p><a href="#">This is a link</a></p>
                     </div>
                     <div class="card-reveal">
@@ -193,7 +210,7 @@
     <!--SECCION DE LAS TARGETAS DE OTRAS ESPECIALIDADES 05/09/19-->
     <div class="container blue darken-1 z-depth-4">
 
-        <h2>Otras Especialidades</h2>
+        <h2>Beneficios de asociarse</h2>
 
         <div class="row">
 
@@ -202,9 +219,7 @@
                     <div class="contenedor-carta">
                         <div class="contenedor-especialidad">
                             <div class="lado adelante center-align">
-                                <h3>Nombre de especialidad</h3>
-                                <span>Descripcion</span>
-                                <p>Mas informacion</p>
+                                <h3>Atencion personalizada</h3>
                             </div>
                             <div class="lado atras"></div>
                         </div>
@@ -217,9 +232,7 @@
                     <div class="contenedor-carta">
                         <div class="contenedor-especialidad">
                             <div class="lado adelante center-align">
-                                <h3>Nombre de especialidad</h3>
-                                <span>Descripcion</span>
-                                <p>Mas informacion</p>
+                                <h3>Descuentos en las citas con todos los profesionales</h3>
                             </div>
                             <div class="lado atras"></div>
                         </div>
@@ -232,9 +245,7 @@
                     <div class="contenedor-carta">
                         <div class="contenedor-especialidad">
                             <div class="lado adelante center-align">
-                                <h3>Nombre de especialidad</h3>
-                                <span>Descripcion</span>
-                                <p>Mas informacion</p>
+                                <h3>Visitas de profesionales a domicilio</h3>
                             </div>
                             <div class="lado atras"></div>
                         </div>
@@ -249,15 +260,15 @@
     <br>
 
     </section>
-    
-    
+
+
     <!--SECCION DE PARALLAX 06/09/19-->
     <section class="parallax-container">
         <div class="parallax">
             <img src="img/img-parallax/estetoscopio.jpg">
         </div>
     </section>
-    
+
     <!----------------------------------->
     <!----------------------------------->
     <!--SECCION DEL FORMULARIO 06/09/19-->
@@ -268,17 +279,17 @@
         <br><br>
         <h2>Registro de usuarios</h2>
         <br><br>
-        
+
           <!--<a href="iniciar.php" class="black-text">Iniciar Sesion</a>-->
           <!--<a href="paciente.php" class="black-text">Contenido protegido</a>-->
-          
+
         <div class="row white section scrollspy" id="quieroRegistrarme">
-            
+
             <br><br>
-            
+
             <form class="col s12" action="agregar_paciente.php" method="POST">
                 <div class="row">
-                
+
                     <div class="input-field col s6">
                       <input id="first_name" type="text" class="validate" name="nombre_paciente" placeholder="Ingrese aquí su nombre" required>
                       <label for="first_name">Nombre</label>
@@ -287,79 +298,86 @@
                     <div class="input-field col s6">
                       <input id="first_name" type="text" class="validate" name="apellido_paciente" placeholder="Ingrese aquí su nombre" required>
                       <label for="first_name">Apellido</label>
-                    </div>                  
-              
+                    </div>
+
                 </div>
-              
+
                 <div class="row">
-                    
+
                     <div class="input-field col s6">
                         <input id="password" type="password" class="validate" name="nueva_contrasena" placeholder="Ingrese aquí su contraseña" required>
                         <label for="password">Nueva contraseña</label>
                     </div>
-                    
+
                     <div class="input-field col s6">
                         <input id="password" type="password" class="validate" name="confirmacion_contrasena" placeholder="Ingrese aquí nuevamente su contraseña" required>
                         <label for="password">Confirmacion contraseña</label>
                     </div>
-                    
+
                 </div>
-                
+
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <input id="email" type="email" class="validate" name="email_paciente" placeholder="Ingrese su email aquí" required>
                         <label for="email">Email</label>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="dni" type="number" class="validate" name="dni_paciente" placeholder="Ingrese su DNI aquí">
+                    <div class="input-field col s6">
+                        <input id="dni" type="number" class="validate" maxlength="8" name="dni_paciente" placeholder="Ingrese su DNI aquí" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                         <label for="dni">DNI</label>
                     </div>
                 </div>
-                
+
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input id="telefono" type="tel" class="validate" name="telefono_paciente" placeholder="Ingrese su telefono aquí">
-                        <label for="telefono">Telefono</label>
+                    <div class="input-field col s1">
+                      <input type="tel" disabled value="+54" id="disabled">
+                      <label for="telefono">Telefono</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <input id="telefono" type="tel" class="validate" name="telefono_paciente" placeholder="Ingrese su telefono aquí" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="obrasocial1">
+                          <?php foreach ($datos_obras_sociales as $nombre_obra_social){ ?>
+                            <option value="<?php echo $nombre_obra_social ["id"] ?>">
+                              <?php
+                                echo $nombre_obra_social ["nombre"];
+                             ?>
+                           </option>
+                          <?php
+                            }
+                          ?>
+                        </select>
+                        <label>Obra Social</label>
                     </div>
                 </div>
-                
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="obraSocial" type="text" class="validate" name="obra_social_paciente" placeholder="Ingrese su obra social aquí">
-                        <label for="obraSocial">Obra social</label>
-                    </div>
-                </div>
-                
+
                 <div class="row center">
                     <button class="btn waves-effect waves-light" type="submit" name="registrar">Registrar
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
-                    
+
                 <br><br>
-                
+
             </form>
-            
+
             <br><br>
-        
+
           </div>
-          
+
         <br><br>
-          
+
       </div>
 
     </section>
-    
+
     <!----------------------------------------------->
     <!----------------------------------------------->
     <!--FINALIZA LA SECCION DEL FORMULARIO 06/09/19-->
     <!----------------------------------------------->
     <!----------------------------------------------->
-    
-    
+
+
     <!--SECCION DE PARALLAX 06/09/19-->
     <section class="parallax-container">
         <div class="parallax">
@@ -371,13 +389,13 @@
     <footer class="page-footer teal lighten-2">
         <div class="container">
             <div class="row">
-            
+
                 <div class="col l6 s12">
                     <h5 class="white-text">Información</h5>
-                    <p class="grey-text text-lighten-4 valign-wrapper"><i class="material-icons">access_time</i>&nbsp Atencion al publico de lunes a sabados</p>
+                    <p class="grey-text text-lighten-4 valign-wrapper"><i class="material-icons">access_time</i>&nbsp Atencion al publico de lunes a viernes</p>
                     <p class="grey-text text-lighten-4 valign-wrapper"><i class="material-icons">location_on</i>&nbsp Provincia de Santa Fe, ciudad de Santa Fe</p>
                 </div>
-              
+
                 <div class="col l3 s12">
                     <h5 class="white-text">Opciones</h5>
                     <ul>
@@ -387,7 +405,7 @@
                         <li><a class="grey-text text-lighten-3" href="#!">Profesionales</a></li>
                     </ul>
                 </div>
-                  
+
                 <div class="col l3 s12">
                     <h5 class="white-text">Sistema</h5>
                     <ul>
@@ -397,50 +415,50 @@
                               <!-- Se agrega el login de administrador 20/10/19 -->
                               <div id="loginAdministrador" class="modal">
                                 <div class="modal-content">
-                                    
+
                                     <h3 class="black-text center-align">Ingrese los datos de administrador</h3>
-                                    
+
                                     <br><br>
-                                    
+
                                     <form action="administrador/loguear-admin.php" method="POST">
-                                    
+
                                     <div class="input-field col l12 s12">
                                         <input type="text" id="adminNombre" name="nombre_administrador" placeholder="Usuario de administrador">
                                         <label for="adminNombre">Administrador</label>
                                     </div>
-                                        
+
                                     <div class="input-field col l12 s12">
                                         <input type="text" id="adminInstitucion" name="institucion_administrador" placeholder="Institucion de administrador">
                                         <label for="adminInstitucion">Institucion</label>
                                     </div>
-                                        
+
                                     <div class="input-field col l12 s12">
                                         <input type="password" id="adminContrasena" name="contrasena_administrador" placeholder="Contraseña de administrador">
                                         <label for="adminContrasena">Contraseña</label>
                                     </div>
-                                        
+
                                     <div class="center-align">
-                                        
+
                                         <button class="btn blue waves-effect waves-light" type="submit">Ingresar</button>
-                                        
+
                                     </div>
-                                        
+
                                     </form>
-                                        
+
                                 </div>
-                                
+
                                     <div class="modal-footer">
                                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                                     </div>
-                                  
+
                               </div>
-                        
-                        
+
+
                         <li><a class="grey-text text-lighten-3" href="#!">Desarrolladores</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Tecnologias</a></li>
                     </ul>
                 </div>
-            
+
             </div>
         </div>
         <div class="footer-copyright">
@@ -450,21 +468,21 @@
             </div>
         </div>
     </footer>
-    
-    
+
+
     <!--Files of JQuery-->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <!--File of JS (Se debe cargar ultimo para que se visualize correctamente el carrusel)-->
     <script type="text/javascript" src="js/app.js"></script>
-    
+
 </body>
 
 </html>
 
-<?php 
-    
+<?php
+
     //6_ Se llama al archivo de conexion a la base de datos (si se coloca en el comienzo del index desconfigura el tamaño de las imagenes del banner)
     include_once 'conexion.php';
 

@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
         var instances = M.Parallax.init(elems);
     });
 
-   
-
 
   $(document).ready(function(){
       
@@ -38,3 +36,4 @@ document.addEventListener('DOMContentLoaded', function() {
     $('input#input_text, textarea#textarea2').characterCounter();
       
   });
+

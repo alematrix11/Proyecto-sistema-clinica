@@ -28,14 +28,11 @@
     <!--File of Moment JS-->
     <script src="Fullcalendar/moment.min.js"></script>
     
-    
     <!--File of Bootstrap CSS-->
     <link rel="stylesheet" href="Fullcalendar/bootstrap.min.css">
     
     <!--File of JQuery JS-->
     <script src="Fullcalendar/jquery.min.js"></script>
-    
-    
     
     <!--File of Fullcalendar CSS-->
     <link rel="stylesheet" href="Fullcalendar/fullcalendar.min.css">
@@ -127,11 +124,22 @@
                 //Se establece en el modal los datos de los eventos del calendario
                 eventClick: function(calEvent,jsEvent,view){
                     
-                    //Se pide el titulo y la descirpcion del evento
+                    //Se pide el titulo y la el motico del evento
                     $('#tituloEvento').html(calEvent.title);
-                    $('#descripcionEvento').html(calEvent.descripcion);
+                    
+                    $('#txtMotivo').val(calEvent.descripcion);
+                    $('#txtid').val(calEvent.id);
+                    $('#txtTitulo').val(calEvent.title);
+                    $('#txtColor').val(calEvent.color);
+                    $('#txtFecha').val(calEvent.id);
+                    
                     $('#modalCalendarioUsuario').modal();
                 
+                    FechaHora = calEvent.start._i.split(" ");
+                    
+                    $('#txtFecha').val(FechaHora[0]);
+                    $('#txtHora').val(FechaHora[1]);
+                    
                 },
                 
             });
@@ -141,53 +149,33 @@
     </script>
     
     
-    <!-- Modal para el calendario -->
-
-    <div class="modal fade" id="modalCalendario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            
-          <div class="modal-header">
-            <h5 class="modal-title" id="tituloEvento"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-            
-            <div class="modal-body">
-                <div id="descripcionEvento"></div>
-            </div>
-                    
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success">Confirmar</button>
-            <button type="button" class="btn btn-primary">Modificar</button>
-            <button type="button" class="btn btn-warning">Borrar</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-          </div>
-            
-        </div>
-      </div>
-    </div>
-    
-    
     <!-- Modal para actualizar informacion del calendario -->
     <div class="modal fade" id="modalCalendarioUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-            
+        
           <div class="modal-header">
-            <h5 class="modal-title" id="tituloEvento">Complete los siguentes datos para solicitar el turno</h5>
+            <h4 class="modal-title">Complete los siguentes datos para solicitar el turno</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
+              
+            
+              
           </div>
             
+            <br><br>
+            <h5 class="ml-4">Su turno es con el profesional: <p id="tituloEvento"></p></h5>
+            
             <div class="modal-body">
-                <div id="descripcionEvento"></div>
                     
                     <!--Formulario para agengar eventos de turnos a la base de datos 11/11/2019-->
                     <form>
-                    
+                        
+                        <div class="form-group">
+                        Id:<input type="hidden" class="form-control" id="txtId" name="textID"><br><br>
+                        </div>
+                        
                         <div class="form-group">
                         Fecha:<input type="text" class="form-control" id="txtFecha" name="textFecha"><br><br>
                         </div>
@@ -197,7 +185,7 @@
                         </div>
 
                         <div class="form-group">    
-                        Hora:<input type="text" class="form-control" id="txtHora" name="textFecha" value="06:30"><br><br>
+                        Hora:<input type="text" class="form-control" id="txtHora" name="textHora" value="06:30"><br><br>
                         </div>
 
                         <div class="form-group">
@@ -205,7 +193,7 @@
                         </div>
 
                         <div class="form-group">
-                        Color:<input type="color" class="form-control" value="#FF0000" id="textColor"><br><br>
+                        Color:<input type="color" class="form-control" value="#FF0000" id="txtColor"><br><br>
                         </div>
                      
                     </form>
@@ -224,26 +212,63 @@
     </div>
     
     
+    <!--Script para los datos de fullCalendar-->
     <script>
+        
+        var NuevoEvento;
         
         //Se capturan los datos del modal para luego mandarlos a fullCalendar y guardarlos la base de datos
         $('#btnAgregarInfo').click(function(){
+            recolectarDatosGUI();
+            enviarInformacion('agregar', NuevoEvento);
+        });
+        
+        
+        function recolectarDatosGUI(){
             
+            //Se recupera informacion del modal en el objeto NuevoEvento, despues se envia a la base de datos
             var NuevoEvento = {
-                
+                id: $('#txtID').val(),
                 title: $('#txtTitulo').val(),
-                start: $('#txtFecha').val(),
+                start: $('#txtFecha').val() +" "+$('#txtHora').val(),
                 color: $('#txtColor').val(),
                 descripcion: $('#txtMotivo').val(),
-                textColor: "#FFFFFF"
+                textColor: "#FFFFFF",
+                end: $('#txtFecha').val() +" "+$('#txtHora').val()
             };
+        }
+        
+        
+        function enviarInformacion(accion, objEvento){
+        
+            //Se implementa el uso de AJAX para enviar informacion sin actualizar la pagina
+            $.ajax({
+                type: 'POST',
+                url: 'eventos-conexion.php?accion='+accion,
+                data: objEvento,
+                success: function(msg){
+                    if(msg){
+                        
+                        //Se estable el metodo refetchEvents para refrescar los eventos del calendario
+                        $('#CalendarioWeb').fullCalendar('refetchEvents');
+                        
+                        //Una vez agregado el evento se cierra el modal
+                        $("#modalCalendarioUsuario").modal('toggle');
+                        
+                    }
+                },
+                
+                //Se establece un mensaje para errores
+                error: function(){
+                    
+                    alert("Hay un error");
+                    
+                }
+                
+            });
             
-            //Se estable en el calendario el evente que se quiere agregar
-            $('#CalendarioWeb').fullCalendar('renderEvent',NuevoEvento);
-            
-            $("#modalCalendarioUsuario").modal('toggle');
-            
-        });
+        }
+        
         
     </script>
     

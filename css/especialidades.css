@@ -1,0 +1,41 @@
+
+.especialidades{
+    background: url("../img/img-especialidades/fondo.jpg")  no-repeat center center fixed;
+    background-size: cover;
+    padding: 5px 80px 30px 80px;
+}
+h1{
+    text-align: center;
+    font-size:55px;
+}
+
+.cabecera{
+    text-align: center;
+    font-size: 18px;
+}
+.descr{
+    text-align: left;
+    margin: auto;
+    padding: 30px;
+}
+.descr p{
+    font-size: 18px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+}
+.imgn{
+    float: right;
+    clear: both;
+    margin-left: 25px;
+    filter: drop-shadow(5px 5px 5px rgb(72, 78, 78));
+}
+.cuadro{
+    clear: both;
+    margin: 0 100px 0 100px;
+}
+
+.cuadro h5{
+    color:white;
+    filter: drop-shadow(1px 1px 1px rgb(21, 24, 24));
+    text-transform: uppercase;
+}

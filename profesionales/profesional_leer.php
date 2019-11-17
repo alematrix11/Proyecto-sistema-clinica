@@ -1,17 +1,17 @@
-<?php 
+<?php
 
     include_once 'mostrar_listado.php';
-    
+
     //Se llama a la conexion a la base de datos
     $object = new Connection();
     $connection = $object ->Connect();
-    
+
     //Se realiza una consultando selecionando los datos de la tabla de los profesionales
-    $consulta_profesionales = "SELECT id_profesional, nombre_p, apellido_p, especialidad_p, dni_p, telefono_p, email_p, matricula_p FROM profesionales ORDER BY `id_profesional` ASC";
+    $consulta_profesionales = "SELECT id_profesional, nombre_p, apellido_p, id_especialidad, dni_p, telefono_p, email_p, matricula_p FROM profesionales ORDER BY `id_profesional` ASC";
     $consultando_profesionales = $connection-> prepare($consulta_profesionales);
     $consultando_profesionales -> execute();
     $datos_profesionales = $consultando_profesionales -> fetchALL(PDO::FETCH_ASSOC);
-    
+
 ?>
 
 
@@ -22,36 +22,36 @@
 <head>
 
     <meta charset="utf-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    
+
     <meta name="description" content="Sistema de gestion para Clinica Domingo Guzman Silva, para facilitar la busquedad de profesionales de la salud, organizacion de administrativos de la clinica y atencion de los pacientes">
-    
+
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    
+
     <meta name="author" content="Alejandro Iorlano, Carlos Gonzalez, Esteban Cantale">
-    
+
     <!--File of Google Fonts-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
     <!--File of Materialize-->
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    
+
     <!--File of Materialize-->
     <script type="text/javascript" src="../js/inicializadores-para-materialize.js"></script>
-    
+
     <!--File of Estilos CSS-->
     <link rel="stylesheet" href="../css/estilos.css">
-    
+
     <!--File of JQuery-->
     <script src="js/jquery-3.4.1.min.js"></script>
-    
+
     <!--File of Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.css">
-    
+
     <!--File of DataTables CSS-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-        
+
     <title>Agregar nuevo profesional</title>
 
 </head>
@@ -93,33 +93,33 @@
     </div>
 
     </nav>
-    
+
     <br>
-    
+
     <div class="row">
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
                     <span class="card-title">
-                        <?php 
-                        
+                        <?php
+
                             //Continuamos con la sesion del administrado y mostramos un mensaje con el nombre del usuario admin
-                        
+
                             session_start();
-                        
+
                             echo "Actualizaciones del personal de la clinica con el usuario ".$_SESSION['admin'];
-                        
+
                             //Tambien agregamos la opcion para que el admin pueda cerrar sesion
-                        
+
                             //echo '<br><br><a href="cerrar_admin.php">Cerrar sesión</a>';-->
-                        
+
                         ?>
                     </span>
-                    
+
                     <p>Usted ha ingresado a la sesion donde puede controlar todos los datos de los profesionales que tiene la clinica</p>
-                    
+
                     <br>
-                    
+
                 </div>
                 <div class="card-action">
                     <a href="../administrador/administrador_valido.php">Regresar a administrar</a>
@@ -127,8 +127,8 @@
             </div>
         </div>
     </div>
-    
-    
+
+
     <!--Se agrega tabla para los profesionales de la clinica 28/10/2019-->
     <div class="container">
         <div class="row">
@@ -136,10 +136,10 @@
               <div class="card">
                 <div class="card-content white-text light-blue lighten-1">
                   <span class="card-title"><i class="far fa-list-alt"></i>&nbsp Listado de profesionales</span>
-                  <p>En la siguiente tabla se encuentran los datos de todos los profesionales</p> 
+                  <p>En la siguiente tabla se encuentran los datos de todos los profesionales</p>
                 </div>
                 <div class="card-content white-text light-blue lighten-2">
-                    
+
                     <div class="tablaProfesionales">
                         <nav class="white">
                             <div class="container">
@@ -163,32 +163,50 @@
                                         </thead>
 
                                         <tbody>
-                                        
+
                                             <?php
-                                            
+
                                                 //Se establece un foreach para recorrer todos los datos de los profesionales que hay en la base de datos
                                                 foreach($datos_profesionales as $dato_profesional){
-                                            
+
                                             ?>
-                                            
+
                                               <tr>
                                                 <td><?php echo $dato_profesional['id_profesional'] ?></td>
                                                 <td><?php echo $dato_profesional['nombre_p'] ?></td>
                                                 <td><?php echo $dato_profesional['apellido_p'] ?></td>
-                                                <td><?php echo $dato_profesional['especialidad_p'] ?></td>
+                                                <td><?php
+
+                                                switch ($dato_profesional['id_especialidad']) {
+                                                    case 1:
+                                                        echo "Traumatologia";
+                                                        break;
+                                                    case 2:
+                                                        echo "Cardiologia";
+                                                        break;
+                                                    case 3:
+                                                        echo "Nutricion";
+                                                        break;
+                                                    case 4:
+                                                        echo "Clinica Medica";
+                                                        break;
+
+                                                }
+
+                                                 ?></td>
                                                 <td><?php echo $dato_profesional['dni_p'] ?></td>
                                                 <td><?php echo $dato_profesional['telefono_p'] ?></td>
                                                 <td><?php echo $dato_profesional['email_p'] ?></td>
                                                 <td><?php echo $dato_profesional['matricula_p'] ?></td>
                                               </tr>
-                                              
+
                                             <?php } ?>
-                                                
+
                                         </tbody>
-                                      
+
                                     </table>
                     </div>
-                    
+
                 </div>
                 <div class="card-action">
                     <a class="btn blue" href="reportes-profesionales/reportes_profesionales.php">Descargar listado</a>
@@ -200,8 +218,8 @@
             </div>
         </div>
     </div>
-    
-    
+
+
     <!--SECCION DEL FOOTER 06/09/19-->
     <footer class="page-footer teal lighten-2">
         <div class="container">
@@ -229,19 +247,19 @@
             </div>
         </div>
     </footer>
-    
-    
+
+
     <!--File of de JS-->
     <script type="text/javascript" src="../js/app.js"></script>
-    
+
     <!--File of JS Materialize (Se debe cargar ultimo para que se visualize correctamente el carrusel)-->
     <script type="text/javascript" src="../js/materialize.min.js"></script>
-    
+
     <!--<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>-->
-    
+
     <!--File of DataTables JS-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
-    
+
 </body>
 
 </html>

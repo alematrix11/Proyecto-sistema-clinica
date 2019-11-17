@@ -3,11 +3,15 @@
     session_start();
     
     //30_ Si la sesion es valida, accede al contenido de los usuarios pacientes
-    if(isset($_SESSION ['usuario'])){
+    if(isset($_SESSION ['usuario'] )){
         //echo 'Bienvenido al sistema de turnos de la Clinica '.$_SESSION ['usuario'];
         //echo '<br><br><a href="cerrar.php">Cerrar sesión</a>';
         
-        header("location:usuarios_validos");
+        if(isset($_SESSION['usuarioId'])){
+            
+            header("location:usuarios_validos");
+            
+        }
         
     }
     //31_ Si la sesion no es valida mostramos un mensaje para que inicie sesion

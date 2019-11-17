@@ -65,14 +65,21 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
-                    <span class="card-title">Su usuario ha sido registrado en la clinica con exito, para iniciar sesion debera completar con los datos que ingreso en el registro</span>
                     
-                    <p>Su usuario ya quedo registrado en nuestro sistema, regrese a la pagina principal para iniciar sesion!</p>
+                        <span class="card-title">Su usuario ha sido registrado en la clinica con exito, para iniciar sesion debera completar con los datos que ingreso en el registro</span>
+                    
+                        <p>Su usuario ya quedo registrado en nuestro sistema, regrese a la pagina principal para iniciar sesion!</p>
+                        
+                        <br>
+                        <img src="profesionales/iconos/check.png">
+                        <br><br>
+                    
+                        <div class="card-action">
+                            <a href="index.php">Regresar a la pagina principal</a>
+                        </div>
                     
                 </div>
-                <div class="card-action">
-                    <a href="index.php">Regresar a la pagina principal</a>
-                </div>
+                
             </div>
         </div>
     </div>
