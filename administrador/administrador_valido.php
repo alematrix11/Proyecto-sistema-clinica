@@ -1,3 +1,38 @@
+<?php
+
+    include_once '../profesionales/mostrar_listado.php';
+
+    //Se llama a la conexion a la base de datos
+    $object = new Connection();
+    $connection = $object ->Connect();
+
+    //Se realiza una consultando selecionando los datos de la tabla de los profesionales de cardiologia
+    $consulta_turnos_cardiologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM cardiologia_turnos ORDER BY `id_turno` ASC";
+    $consultando_turnos_cardiologia = $connection-> prepare($consulta_turnos_cardiologia);
+    $consultando_turnos_cardiologia -> execute();
+    $datos_turnos_cardiologia = $consultando_turnos_cardiologia -> fetchALL(PDO::FETCH_ASSOC);
+
+    //Se realiza una consultando selecionando los datos de la tabla de los profesionales de clinica de medica
+    $consulta_turnos_clinica_medica = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM clinica_medica_turnos ORDER BY `id_turno` ASC";
+    $consultando_turnos_clinica_medica = $connection-> prepare($consulta_turnos_clinica_medica);
+    $consultando_turnos_clinica_medica -> execute();
+    $datos_turnos_clinica_medica = $consultando_turnos_clinica_medica -> fetchALL(PDO::FETCH_ASSOC);
+
+    //Se realiza una consultando selecionando los datos de la tabla de los profesionales de nutricion
+    $consulta_turnos_nutricion = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM nutricion_turnos ORDER BY `id_turno` ASC";
+    $consultando_turnos_nutricion = $connection-> prepare($consulta_turnos_nutricion);
+    $consultando_turnos_nutricion -> execute();
+    $datos_turnos_nutricion = $consultando_turnos_nutricion -> fetchALL(PDO::FETCH_ASSOC);
+    
+    //Se realiza una consultando selecionando los datos de la tabla de los profesionales de traumatologia
+    $consulta_turnos_traumatologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM traumatologia_turnos ORDER BY `id_turno` ASC";
+    $consultando_turnos_traumatologia = $connection-> prepare($consulta_turnos_traumatologia);
+    $consultando_turnos_traumatologia -> execute();
+    $datos_turnos_traumatologia = $consultando_turnos_traumatologia -> fetchALL(PDO::FETCH_ASSOC);
+    
+?>
+
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -11,15 +46,26 @@
     <meta name="author" content="Alejandro Iorlano, Carlos Gonzalez, Esteban Cantale">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="../css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="../css/estilos.css">
+    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    
     
     <!--File of Materialize-->
     <script type="text/javascript" src="../js/inicializadores-para-materialize.js"></script>
     
     <title>Usted ha ingresado al usuario administrador</title>
-
+    
+    <!-- Script para inicializar el pegable-->
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems);
+        });
+        
+    </script>
+    
+    
 </head>
 
 <body>
@@ -45,9 +91,7 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="#agregar_turno">Agregar turno</a></li>
-                        
-                        
+                        <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="">Turnos del día</a></li>
                         
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
@@ -68,8 +112,13 @@
     
     <div class="row">
         <div class="col s12 m12">
+            
+            
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
+                    
+                 
+                    
                     <span class="card-title">
                         <?php 
                         
@@ -89,11 +138,491 @@
                         
                         ?>
                     </span>
+                        
                     <p>Usted ha ingresado con un usuario admin, ya puede realizar actualizaciones y modificaciones del personal</p>
                     
                     <br>
                     
                     <a class="waves-effect waves-light btn-large blue modal-trigger" href="#actualizaciones-de-profesionales"><i class="material-icons right">sync</i>Actualizar profesionales</a>
+                    
+                    <br><br><br><br>
+                
+                        <!--Pegable para administrar los turnos de la clinica 17/11/2019-->
+                        <div class="container blue darken-4">
+                            <ul class="collapsible">
+                                
+                                <li>
+                                  <div class="collapsible-header black-text"><i class="material-icons">add</i>Cardiología</div>
+                                  <div class="collapsible-body">
+                                      <span>
+                                          
+                                        <div class="row">
+                                          <div class="col l8 s8">
+                                            <button class="btn modal-trigger" data-target="modal1">Ver turnos</button>
+                                            <button class="btn">Agregar turnos</button>
+                                            <button class="btn">Cancelar turno</button>
+                                          </div>
+                                              
+                                          <div class="col l4 s4">
+                                            <div class="right-align">
+                                                <img src="iconos/cardiogram.png">
+                                            </div>
+                                          </div>
+                                            
+                                            <!--Inicio del modal para turnos de cardiologia-->
+                                                
+                                                <div id="modal1" class="modal">
+                                                <div class="modal-content">
+                                            
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col s12 m12">
+                                                          <div class="card">
+                                                            <div class="card-content white-text light-blue lighten-1">
+                                                              <span class="card-title"><i class="far fa-list-alt"></i>&nbsp Listado de turnos confirmados</span>
+                                                              <p>En la siguiente tabla se encuentran los datos de los turnos con el profesional de cardiología</p>
+                                                            </div>
+                                                            <div class="card-content white-text light-blue lighten-2">
+
+                                                                <div class="tablaProfesionales">
+                                                                    
+                                                                                 <table id="datosProfesionales" class="responsive-table highlight">
+                                                                                    <thead>
+                                                                                      <tr>
+                                                                                          <th class="black-text">Turno</th>
+                                                                                          <th class="black-text">Profesional</th>
+                                                                                          <th class="black-text">Paciente</th>
+                                                                                          <th class="black-text">Fecha</th>
+                                                                                          <th class="black-text">Hora</th>
+                                                                                      </tr>
+                                                                                    </thead>
+
+                                                                                    <tbody>
+
+                                                                                        <?php
+
+                                                                                            //Se establece un foreach para recorrer todos los datos de los profesionales que hay en la base de datos
+                                                                                            foreach($datos_turnos_cardiologia as $dato_turno_cardiologia){
+
+                                                                                        ?>
+
+                                                                                          <tr>
+                                                                                            <td><?php echo $dato_turno_cardiologia['id_turno'] ?></td>
+                                                                                            
+                                                                                            <td><?php
+
+                                                                                            switch ($dato_turno_cardiologia['id_profesional']) {
+                                                                                                case 1:
+                                                                                                    echo "Profesional Traumatologia";
+                                                                                                    break;
+                                                                                                case 2:
+                                                                                                    echo "Profesional Cardiologia";
+                                                                                                    break;
+                                                                                                case 3:
+                                                                                                    echo "Profesional Nutricion";
+                                                                                                    break;
+                                                                                                case 4:
+                                                                                                    echo "Profesional Clinica Medica";
+                                                                                                    break;
+
+                                                                                            }
+                                                                                            
+                                                                                            
+                                                                                                
+                                                                                             ?></td>
+                                                                                            <td><?php echo $dato_turno_cardiologia['id_paciente'] ?></td>
+                                                                                            <td><?php echo $dato_turno_cardiologia['fecha'] ?></td>
+                                                                                            <td><?php echo $dato_turno_cardiologia['hora'] ?></td>
+                                                                                          </tr>
+
+                                                                                        <?php } ?>
+
+                                                                                    </tbody>
+
+                                                                                </table>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="card-action">
+                                                                <!--<a class="btn blue" href="reportes-profesionales/reportes_profesionales.php">Descargar listado</a>
+                                                                <a class="btn blue" href="reportes-profesionales/reportes_profesionales_matriculas.php">Descargar listado matriculas</a>-->
+                                                                <a class="btn blue" href="../administrador/administrador_valido.php">Ir a actualizaciones de profesionales</a>
+                                                                <span class="right">Sistema actualizado 2019</span>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    
+                                                <div class="modal-footer">
+                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                                </div>
+                                            </div>
+                                            
+                                            </div>
+                                          
+                                            <!--Finaliza el modal para turnos de cardiologia-->
+                                            
+                                        
+                                        </div>
+                                      </span>
+                                    </div>
+                                </li>
+                                
+                                <li>
+                                  <div class="collapsible-header black-text"><i class="material-icons">add</i>Clinica Medica</div>
+                                  <div class="collapsible-body">
+                                      <span>
+                                          
+                                        <div class="row">
+                                          <div class="col l8 s8">
+                                            <button class="btn modal-trigger" data-target="modal2">Ver turnos</button>
+                                            <button class="btn">Agregar turnos</button>
+                                            <button class="btn">Cancelar turno</button>
+                                          </div>
+                                              
+                                          <div class="col l4 s4">
+                                            <div class="right-align">
+                                                <img src="iconos/hospital.png">
+                                            </div>
+                                          </div>
+                                            
+                                            <!--Inicio del modal para turnos de clinica medica-->
+                                                
+                                                <div id="modal2" class="modal">
+                                                <div class="modal-content">
+                                            
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col s12 m12">
+                                                          <div class="card">
+                                                            <div class="card-content white-text light-blue lighten-1">
+                                                              <span class="card-title"><i class="far fa-list-alt"></i>&nbsp Listado de turnos confirmados</span>
+                                                              <p>En la siguiente tabla se encuentran los datos de los turnos con el profesional de clinica medica</p>
+                                                            </div>
+                                                            <div class="card-content white-text light-blue lighten-2">
+
+                                                                <div class="tablaProfesionales">
+                                                                    
+                                                                                 <table id="datosProfesionales" class="responsive-table highlight">
+                                                                                    <thead>
+                                                                                      <tr>
+                                                                                          <th class="black-text">Turno</th>
+                                                                                          <th class="black-text">Profesional</th>
+                                                                                          <th class="black-text">Paciente</th>
+                                                                                          <th class="black-text">Fecha</th>
+                                                                                          <th class="black-text">Hora</th>
+                                                                                      </tr>
+                                                                                    </thead>
+
+                                                                                    <tbody>
+
+                                                                                        <?php
+
+                                                                                            //Se establece un foreach para recorrer todos los datos de los profesionales que hay en la base de datos
+                                                                                            foreach($datos_turnos_clinica_medica as $dato_turno_clinica_medica){
+
+                                                                                        ?>
+
+                                                                                          <tr>
+                                                                                            <td><?php echo $dato_turno_clinica_medica['id_turno'] ?></td>
+                                                                                            
+                                                                                            <td><?php
+
+                                                                                            switch ($dato_turno_clinica_medica['id_profesional']) {
+                                                                                                case 1:
+                                                                                                    echo "Profesional Traumatologia";
+                                                                                                    break;
+                                                                                                case 2:
+                                                                                                    echo "Profesional Cardiologia";
+                                                                                                    break;
+                                                                                                case 3:
+                                                                                                    echo "Profesional Nutricion";
+                                                                                                    break;
+                                                                                                case 4:
+                                                                                                    echo "Profesional Clinica Medica";
+                                                                                                    break;
+
+                                                                                            }
+                                                                                            
+                                                                                            
+                                                                                                
+                                                                                             ?></td>
+                                                                                            <td><?php echo $dato_turno_clinica_medica['id_paciente'] ?></td>
+                                                                                            <td><?php echo $dato_turno_clinica_medica['fecha'] ?></td>
+                                                                                            <td><?php echo $dato_turno_clinica_medica['hora'] ?></td>
+                                                                                          </tr>
+
+                                                                                        <?php } ?>
+
+                                                                                    </tbody>
+
+                                                                                </table>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="card-action">
+                                                                <!--<a class="btn blue" href="reportes-profesionales/reportes_profesionales.php">Descargar listado</a>
+                                                                <a class="btn blue" href="reportes-profesionales/reportes_profesionales_matriculas.php">Descargar listado matriculas</a>-->
+                                                                <a class="btn blue" href="../administrador/administrador_valido.php">Ir a actualizaciones de profesionales</a>
+                                                                <span class="right">Sistema actualizado 2019</span>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    
+                                                <div class="modal-footer">
+                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                                </div>
+                                            </div>
+                                            
+                                            </div>
+                                          
+                                            <!--Finaliza el modal para turnos de clinica medica-->
+                                            
+                                        </div>
+                                          
+                                      </span>
+                                    </div>
+                                </li>
+                                <li>
+                                  <div class="collapsible-header black-text"><i class="material-icons">add</i>Nutrición</div>
+                                  <div class="collapsible-body">
+                                      <span>
+                                          
+                                          <div class="row">
+                                          <div class="col l8 s8">
+                                            <button class="btn modal-trigger" data-target="modal3">Ver turnos</button>
+                                            <button class="btn">Agregar turnos</button>
+                                            <button class="btn">Cancelar turno</button>
+                                          </div>
+                                              
+                                          <div class="col l4 s4">
+                                            <div class="right-align">
+                                                <img src="iconos/plan.png">
+                                            </div>
+                                          </div>
+                                              
+                                                <!--Inicio del modal para turnos de nutricion-->
+                                                
+                                                    <div id="modal3" class="modal">
+                                                <div class="modal-content">
+                                            
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col s12 m12">
+                                                          <div class="card">
+                                                            <div class="card-content white-text light-blue lighten-1">
+                                                              <span class="card-title"><i class="far fa-list-alt"></i>&nbsp Listado de turnos confirmados</span>
+                                                              <p>En la siguiente tabla se encuentran los datos de los turnos con el profesional de cardiología</p>
+                                                            </div>
+                                                            <div class="card-content white-text light-blue lighten-2">
+
+                                                                <div class="tablaProfesionales">
+                                                                    
+                                                                                 <table id="datosProfesionales" class="responsive-table highlight">
+                                                                                    <thead>
+                                                                                      <tr>
+                                                                                          <th class="black-text">Turno</th>
+                                                                                          <th class="black-text">Profesional</th>
+                                                                                          <th class="black-text">Paciente</th>
+                                                                                          <th class="black-text">Fecha</th>
+                                                                                          <th class="black-text">Hora</th>
+                                                                                      </tr>
+                                                                                    </thead>
+
+                                                                                    <tbody>
+
+                                                                                        <?php
+
+                                                                                            //Se establece un foreach para recorrer todos los datos de los profesionales que hay en la base de datos
+                                                                                            foreach($datos_turnos_nutricion as $dato_turnos_nutricion){
+
+                                                                                        ?>
+
+                                                                                          <tr>
+                                                                                            <td><?php echo $dato_turnos_nutricion['id_turno'] ?></td>
+                                                                                            
+                                                                                            <td><?php
+
+                                                                                            switch ($dato_turnos_nutricion['id_profesional']) {
+                                                                                                case 1:
+                                                                                                    echo "Profesional Traumatologia";
+                                                                                                    break;
+                                                                                                case 2:
+                                                                                                    echo "Profesional Cardiologia";
+                                                                                                    break;
+                                                                                                case 3:
+                                                                                                    echo "Profesional Nutricion";
+                                                                                                    break;
+                                                                                                case 4:
+                                                                                                    echo "Profesional Clinica Medica";
+                                                                                                    break;
+
+                                                                                            }
+                                                                                            
+                                                                                            
+                                                                                                
+                                                                                            ?></td>
+                                                                                            <td><?php echo $dato_turnos_nutricion['id_paciente'] ?></td>
+                                                                                            <td><?php echo $dato_turnos_nutricion['fecha'] ?></td>
+                                                                                            <td><?php echo $dato_turnos_nutricion['hora'] ?></td>
+                                                                                          </tr>
+
+                                                                                        <?php } ?>
+
+                                                                                    </tbody>
+
+                                                                                </table>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="card-action">
+                                                                <!--<a class="btn blue" href="reportes-profesionales/reportes_profesionales.php">Descargar listado</a>
+                                                                <a class="btn blue" href="reportes-profesionales/reportes_profesionales_matriculas.php">Descargar listado matriculas</a>-->
+                                                                <a class="btn blue" href="../administrador/administrador_valido.php">Ir a actualizaciones de profesionales</a>
+                                                                <span class="right">Sistema actualizado 2019</span>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    
+                                                <div class="modal-footer">
+                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                                </div>
+                                            </div>
+                                            
+                                            </div>
+                                          
+                                                <!--Finaliza el modal para turnos de nutricion-->
+                                              
+                                        </div>
+                                      </span>
+                                      
+                                    </div>
+                                </li>
+                                <li>
+                                  <div class="collapsible-header black-text"><i class="material-icons">add</i>Traumatología</div>
+                                  <div class="collapsible-body">
+                                      <span>
+                                          
+                                          <div class="row">
+                                          <div class="col l8 s8">
+                                            <button class="btn modal-trigger" data-target="modal4">Ver turnos</button>
+                                            <button class="btn">Agregar turnos</button>
+                                            <button class="btn">Cancelar turno</button>
+                                          </div>
+                                              
+                                          <div class="col l4 s4">
+                                            <div class="right-align">
+                                                <img src="iconos/radiography.png">
+                                            </div>
+                                          </div>
+                                              
+                                              <!--Inicio del modal para turnos de traumatologia-->
+                                                
+                                                    <div id="modal4" class="modal">
+                                                <div class="modal-content">
+                                            
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col s12 m12">
+                                                          <div class="card">
+                                                            <div class="card-content white-text light-blue lighten-1">
+                                                              <span class="card-title"><i class="far fa-list-alt"></i>&nbsp Listado de turnos confirmados</span>
+                                                              <p>En la siguiente tabla se encuentran los datos de los turnos con el profesional de traumatología</p>
+                                                            </div>
+                                                            <div class="card-content white-text light-blue lighten-2">
+
+                                                                <div class="tablaProfesionales">
+                                                                    
+                                                                                 <table id="datosProfesionales" class="responsive-table highlight">
+                                                                                    <thead>
+                                                                                      <tr>
+                                                                                          <th class="black-text">Turno</th>
+                                                                                          <th class="black-text">Profesional</th>
+                                                                                          <th class="black-text">Paciente</th>
+                                                                                          <th class="black-text">Fecha</th>
+                                                                                          <th class="black-text">Hora</th>
+                                                                                      </tr>
+                                                                                    </thead>
+
+                                                                                    <tbody>
+
+                                                                                        <?php
+
+                                                                                            //Se establece un foreach para recorrer todos los datos de los profesionales que hay en la base de datos
+                                                                                            foreach($datos_turnos_traumatologia as $dato_turno_traumatologia){
+
+                                                                                        ?>
+
+                                                                                          <tr>
+                                                                                            <td><?php echo $dato_turno_traumatologia['id_turno'] ?></td>
+                                                                                            
+                                                                                            <td><?php
+
+                                                                                            switch ($dato_turno_traumatologia['id_profesional']) {
+                                                                                                case 1:
+                                                                                                    echo "Profesional Traumatologia";
+                                                                                                    break;
+                                                                                                case 2:
+                                                                                                    echo "Profesional Cardiologia";
+                                                                                                    break;
+                                                                                                case 3:
+                                                                                                    echo "Profesional Nutricion";
+                                                                                                    break;
+                                                                                                case 4:
+                                                                                                    echo "Profesional Clinica Medica";
+                                                                                                    break;
+
+                                                                                            }
+                                                                                            
+                                                                                            
+                                                                                                
+                                                                                             ?></td>
+                                                                                            <td><?php echo $dato_turno_traumatologia['id_paciente'] ?></td>
+                                                                                            <td><?php echo $dato_turno_traumatologia['fecha'] ?></td>
+                                                                                            <td><?php echo $dato_turno_traumatologia['hora'] ?></td>
+                                                                                          </tr>
+
+                                                                                        <?php } ?>
+
+                                                                                    </tbody>
+
+                                                                                </table>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="card-action">
+                                                                <!--<a class="btn blue" href="reportes-profesionales/reportes_profesionales.php">Descargar listado</a>
+                                                                <a class="btn blue" href="reportes-profesionales/reportes_profesionales_matriculas.php">Descargar listado matriculas</a>-->
+                                                                <a class="btn blue" href="../administrador/administrador_valido.php">Ir a actualizaciones de profesionales</a>
+                                                                <span class="right">Sistema actualizado 2019</span>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    
+                                                <div class="modal-footer">
+                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                                </div>
+                                            </div>
+                                            
+                                            </div>
+                                          
+                                                <!--Finaliza el modal para turnos de traumatologia-->
+                                              
+                                        </div>
+                                        
+                                      </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                      
                     
                     <!-- Modal de botones de profesionales -->
                     <div id="actualizaciones-de-profesionales" class="modal">
@@ -108,7 +637,7 @@
                             <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_leer.php" href="../profesionales/profesional_nuevo.php"><i class="material-icons right">list</i>Ver listado de profesionales</a>
                             <a class="waves-effect waves-light btn blue" href="../profesionales/profesional_nuevo.php"><i class="material-icons right">add</i>Nuevo profesional</a>
                             <a class="waves-effect waves-light btn yellow accent-4 modal-trigger" href="../profesionales/profesional_editar.php"><i class="material-icons right">edit</i>Editar profesional</a>
-                            <a class="waves-effect waves-light btn red" href="../profesionales/profesional_editar.php" href="../profesionales/profesional_eliminado.php"><i class="material-icons right">clear</i>Eliminar profesional</a>
+                            <a class="waves-effect waves-light btn red" href="../profesionales/profesional_eliminado.php"><i class="material-icons right">clear</i>Eliminar profesional</a>
                             
                            
                         </div>
@@ -117,71 +646,19 @@
                         </div>
                     </div>
                     
-                    
-                    <!-- Solicitar turno - Iniciar sesion 14/10/2019 -->
-                    <!-- El modal de iniciar sesion se debe agregar despues del modal de actualizar profesionales para evitar errores con el mensaje de la sesion del usuario administrador cuando ingresa al sistema 02/11/2019-->
-                            <div id="agregar_turno" class="modal">
-                                <div class="modal-content">
-                                    <h4 class="black-text center">Debes iniciar sesion para poder solicitar turnos</h4>
-                                    <p class="black-text">Para iniciar sesion debes ingresar con tu usuario y contraseña</p>
-                                    
-                                    <!--------------------------------------->
-                                    <!--------------------------------------->
-                                    <!--Formulario de login de los paciente-->
-                                    <!--------------------------------------->
-                                    <!--------------------------------------->
-                                    
-                                    <form action="../loguear-paciente.php" method="POST">
-                                        
-                                        <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
-                                        <label for="loginEmail"></label>
-                                        
-                                        <input id="loginContrasena" type="password" name="contrasena_paciente" placeholder="Ingrese su contraseña">
-                                        <label for="loginContrasena"></label>
-                                        
-                                        <button type="submit">Iniciar sesion</button>
-                                        
-                                    </form>
-                                    
-                                    <!---------------------------------------------------->
-                                    <!---------------------------------------------------->
-                                    <!--Finaliza el formulario de login de los pacientes-->
-                                    <!---------------------------------------------------->
-                                    <!---------------------------------------------------->
-                                    
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Iniciar sesion</a>
-                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-                                </div>
-                            </div>
-                    
-                    
                     <br>
                     
                 </div>
                 <div class="card-action">
                     <a href="../index.php">Regresar a la pagina principal</a>
                 </div>
+                
             </div>
         </div>
     </div>
-
-    <!--SECCION DEL BANNER Y SUS IMAGENES 04/09/19-->
-    <div class="full-silder">
-        
-        <div class="carousel carousel-slider" data-indicators="true">
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img1"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img2"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img3"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img4"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img5"></a>
-    	</div>
-        
-        <div class="next"><i class="material-icons large">navigate_next</i></div>
-     	<div class="prev"><i class="material-icons large">navigate_before</i></div>
-        
-    </div>
+    
+            
+    
     
     <!--SECCION DEL FOOTER 06/09/19-->
     <footer class="page-footer teal lighten-2">
@@ -212,11 +689,12 @@
     </footer>
     
     
+    
+    
     <!--Files of JQuery-->
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
     <script type="text/javascript" src="../js/app.js"></script>
-    <!--File of JS (Se debe cargar ultimo para que se visualize correctamente el carrusel)-->
     <script type="text/javascript" src="../js/materialize.min.js"></script>
 
 </body>

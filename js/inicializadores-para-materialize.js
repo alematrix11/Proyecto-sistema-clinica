@@ -5,3 +5,8 @@
         var instances = M.Modal.init(elems);
     });
     
+     //Se inicializa el plegable para agregar turnos desde el administrador
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems);
+    });

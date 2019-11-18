@@ -4,7 +4,7 @@
     
     include_once '../conexion.php';
     
-    $id_profesional_turno = 1;
+    $id_profesional_turno = 2;
     $id_paciente_turno =  $_SESSION['usuarioId'];
     $fecha_turno = $_POST['fecha-turno'];
     $hora_turno = $_POST['hora-turno'];

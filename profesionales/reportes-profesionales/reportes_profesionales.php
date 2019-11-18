@@ -70,7 +70,7 @@ while($row1 = $seleccionando_profesionales->fetch(PDO::FETCH_ASSOC)){
     $pdf -> Cell(10, 10, $row1['id_profesional'], 1, 0, 'C', 0);
     $pdf -> Cell(30, 10, $row1['nombre_p'], 1, 0, 'C', 0);
     $pdf -> Cell(30, 10, $row1['apellido_p'], 1, 0, 'C', 0);
-    $pdf -> Cell(35, 10, $row1['especialidad_p'], 1, 0, 'C', 0);
+    $pdf -> Cell(35, 10, $row1['id_especialidad'], 1, 0, 'C', 0);
     $pdf -> Cell(30, 10, $row1['telefono_p'], 1, 0, 'C', 0);
     $pdf -> Cell(50, 10, $row1['email_p'], 1, 1, 'C', 0);
 }
