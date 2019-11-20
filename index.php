@@ -9,7 +9,8 @@
   $consultando_obra_social -> execute();
   $datos_obras_sociales = $consultando_obra_social -> fetchALL(PDO::FETCH_ASSOC);
 
-  ?>
+?>
+
 
 <!DOCTYPE html>
 
@@ -63,12 +64,14 @@
     </ul>
 
     <!--Nav que contiene la opciones del menú-->
-    <nav class="teal lighten-2" style="min-height: 150px">
+    <nav class="teal lighten-2" style="min-height: 160px">
 
     <div class="row">
         <div class="col l12 m12 s12">
             <div class="col l5 m5 s5">
-            <a href="index.php" class="brand-logo valign-wrapper"><img class="logo" src="img/logo.png"></a>
+                <div class="brand-logo">
+                    <a href="index.php" class="brand-logo valign-wrapper"><img class="logo" src="img/logo.png"></a>
+                </div>
             </div>
 
 
@@ -469,14 +472,13 @@
         </div>
     </footer>
 
-
     <!--Files of JQuery-->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <!--File of JS (Se debe cargar ultimo para que se visualize correctamente el carrusel)-->
     <script type="text/javascript" src="js/app.js"></script>
-
+    
 </body>
 
 </html>

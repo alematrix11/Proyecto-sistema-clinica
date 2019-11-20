@@ -33,7 +33,7 @@
     </ul>
 
     <!--Nav que contiene la opciones del menú-->
-    <nav class="teal lighten-2" style="min-height: 150px">
+    <nav class="teal lighten-2" style="min-height: 160px">
 
     <div class="row">
         <div class="col l12 m12 s12">

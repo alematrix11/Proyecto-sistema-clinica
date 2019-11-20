@@ -1,3 +1,67 @@
+<?php        
+        
+        session_start();
+        
+        $confimacion_mail = $_SESSION['registrado'];
+
+        //PHPMailer
+        use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\Exception;
+
+        require 'PHPMailer/Registro/Exception.php';
+        require 'PHPMailer/Registro/PHPMailer.php';
+        require 'PHPMailer/Registro/SMTP.php';
+
+        // Instalacion de PHPMailer
+        $mail = new PHPMailer(true);
+
+        try {
+            //Configuraciones del server
+            $mail->SMTPDebug = 0;                                       // Se desactiva dejando en 0
+            $mail->isSMTP();                                            // Protocolo que se usa para enviar
+            $mail->Host       = 'smtp.gmail.com';                       // Server de servicio de correo
+            
+            $mail->SMTPAuth   = true;                                   // Habilitar identificacion SMTP
+            $mail->Username   = 'somosclinicadgs@gmail.com';            // SMTP nombre de usuario
+            $mail->Password   = 'dgs4deenero';                          // SMTP contraseña
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+            $mail->Port       = 587;                                    // TCP port to connect to
+
+            //Destinatarios
+            $mail->setFrom('somosclinicadgs@gmail.com', 'Clinica');     // Direccion que envia
+            $mail->addAddress($confimacion_mail, 'Usuario');            // Direccion que recibe
+            /*$mail->addAddress('ellen@example.com');                   // Name is optional
+            $mail->addReplyTo('info@example.com', 'Information');
+            $mail->addCC('cc@example.com');
+            $mail->addBCC('bcc@example.com');*/
+
+            //Archivos adjuntos 
+            //$mail->addAttachment('/var/tmp/file.tar.gz');             // Opcion para enviar archivos
+            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');        // Opcion para enviar imagenes
+            
+            //Contenido
+            $mail->isHTML(true);                                    // Permite que en el correo se acepte HTML
+            $mail->Subject = 'Notificacion de registro';
+            
+            //Estructura con HTML para enviar mail
+            $mail->Body    = '
+            
+            <h1>Bienvenido al sitio web de nuestra clinica</h1>
+            
+            <h2>Su usuario se ha registrado correctamente en el sitio web de la <b>Clinica "Domigno Guzman Silva", ya puede accender a todos los beneficios que le ofrece nuestro sistema.</b></h2>
+            
+            *Se recomienda no dar informacion a terceros sobre los datos personales de su cuenta.
+            
+            ';
+            
+            $mail->send();
+            echo "<script> alert('Su usuario se ha registrado correctamente'); </script>";
+        } catch (Exception $e) {
+            echo "No se logro enviar el mensaje. Mailer Error: {$mail->ErrorInfo}";
+        }
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -69,7 +133,7 @@
                         <span class="card-title">Su usuario ha sido registrado en la clinica con exito, para iniciar sesion debera completar con los datos que ingreso en el registro</span>
                     
                         <p>Su usuario ya quedo registrado en nuestro sistema, regrese a la pagina principal para iniciar sesion!</p>
-                        
+                    
                         <br>
                         <img src="profesionales/iconos/check.png">
                         <br><br>

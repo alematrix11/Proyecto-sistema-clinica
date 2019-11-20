@@ -38,7 +38,6 @@
             <a href="index.php" class="brand-logo valign-wrapper"><img class="logo" src="../img/logo.png"></a>
             </div>
 
-
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">

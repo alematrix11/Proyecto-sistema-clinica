@@ -5,31 +5,34 @@
     //Se llama a la conexion a la base de datos
     $object = new Connection();
     $connection = $object ->Connect();
-
-    //Se realiza una consultando selecionando los datos de la tabla de los profesionales de cardiologia
-    $consulta_turnos_cardiologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM cardiologia_turnos ORDER BY `id_turno` ASC";
-    $consultando_turnos_cardiologia = $connection-> prepare($consulta_turnos_cardiologia);
-    $consultando_turnos_cardiologia -> execute();
-    $datos_turnos_cardiologia = $consultando_turnos_cardiologia -> fetchALL(PDO::FETCH_ASSOC);
-
-    //Se realiza una consultando selecionando los datos de la tabla de los profesionales de clinica de medica
-    $consulta_turnos_clinica_medica = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM clinica_medica_turnos ORDER BY `id_turno` ASC";
-    $consultando_turnos_clinica_medica = $connection-> prepare($consulta_turnos_clinica_medica);
-    $consultando_turnos_clinica_medica -> execute();
-    $datos_turnos_clinica_medica = $consultando_turnos_clinica_medica -> fetchALL(PDO::FETCH_ASSOC);
-
-    //Se realiza una consultando selecionando los datos de la tabla de los profesionales de nutricion
-    $consulta_turnos_nutricion = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM nutricion_turnos ORDER BY `id_turno` ASC";
-    $consultando_turnos_nutricion = $connection-> prepare($consulta_turnos_nutricion);
-    $consultando_turnos_nutricion -> execute();
-    $datos_turnos_nutricion = $consultando_turnos_nutricion -> fetchALL(PDO::FETCH_ASSOC);
-    
-    //Se realiza una consultando selecionando los datos de la tabla de los profesionales de traumatologia
-    $consulta_turnos_traumatologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM traumatologia_turnos ORDER BY `id_turno` ASC";
-    $consultando_turnos_traumatologia = $connection-> prepare($consulta_turnos_traumatologia);
-    $consultando_turnos_traumatologia -> execute();
-    $datos_turnos_traumatologia = $consultando_turnos_traumatologia -> fetchALL(PDO::FETCH_ASSOC);
-    
+        
+        
+        //Sentencias para consultar turnos de las especialidades de la clinica
+        
+        //Se realiza una consultando selecionando los datos de la tabla de los profesionales de cardiologia
+        $consulta_turnos_cardiologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM cardiologia_turnos ORDER BY `id_turno` ASC";
+        $consultando_turnos_cardiologia = $connection-> prepare($consulta_turnos_cardiologia);
+        $consultando_turnos_cardiologia -> execute();
+        $datos_turnos_cardiologia = $consultando_turnos_cardiologia -> fetchALL(PDO::FETCH_ASSOC);
+        
+        //Se realiza una consultando selecionando los datos de la tabla de los profesionales de clinica de medica
+        $consulta_turnos_clinica_medica = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM clinica_medica_turnos ORDER BY `id_turno` ASC";
+        $consultando_turnos_clinica_medica = $connection-> prepare($consulta_turnos_clinica_medica);
+        $consultando_turnos_clinica_medica -> execute();
+        $datos_turnos_clinica_medica = $consultando_turnos_clinica_medica -> fetchALL(PDO::FETCH_ASSOC);
+        
+        //Se realiza una consultando selecionando los datos de la tabla de los profesionales de nutricion
+        $consulta_turnos_nutricion = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM nutricion_turnos ORDER BY `id_turno` ASC";
+        $consultando_turnos_nutricion = $connection-> prepare($consulta_turnos_nutricion);
+        $consultando_turnos_nutricion -> execute();
+        $datos_turnos_nutricion = $consultando_turnos_nutricion -> fetchALL(PDO::FETCH_ASSOC);
+        
+        //Se realiza una consultando selecionando los datos de la tabla de los profesionales de traumatologia
+        $consulta_turnos_traumatologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM traumatologia_turnos ORDER BY `id_turno` ASC";
+        $consultando_turnos_traumatologia = $connection-> prepare($consulta_turnos_traumatologia);
+        $consultando_turnos_traumatologia -> execute();
+        $datos_turnos_traumatologia = $consultando_turnos_traumatologia -> fetchALL(PDO::FETCH_ASSOC);
+        
 ?>
 
 
@@ -79,7 +82,7 @@
     </ul>
 
     <!--Nav que contiene la opciones del menú-->
-    <nav class="teal lighten-2" style="min-height: 150px">
+    <nav class="teal lighten-2" style="min-height: 160px">
 
     <div class="row">
         <div class="col l12 m12 s12">
@@ -159,8 +162,48 @@
                                         <div class="row">
                                           <div class="col l8 s8">
                                             <button class="btn modal-trigger" data-target="modal1">Ver turnos</button>
-                                            <button class="btn">Agregar turnos</button>
-                                            <button class="btn">Cancelar turno</button>
+                                            <button class="btn modal-trigger" data-target="agregar_turnos_cardiologia">Agregar turnos</button>
+                                              
+                                            <!--Inicio modal para agregar turnos-->
+                                                <div id="agregar_turnos_cardiologia" class="modal">
+                                                    <div class="modal-content black-text">
+                                                      <h4>Agregar turno con el profesional de Cardiología</h4>
+                                                      
+                                                        <!--Calendario para solicitar turnos 18/11/2019-->
+                                                            <form action="../especialidades/turnos_admin/turnos_admin_cardiologia.php" method="POST">
+                                                                
+                                                                <br><br>
+                                                                
+                                                                <div class="input-field col l4 s12">
+
+                                                                    <input type="text" name="id-usuario" placeholder="Ingrese el id del usuario que solicito el turno" required>
+
+                                                                    <input type="text" class="gray-text" value="Profesional cargiología" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>
+
+                                                                    <input type="text" class="datepicker" name="fecha-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" required>
+
+                                                                    <input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>
+
+                                                                    <br><br><br><br><br><br>
+
+                                                                    <button class="btn" type="submit">Confirmar turno</button>
+                                                                    
+                                                                    <button class="btn red">Cancelar</button>
+
+                                                                </div>
+                                                                
+                                                                 <br><br>
+                                                                
+                                                            </form>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                                    </div>
+                                                </div>
+                                            <!--Finaliza modal para agregar turnos-->
+                                              
+                                            <a class="btn" href="cancelar_turnos/cancelar_turnos_cardiologia.php">Cancelar turno</a>
                                           </div>
                                               
                                           <div class="col l4 s4">
@@ -263,7 +306,6 @@
                                           
                                             <!--Finaliza el modal para turnos de cardiologia-->
                                             
-                                        
                                         </div>
                                       </span>
                                     </div>
@@ -277,8 +319,48 @@
                                         <div class="row">
                                           <div class="col l8 s8">
                                             <button class="btn modal-trigger" data-target="modal2">Ver turnos</button>
-                                            <button class="btn">Agregar turnos</button>
-                                            <button class="btn">Cancelar turno</button>
+                                            <button class="btn modal-trigger" data-target="agregar_turnos_clinica_medica">Agregar turnos</button>
+                                            
+                                            <!--Inicio modal para agregar turnos-->
+                                                <div id="agregar_turnos_clinica_medica" class="modal">
+                                                    <div class="modal-content black-text">
+                                                      <h4>Agregar turno con el profesional de Clinica Medica</h4>
+                                                      
+                                                        <!--Calendario para solicitar turnos 18/11/2019-->
+                                                            <form action="../especialidades/turnos_admin/turnos_admin_clinica_medica.php" method="POST">
+                                                                
+                                                                <br><br>
+                                                                
+                                                                <div class="input-field col l4 s12">
+
+                                                                    <input type="text" name="id-usuario" placeholder="Ingrese el id del usuario que solicito el turno" required>
+
+                                                                    <input type="text" class="gray-text" value="Profesional Clinica Medica" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>
+
+                                                                    <input type="text" class="datepicker" name="fecha-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" required>
+
+                                                                    <input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>
+
+                                                                    <br><br><br><br><br><br>
+
+                                                                    <button class="btn" type="submit">Confirmar turno</button>
+                                                                    
+                                                                    <button class="btn red">Cancelar</button>
+
+                                                                </div>
+                                                                
+                                                                 <br><br>
+                                                                
+                                                            </form>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                                    </div>
+                                                </div>
+                                            <!--Finaliza modal para agregar turnos-->
+                                            
+                                            <a class="btn" href="cancelar_turnos/cancelar_turnos_clinica_medica.php">Cancelar turno</a>
                                           </div>
                                               
                                           <div class="col l4 s4">
@@ -381,6 +463,10 @@
                                           
                                             <!--Finaliza el modal para turnos de clinica medica-->
                                             
+                                            
+                                            
+                                            
+                                            
                                         </div>
                                           
                                       </span>
@@ -394,8 +480,49 @@
                                           <div class="row">
                                           <div class="col l8 s8">
                                             <button class="btn modal-trigger" data-target="modal3">Ver turnos</button>
-                                            <button class="btn">Agregar turnos</button>
-                                            <button class="btn">Cancelar turno</button>
+                                              
+                                            <button class="btn modal-trigger" data-target="agregar_turnos_nutricion">Agregar turnos</button>
+                                            
+                                            <!--Inicio modal para agregar turnos-->
+                                                <div id="agregar_turnos_nutricion" class="modal">
+                                                    <div class="modal-content black-text">
+                                                      <h4>Agregar turno con el profesional de Nutrición</h4>
+                                                      
+                                                        <!--Calendario para solicitar turnos 18/11/2019-->
+                                                            <form action="../especialidades/turnos_admin/turnos_admin_nutricion.php" method="POST">
+                                                                
+                                                                <br><br>
+                                                                
+                                                                <div class="input-field col l4 s12">
+
+                                                                    <input type="text" name="id-usuario" placeholder="Ingrese el id del usuario que solicito el turno" required>
+
+                                                                    <input type="text" class="gray-text" value="Profesional nutrición" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>
+
+                                                                    <input type="text" class="datepicker" name="fecha-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" required>
+
+                                                                    <input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>
+
+                                                                    <br><br><br><br><br><br>
+
+                                                                    <button class="btn" type="submit">Confirmar turno</button>
+                                                                    
+                                                                    <button class="btn red">Cancelar</button>
+
+                                                                </div>
+                                                                
+                                                                 <br><br>
+                                                                
+                                                            </form>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                                    </div>
+                                                </div>  
+                                            <!--Finaliza modal para agregar turnos-->
+                                              
+                                            <a class="btn" href="cancelar_turnos/cancelar_turnos_nutricion.php">Cancelar turno</a>
                                           </div>
                                               
                                           <div class="col l4 s4">
@@ -511,8 +638,48 @@
                                           <div class="row">
                                           <div class="col l8 s8">
                                             <button class="btn modal-trigger" data-target="modal4">Ver turnos</button>
-                                            <button class="btn">Agregar turnos</button>
-                                            <button class="btn">Cancelar turno</button>
+                                            <button class="btn modal-trigger" data-target="agregar_turnos_traumatologia">Agregar turnos</button>
+                                            
+                                            <!--Inicio modal para agregar turnos-->
+                                                <div id="agregar_turnos_traumatologia" class="modal">
+                                                    <div class="modal-content black-text">
+                                                      <h4>Agregar turno con el profesional de Traunamtología</h4>
+                                                      
+                                                        <!--Calendario para solicitar turnos 18/11/2019-->
+                                                            <form action="../especialidades/turnos_admin/turnos_admin_traumatologia.php" method="POST">
+                                                                
+                                                                <br><br>
+                                                                
+                                                                <div class="input-field col l4 s12">
+
+                                                                    <input type="text" name="id-usuario" placeholder="Ingrese el id del usuario que solicito el turno" required>
+
+                                                                    <input type="text" class="gray-text" value="Profesional traumatologia" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>
+
+                                                                    <input type="text" class="datepicker" name="fecha-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" required>
+
+                                                                    <input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>
+
+                                                                    <br><br><br><br><br><br>
+
+                                                                    <button class="btn" type="submit">Confirmar turno</button>
+                                                                    
+                                                                    <button class="btn red">Cancelar</button>
+
+                                                                </div>
+                                                                
+                                                                 <br><br>
+                                                                
+                                                            </form>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                                    </div>
+                                                </div>
+                                            <!--Finaliza modal para agregar turnos-->
+                                              
+                                            <a class="btn" href="cancelar_turnos/cancelar_turnos_traumatologia.php">Cancelar turno</a>
                                           </div>
                                               
                                           <div class="col l4 s4">
@@ -521,7 +688,7 @@
                                             </div>
                                           </div>
                                               
-                                              <!--Inicio del modal para turnos de traumatologia-->
+                                                <!--Inicio del modal para turnos de traumatologia-->
                                                 
                                                     <div id="modal4" class="modal">
                                                 <div class="modal-content">
@@ -657,8 +824,6 @@
         </div>
     </div>
     
-            
-    
     
     <!--SECCION DEL FOOTER 06/09/19-->
     <footer class="page-footer teal lighten-2">
@@ -688,8 +853,44 @@
         </div>
     </footer>
     
+    <!--Se agrega un script para el calendario de Materialize 15/11/2019-->
+    <script>
     
-    
+    var FechaActual = new Date();
+            console.log(FechaActual.getDate() + "/" + (FechaActual.getMonth() +1) + "/" + FechaActual.getFullYear());
+        
+    //Se inicializa el modal para selecionar una fecha para que el usuario solicite un turno
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.datepicker');
+        var instances = M.Datepicker.init(elems, {
+            format: 'dddd dd mmmm yyyy',
+            disableWeekends: true,
+            minDate: FechaActual,
+            i18n: {
+                
+                months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                weekdays: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Vienes', 'Sabado'],
+                weekdaysShort: ['Domingo', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
+                weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                
+                done: 'Confirmar',
+                cancel: 'Cancelar',
+                clear: 'Borrar',
+                previousMonth: '< Ant',
+                nextMonth: ' sig >',
+                
+            }
+        });
+    });
+        
+    //Se inicializa el modal para selecionar un horarios para que el usuario solicite el turno
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.timepicker');
+        var instances = M.Timepicker.init(elems);
+    });
+        
+    </script> 
     
     <!--Files of JQuery-->
     <script type="text/javascript" src="../js/jquery.min.js"></script>

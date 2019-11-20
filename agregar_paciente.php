@@ -64,7 +64,11 @@
             //echo '<br><br>Se agrego un nuevo usuario';
 
             //echo '<a href="index.php">Volver a la pagina principal</a>';
-
+            
+            session_start();
+            
+            $_SESSION['registrado'] = $email_nuevo;
+            
             header("location: usuarios_registrados.php");
 
 
