@@ -42,7 +42,7 @@
             
             //Contenido
             $mail->isHTML(true);                                    // Permite que en el correo se acepte HTML
-            $mail->Subject = 'Notificacion de registro';
+            $mail->Subject = 'Notificacion de solicitud de turno';
             
             //Estructura con HTML para enviar mail
             $mail->Body    = '

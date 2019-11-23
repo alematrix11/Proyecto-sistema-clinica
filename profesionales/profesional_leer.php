@@ -209,8 +209,8 @@
 
                 </div>
                 <div class="card-action">
-                    <a class="btn blue" href="reportes-profesionales/reportes_profesionales.php">Descargar listado</a>
-                    <a class="btn blue" href="reportes-profesionales/reportes_profesionales_matriculas.php">Descargar listado matriculas</a>
+                    <a class="btn blue" href="reportes-profesionales/reportes_profesionales.php">Descargar listado con DNI</a>
+                    <a class="btn blue" href="reportes-profesionales/reportes_profesionales_matriculas.php">Descargar listado con matriculas</a>
                     <a class="btn blue" href="../administrador/administrador_valido.php">Ir a actualizaciones de profesionales</a>
                     <span class="right">Sistema actualizado 2019</span>
                 </div>

@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col l12 m12 s12">
             <div class="col l5 m5 s5">
-            <a href="index.php" class="brand-logo valign-wrapper"><img class="logo" src="../img/logo.png"></a>
+            <a href="../index.php" class="brand-logo valign-wrapper"><img class="logo" src="../img/logo.png"></a>
             </div>
 
             <div class="col l7 m7 s7">

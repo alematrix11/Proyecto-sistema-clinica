@@ -9,26 +9,26 @@
         
         //Sentencias para consultar turnos de las especialidades de la clinica
         
-        //Se realiza una consultando selecionando los datos de la tabla de los profesionales de cardiologia
-        $consulta_turnos_cardiologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM cardiologia_turnos ORDER BY `id_turno` ASC";
+        //Se realiza una consulta selecionando los datos de la tabla de los turnos de cardiologia, y se ordenan por fechas mas recientes
+        $consulta_turnos_cardiologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM cardiologia_turnos ORDER BY `fecha` DESC";
         $consultando_turnos_cardiologia = $connection-> prepare($consulta_turnos_cardiologia);
         $consultando_turnos_cardiologia -> execute();
         $datos_turnos_cardiologia = $consultando_turnos_cardiologia -> fetchALL(PDO::FETCH_ASSOC);
         
-        //Se realiza una consultando selecionando los datos de la tabla de los profesionales de clinica de medica
-        $consulta_turnos_clinica_medica = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM clinica_medica_turnos ORDER BY `id_turno` ASC";
+        //Se realiza una consulta selecionando los datos de la tabla de los turnos de clinica medica, y se ordenan por fechas mas recientes
+        $consulta_turnos_clinica_medica = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM clinica_medica_turnos ORDER BY `fecha` DESC";
         $consultando_turnos_clinica_medica = $connection-> prepare($consulta_turnos_clinica_medica);
         $consultando_turnos_clinica_medica -> execute();
         $datos_turnos_clinica_medica = $consultando_turnos_clinica_medica -> fetchALL(PDO::FETCH_ASSOC);
         
-        //Se realiza una consultando selecionando los datos de la tabla de los profesionales de nutricion
-        $consulta_turnos_nutricion = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM nutricion_turnos ORDER BY `id_turno` ASC";
+        //Se realiza una consulta selecionando los datos de la tabla de los turnos de nutricion, y se ordenan por fechas mas recientes
+        $consulta_turnos_nutricion = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM nutricion_turnos ORDER BY `fecha` DESC";
         $consultando_turnos_nutricion = $connection-> prepare($consulta_turnos_nutricion);
         $consultando_turnos_nutricion -> execute();
         $datos_turnos_nutricion = $consultando_turnos_nutricion -> fetchALL(PDO::FETCH_ASSOC);
         
-        //Se realiza una consultando selecionando los datos de la tabla de los profesionales de traumatologia
-        $consulta_turnos_traumatologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM traumatologia_turnos ORDER BY `id_turno` ASC";
+        //Se realiza una consultan selecionando los datos de la tabla de los turnos de traumatologia, y se ordenan por fechas mas recientes
+        $consulta_turnos_traumatologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM traumatologia_turnos ORDER BY `fecha` DESC";
         $consultando_turnos_traumatologia = $connection-> prepare($consulta_turnos_traumatologia);
         $consultando_turnos_traumatologia -> execute();
         $datos_turnos_traumatologia = $consultando_turnos_traumatologia -> fetchALL(PDO::FETCH_ASSOC);
@@ -87,7 +87,7 @@
     <div class="row">
         <div class="col l12 m12 s12">
             <div class="col l5 m5 s5">
-            <a href="index.php" class="brand-logo valign-wrapper"><img class="logo" src="../img/logo.png"></a>
+            <a href="../index.php" class="brand-logo valign-wrapper"><img class="logo" src="../img/logo.png"></a>
             </div>
 
 
@@ -188,7 +188,7 @@
 
                                                                     <button class="btn" type="submit">Confirmar turno</button>
                                                                     
-                                                                    <button class="btn red">Cancelar</button>
+                                                                    <button class="btn red modal-close">Cancelar</button>
 
                                                                 </div>
                                                                 
@@ -345,7 +345,7 @@
 
                                                                     <button class="btn" type="submit">Confirmar turno</button>
                                                                     
-                                                                    <button class="btn red">Cancelar</button>
+                                                                    <button class="btn red modal-close">Cancelar</button>
 
                                                                 </div>
                                                                 
@@ -507,7 +507,7 @@
 
                                                                     <button class="btn" type="submit">Confirmar turno</button>
                                                                     
-                                                                    <button class="btn red">Cancelar</button>
+                                                                    <button class="btn red modal-close">Cancelar</button>
 
                                                                 </div>
                                                                 
@@ -643,7 +643,7 @@
                                             <!--Inicio modal para agregar turnos-->
                                                 <div id="agregar_turnos_traumatologia" class="modal">
                                                     <div class="modal-content black-text">
-                                                      <h4>Agregar turno con el profesional de Traunamtología</h4>
+                                                      <h4>Agregar turno con el profesional de Traumatología</h4>
                                                       
                                                         <!--Calendario para solicitar turnos 18/11/2019-->
                                                             <form action="../especialidades/turnos_admin/turnos_admin_traumatologia.php" method="POST">
@@ -664,7 +664,7 @@
 
                                                                     <button class="btn" type="submit">Confirmar turno</button>
                                                                     
-                                                                    <button class="btn red">Cancelar</button>
+                                                                    <button class="btn red modal-close">Cancelar</button>
 
                                                                 </div>
                                                                 

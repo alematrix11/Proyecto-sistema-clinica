@@ -23,7 +23,7 @@
     <!--File of Materialize-->
     <script type="text/javascript" src="../js/inicializadores-para-materialize.js"></script>
     
-    <title>Error al solicitar un turno</title>
+    <title>Solicitando turno - Cardiologia</title>
 
 </head>
 
@@ -76,9 +76,9 @@
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content">
                     
-                        <span class="card-title white-text">Ha ocurrido un error al intentar confirmar el turno &nbsp <img src="iconos/remove.png"></span>
+                        <span class="card-title white-text">El turno no esta disponible &nbsp <img src="iconos/event.png"></span>
                     
-                        <p class="white-text">Error, no se logro agregar el turno con exito</p>
+                        <p class="white-text">El turno para la fecha y horarios solicitado no se encuentra disponible, por favor le solicitamos que elija otra fecha y horario</p>
                         
                         <br><br>
                     

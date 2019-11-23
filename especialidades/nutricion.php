@@ -96,11 +96,57 @@
                                     
                                     <input type="hidden" value="$_SESSION['usuarioId']" name="id-usuario">
                                     
-                                    <input type="text" class="white-text" value="Profesional nutricion" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>
+                                    <!--<input type="text" class="white-text" value="Profesional nutricion" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>-->
+                                    
+                                    <br>
+                                    
+                                    <div class="input-field col s12 m12">
+                                        <select class="icons" name="profesionalId">
+                                          <option disabled selected>Seleccione el profesional de Nutrición</option>
+                                          <option value="3" data-icon="imagenes/Marcelo%20Blank.jpg">Marcelo Blank</option>
+                                          <option value="4" data-icon="imagenes/Virginia%20Borga.jpg">Virginia Borga</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <br>
                                     
                                     <input type="text" class="datepicker" name="fecha-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" required>
                                     
-                                    <input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>
+                                    <!--<input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>-->
+                                    
+                                    <br><br>
+                                    
+                                    <div class="input-field col s12">
+                                        <select name="hora-turno">
+                                          <optgroup label="Horarios de mañana">
+                                            <option value="07:00 AM">07:00 HS</option>
+                                            <option value="07:30 AM">07:30 HS</option>
+                                            <option value="08:00 AM">08:00 HS</option>
+                                            <option value="08:30 AM">08:30 HS</option>
+                                            <option value="09:00 AM">09:00 HS</option>
+                                            <option value="09:30 AM">09:30 HS</option>
+                                            <option value="10:00 AM">10:00 HS</option>
+                                            <option value="10:30 AM">10:30 HS</option>
+                                            <option value="11:00 AM">11:00 HS</option>
+                                            <option value="11:30 AM">11:30 HS</option>
+                                            <option value="12:00 AM">12:00 HS</option>
+                                            <option value="12:30 AM">12:30 HS</option>
+                                          </optgroup>
+                                          <optgroup label="Horario de tarde">
+                                            <option value="04:00 PM">04:00 HS</option>
+                                            <option value="04:30 PM">04:30 HS</option>
+                                            <option value="05:00 PM">05:00 HS</option>
+                                            <option value="05:30 PM">05:30 HS</option>
+                                            <option value="06:00 PM">06:00 HS</option>
+                                            <option value="06:30 PM">06:30 HS</option>
+                                            <option value="07:00 PM">07:00 HS</option>
+                                            <option value="07:30 PM">07:30 HS</option>
+                                            <option value="08:00 PM">08:00 HS</option>
+                                            <option value="08:30 PM">08:30 HS</option>
+                                          </optgroup>
+                                        </select>
+                                        <label>Seleccione un horario:</label>
+                                    </div>
                                     
                                     <br><br>
                                     
@@ -173,7 +219,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.datepicker');
         var instances = M.Datepicker.init(elems, {
-            format: 'dddd dd mmmm yyyy',
+            format: 'dd/mm/yyyy',
             disableWeekends: true,
             minDate: FechaActual,
             i18n: {
@@ -195,10 +241,10 @@
     });
         
     //Se inicializa el modal para selecionar un horarios para que el usuario solicite el turno
-    document.addEventListener('DOMContentLoaded', function() {
+    /*document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.timepicker');
         var instances = M.Timepicker.init(elems);
-    });
+    });*/
         
     </script> 
 
@@ -206,7 +252,9 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../js/app.js"></script>
     <script type="text/javascript" src="../js/materialize.min.js"></script>
-
+    <!--Se inicializa el select-->
+    <script type="text/javascript" src="../js/inicializador-select.js"></script>
+    
 </body>
 
 </html>

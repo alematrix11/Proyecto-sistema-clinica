@@ -113,7 +113,6 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Iniciar sesion</a>
                                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                                 </div>
                             </div>
