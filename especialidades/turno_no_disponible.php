@@ -78,7 +78,7 @@
                     
                         <span class="card-title white-text">El turno no esta disponible &nbsp <img src="iconos/event.png"></span>
                     
-                        <p class="white-text">El turno para la fecha y horarios solicitado no se encuentra disponible, por favor le solicitamos que elija otra fecha y horario</p>
+                        <p class="white-text">El turno para la fecha y horario solicitado no se encuentra disponible, por favor le solicitamos que elija otra fecha y horario</p>
                         
                         <br><br>
                     

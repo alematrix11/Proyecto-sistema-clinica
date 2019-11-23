@@ -35,6 +35,9 @@
     //Guadamos el nombre del administrador que inicio sesion en una variable
     $usuarioAdminNombre = $resultado_verificacion_admin['nombre_admin'];
 
+    //Guadamos el id del administrador que inicio sesion en una variable
+    $usuarioAdminId = $resultado_verificacion_admin['id'];
+
     //Si el resultado es distinto de verdadero, quiere decir que el usuario administrador no existe, y ejecuta el contenido del condicional para finalizar la operacion
     if(!$resultado_verificacion_admin){
         
@@ -48,10 +51,13 @@
 
     //Realizamos una verificacion para que la contraseña que se ingreso en el logueo del usuario administrador coincida con la del registro del usuario administrador
     if (password_verify($contrasenaAdmin, $resultado_verificacion_admin['contrasena_admin'])){
-        echo '<br>Su contraseña es correcta';
+        
+        //echo '<br>Su contraseña es correcta';
         
         //Cuando la verificacion de contraseña es correcta, se establece el nombre de usuario a la sesion
         $_SESSION['admin'] = $usuarioAdminNombre;
+        
+        $_SESSION['adminId'] = $usuarioAdminId;
         
         header("location:navegacion_admin.php");
         

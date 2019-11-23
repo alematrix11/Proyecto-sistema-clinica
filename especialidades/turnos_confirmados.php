@@ -30,7 +30,7 @@
 
             //Destinatarios
             $mail->setFrom('somosclinicadgs@gmail.com', 'Clinica');     // Direccion que envia
-            $mail->addAddress($_SESSION['turno_email'], 'Usuario');     // Se establece una sesion que pasara el email de usuario paciente
+            $mail->addAddress($_SESSION['turno_email'], 'Turno Clinica');     // Se establece una sesion que pasara el email de usuario paciente
             /*$mail->addAddress('ellen@example.com');                   // Name is optional
             $mail->addReplyTo('info@example.com', 'Information');
             $mail->addCC('cc@example.com');

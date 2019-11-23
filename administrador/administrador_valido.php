@@ -10,25 +10,25 @@
         //Sentencias para consultar turnos de las especialidades de la clinica
         
         //Se realiza una consulta selecionando los datos de la tabla de los turnos de cardiologia, y se ordenan por fechas mas recientes
-        $consulta_turnos_cardiologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM cardiologia_turnos ORDER BY `fecha` DESC";
+        $consulta_turnos_cardiologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM cardiologia_turnos ORDER BY `fecha` ASC";
         $consultando_turnos_cardiologia = $connection-> prepare($consulta_turnos_cardiologia);
         $consultando_turnos_cardiologia -> execute();
         $datos_turnos_cardiologia = $consultando_turnos_cardiologia -> fetchALL(PDO::FETCH_ASSOC);
         
         //Se realiza una consulta selecionando los datos de la tabla de los turnos de clinica medica, y se ordenan por fechas mas recientes
-        $consulta_turnos_clinica_medica = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM clinica_medica_turnos ORDER BY `fecha` DESC";
+        $consulta_turnos_clinica_medica = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM clinica_medica_turnos ORDER BY `fecha` ASC";
         $consultando_turnos_clinica_medica = $connection-> prepare($consulta_turnos_clinica_medica);
         $consultando_turnos_clinica_medica -> execute();
         $datos_turnos_clinica_medica = $consultando_turnos_clinica_medica -> fetchALL(PDO::FETCH_ASSOC);
         
         //Se realiza una consulta selecionando los datos de la tabla de los turnos de nutricion, y se ordenan por fechas mas recientes
-        $consulta_turnos_nutricion = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM nutricion_turnos ORDER BY `fecha` DESC";
+        $consulta_turnos_nutricion = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM nutricion_turnos ORDER BY `fecha` ASC";
         $consultando_turnos_nutricion = $connection-> prepare($consulta_turnos_nutricion);
         $consultando_turnos_nutricion -> execute();
         $datos_turnos_nutricion = $consultando_turnos_nutricion -> fetchALL(PDO::FETCH_ASSOC);
         
         //Se realiza una consultan selecionando los datos de la tabla de los turnos de traumatologia, y se ordenan por fechas mas recientes
-        $consulta_turnos_traumatologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM traumatologia_turnos ORDER BY `fecha` DESC";
+        $consulta_turnos_traumatologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM traumatologia_turnos ORDER BY `fecha` ASC";
         $consultando_turnos_traumatologia = $connection-> prepare($consulta_turnos_traumatologia);
         $consultando_turnos_traumatologia -> execute();
         $datos_turnos_traumatologia = $consultando_turnos_traumatologia -> fetchALL(PDO::FETCH_ASSOC);
@@ -134,6 +134,8 @@
                             $_SESSION['admin'] = $adminSesion;
                         
                             echo "<h4>Accedio correctamente a la sesion del ".$_SESSION['admin']."</h4>"; 
+                            
+                            //echo "El id del administrador es: ".$_SESSION['adminId'];
                         
                             //Tambien agregamos la opcion para que el admin pueda cerrar sesion
                         
@@ -172,27 +174,75 @@
                                                         <!--Calendario para solicitar turnos 18/11/2019-->
                                                             <form action="../especialidades/turnos_admin/turnos_admin_cardiologia.php" method="POST">
                                                                 
-                                                                <br><br>
-                                                                
                                                                 <div class="input-field col l4 s12">
+                                    
+                                                                    <?php 
 
-                                                                    <input type="text" name="id-usuario" placeholder="Ingrese el id del usuario que solicito el turno" required>
+                                                                    $_SESSION['adminId'];
 
-                                                                    <input type="text" class="gray-text" value="Profesional cargiología" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>
+                                                                    ?>
+
+                                                                    <input type="hidden" value="$_SESSION['adminId']" name="id-usuario">
+
+                                                                    <!--<input type="text" class="white-text" value="Profesional nutricion" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>-->
+
+                                                                    <br>
+
+                                                                    <div class="input-field col s12 m12">
+                                                                        <select class="icons" name="profesionalId">
+                                                                          <option disabled selected>Seleccione el profesional de Cardilogía</option>
+                                                                          <option value="1" data-icon="../especialidades/imagenes/Agustin%20Javier%20Picolini.jpg">Agustin Javier Picolini</option>
+                                                                          <option value="2" data-icon="../especialidades/imagenes/Matias%20Bosio.jpg">Matias Bosio</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <br>
 
                                                                     <input type="text" class="datepicker" name="fecha-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" required>
 
-                                                                    <input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>
+                                                                    <!--<input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>-->
 
-                                                                    <br><br><br><br><br><br>
+                                                                    <br><br>
+
+                                                                    <div class="input-field col s12">
+                                                                        <select name="hora-turno">
+                                                                          <optgroup label="Horarios de mañana">
+                                                                            <option value="07:00 AM">07:00 HS</option>
+                                                                            <option value="07:30 AM">07:30 HS</option>
+                                                                            <option value="08:00 AM">08:00 HS</option>
+                                                                            <option value="08:30 AM">08:30 HS</option>
+                                                                            <option value="09:00 AM">09:00 HS</option>
+                                                                            <option value="09:30 AM">09:30 HS</option>
+                                                                            <option value="10:00 AM">10:00 HS</option>
+                                                                            <option value="10:30 AM">10:30 HS</option>
+                                                                            <option value="11:00 AM">11:00 HS</option>
+                                                                            <option value="11:30 AM">11:30 HS</option>
+                                                                            <option value="12:00 AM">12:00 HS</option>
+                                                                            <option value="12:30 AM">12:30 HS</option>
+                                                                          </optgroup>
+                                                                          <optgroup label="Horario de tarde">
+                                                                            <option value="04:00 PM">04:00 HS</option>
+                                                                            <option value="04:30 PM">04:30 HS</option>
+                                                                            <option value="05:00 PM">05:00 HS</option>
+                                                                            <option value="05:30 PM">05:30 HS</option>
+                                                                            <option value="06:00 PM">06:00 HS</option>
+                                                                            <option value="06:30 PM">06:30 HS</option>
+                                                                            <option value="07:00 PM">07:00 HS</option>
+                                                                            <option value="07:30 PM">07:30 HS</option>
+                                                                            <option value="08:00 PM">08:00 HS</option>
+                                                                            <option value="08:30 PM">08:30 HS</option>
+                                                                          </optgroup>
+                                                                        </select>
+                                                                        <label>Seleccione un horario:</label>
+                                                                    </div>
+
+                                                                    <br><br><br><br>
 
                                                                     <button class="btn" type="submit">Confirmar turno</button>
                                                                     
-                                                                    <button class="btn red modal-close">Cancelar</button>
+                                                                    <br><br>
 
                                                                 </div>
-                                                                
-                                                                 <br><br>
                                                                 
                                                             </form>
                                                         
@@ -256,18 +306,14 @@
 
                                                                                             switch ($dato_turno_cardiologia['id_profesional']) {
                                                                                                 case 1:
-                                                                                                    echo "Profesional Traumatologia";
+                                                                                                    echo "Agustín Javier Picolini";
                                                                                                     break;
                                                                                                 case 2:
-                                                                                                    echo "Profesional Cardiologia";
+                                                                                                    echo "Matias Bosio";
                                                                                                     break;
-                                                                                                case 3:
-                                                                                                    echo "Profesional Nutricion";
+                                                                                                default: 
+                                                                                                    echo "Profesional Nuevo";
                                                                                                     break;
-                                                                                                case 4:
-                                                                                                    echo "Profesional Clinica Medica";
-                                                                                                    break;
-
                                                                                             }
                                                                                             
                                                                                             
@@ -329,27 +375,75 @@
                                                         <!--Calendario para solicitar turnos 18/11/2019-->
                                                             <form action="../especialidades/turnos_admin/turnos_admin_clinica_medica.php" method="POST">
                                                                 
-                                                                <br><br>
-                                                                
                                                                 <div class="input-field col l4 s12">
+                                    
+                                                                    <?php 
 
-                                                                    <input type="text" name="id-usuario" placeholder="Ingrese el id del usuario que solicito el turno" required>
+                                                                    $_SESSION['adminId'];
 
-                                                                    <input type="text" class="gray-text" value="Profesional Clinica Medica" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>
+                                                                    ?>
+
+                                                                    <input type="hidden" value="$_SESSION['adminId']" name="id-usuario">
+
+                                                                    <!--<input type="text" class="white-text" value="Profesional nutricion" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>-->
+
+                                                                    <br>
+
+                                                                    <div class="input-field col s12 m12">
+                                                                        <select class="icons" name="profesionalId">
+                                                                          <option disabled selected>Seleccione el profesional de Clinica Medica</option>
+                                                                          <option value="6" data-icon="../especialidades/imagenes/Agustina%20Yodice.jpg">Agustina Yodice</option>
+                                                                          <option value="7" data-icon="../especialidades/imagenes/Veronica%20Zurvarra.jpg">Veronica Zurvarra</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <br>
 
                                                                     <input type="text" class="datepicker" name="fecha-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" required>
 
-                                                                    <input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>
+                                                                    <!--<input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>-->
 
-                                                                    <br><br><br><br><br><br>
+                                                                    <br><br>
+
+                                                                    <div class="input-field col s12">
+                                                                        <select name="hora-turno">
+                                                                          <optgroup label="Horarios de mañana">
+                                                                            <option value="07:00 AM">07:00 HS</option>
+                                                                            <option value="07:30 AM">07:30 HS</option>
+                                                                            <option value="08:00 AM">08:00 HS</option>
+                                                                            <option value="08:30 AM">08:30 HS</option>
+                                                                            <option value="09:00 AM">09:00 HS</option>
+                                                                            <option value="09:30 AM">09:30 HS</option>
+                                                                            <option value="10:00 AM">10:00 HS</option>
+                                                                            <option value="10:30 AM">10:30 HS</option>
+                                                                            <option value="11:00 AM">11:00 HS</option>
+                                                                            <option value="11:30 AM">11:30 HS</option>
+                                                                            <option value="12:00 AM">12:00 HS</option>
+                                                                            <option value="12:30 AM">12:30 HS</option>
+                                                                          </optgroup>
+                                                                          <optgroup label="Horario de tarde">
+                                                                            <option value="04:00 PM">04:00 HS</option>
+                                                                            <option value="04:30 PM">04:30 HS</option>
+                                                                            <option value="05:00 PM">05:00 HS</option>
+                                                                            <option value="05:30 PM">05:30 HS</option>
+                                                                            <option value="06:00 PM">06:00 HS</option>
+                                                                            <option value="06:30 PM">06:30 HS</option>
+                                                                            <option value="07:00 PM">07:00 HS</option>
+                                                                            <option value="07:30 PM">07:30 HS</option>
+                                                                            <option value="08:00 PM">08:00 HS</option>
+                                                                            <option value="08:30 PM">08:30 HS</option>
+                                                                          </optgroup>
+                                                                        </select>
+                                                                        <label>Seleccione un horario:</label>
+                                                                    </div>
+
+                                                                    <br><br><br><br>
 
                                                                     <button class="btn" type="submit">Confirmar turno</button>
                                                                     
-                                                                    <button class="btn red modal-close">Cancelar</button>
+                                                                    <br><br>
 
                                                                 </div>
-                                                                
-                                                                 <br><br>
                                                                 
                                                             </form>
                                                         
@@ -412,17 +506,15 @@
                                                                                             <td><?php
 
                                                                                             switch ($dato_turno_clinica_medica['id_profesional']) {
-                                                                                                case 1:
-                                                                                                    echo "Profesional Traumatologia";
+                                                                                                case 6:
+                                                                                                    echo "Agustina Yodice";
                                                                                                     break;
-                                                                                                case 2:
-                                                                                                    echo "Profesional Cardiologia";
+                                                                                                case 7:
+                                                                                                    echo "Veronica
+                                                                                                    Zurvarra";
                                                                                                     break;
-                                                                                                case 3:
-                                                                                                    echo "Profesional Nutricion";
-                                                                                                    break;
-                                                                                                case 4:
-                                                                                                    echo "Profesional Clinica Medica";
+                                                                                                default:
+                                                                                                    echo "Profesional Nuevo";
                                                                                                     break;
 
                                                                                             }
@@ -491,27 +583,75 @@
                                                         <!--Calendario para solicitar turnos 18/11/2019-->
                                                             <form action="../especialidades/turnos_admin/turnos_admin_nutricion.php" method="POST">
                                                                 
-                                                                <br><br>
-                                                                
                                                                 <div class="input-field col l4 s12">
+                                    
+                                                                    <?php 
 
-                                                                    <input type="text" name="id-usuario" placeholder="Ingrese el id del usuario que solicito el turno" required>
+                                                                    $_SESSION['adminId'];
 
-                                                                    <input type="text" class="gray-text" value="Profesional nutrición" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>
+                                                                    ?>
+
+                                                                    <input type="hidden" value="$_SESSION['adminId']" name="id-usuario">
+
+                                                                    <!--<input type="text" class="white-text" value="Profesional nutricion" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>-->
+
+                                                                    <br>
+
+                                                                    <div class="input-field col s12 m12">
+                                                                        <select class="icons" name="profesionalId">
+                                                                          <option disabled selected>Seleccione el profesional de Nutrición</option>
+                                                                          <option value="3" data-icon="../especialidades/imagenes/Marcelo%20Blank.jpg">Marcelo Blank</option>
+                                                                          <option value="4" data-icon="../especialidades/imagenes/Virginia%20Borga.jpg">Virginia Borga</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <br>
 
                                                                     <input type="text" class="datepicker" name="fecha-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" required>
 
-                                                                    <input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>
+                                                                    <!--<input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>-->
 
-                                                                    <br><br><br><br><br><br>
+                                                                    <br><br>
+
+                                                                    <div class="input-field col s12">
+                                                                        <select name="hora-turno">
+                                                                          <optgroup label="Horarios de mañana">
+                                                                            <option value="07:00 AM">07:00 HS</option>
+                                                                            <option value="07:30 AM">07:30 HS</option>
+                                                                            <option value="08:00 AM">08:00 HS</option>
+                                                                            <option value="08:30 AM">08:30 HS</option>
+                                                                            <option value="09:00 AM">09:00 HS</option>
+                                                                            <option value="09:30 AM">09:30 HS</option>
+                                                                            <option value="10:00 AM">10:00 HS</option>
+                                                                            <option value="10:30 AM">10:30 HS</option>
+                                                                            <option value="11:00 AM">11:00 HS</option>
+                                                                            <option value="11:30 AM">11:30 HS</option>
+                                                                            <option value="12:00 AM">12:00 HS</option>
+                                                                            <option value="12:30 AM">12:30 HS</option>
+                                                                          </optgroup>
+                                                                          <optgroup label="Horario de tarde">
+                                                                            <option value="04:00 PM">04:00 HS</option>
+                                                                            <option value="04:30 PM">04:30 HS</option>
+                                                                            <option value="05:00 PM">05:00 HS</option>
+                                                                            <option value="05:30 PM">05:30 HS</option>
+                                                                            <option value="06:00 PM">06:00 HS</option>
+                                                                            <option value="06:30 PM">06:30 HS</option>
+                                                                            <option value="07:00 PM">07:00 HS</option>
+                                                                            <option value="07:30 PM">07:30 HS</option>
+                                                                            <option value="08:00 PM">08:00 HS</option>
+                                                                            <option value="08:30 PM">08:30 HS</option>
+                                                                          </optgroup>
+                                                                        </select>
+                                                                        <label>Seleccione un horario:</label>
+                                                                    </div>
+
+                                                                    <br><br><br><br>
 
                                                                     <button class="btn" type="submit">Confirmar turno</button>
                                                                     
-                                                                    <button class="btn red modal-close">Cancelar</button>
+                                                                    <br><br>
 
                                                                 </div>
-                                                                
-                                                                 <br><br>
                                                                 
                                                             </form>
                                                         
@@ -574,17 +714,15 @@
                                                                                             <td><?php
 
                                                                                             switch ($dato_turnos_nutricion['id_profesional']) {
-                                                                                                case 1:
-                                                                                                    echo "Profesional Traumatologia";
-                                                                                                    break;
-                                                                                                case 2:
-                                                                                                    echo "Profesional Cardiologia";
-                                                                                                    break;
                                                                                                 case 3:
-                                                                                                    echo "Profesional Nutricion";
+                                                                                                    echo "Marcelo
+                                                                                                    Blank";
                                                                                                     break;
                                                                                                 case 4:
-                                                                                                    echo "Profesional Clinica Medica";
+                                                                                                    echo "Virginia Borga";
+                                                                                                    break;
+                                                                                                default:
+                                                                                                    echo "Profesional Nuevo";
                                                                                                     break;
 
                                                                                             }
@@ -648,27 +786,75 @@
                                                         <!--Calendario para solicitar turnos 18/11/2019-->
                                                             <form action="../especialidades/turnos_admin/turnos_admin_traumatologia.php" method="POST">
                                                                 
-                                                                <br><br>
-                                                                
                                                                 <div class="input-field col l4 s12">
+                                    
+                                                                    <?php 
 
-                                                                    <input type="text" name="id-usuario" placeholder="Ingrese el id del usuario que solicito el turno" required>
+                                                                    $_SESSION['adminId'];
 
-                                                                    <input type="text" class="gray-text" value="Profesional traumatologia" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>
+                                                                    ?>
+
+                                                                    <input type="hidden" value="$_SESSION['adminId']" name="id-usuario">
+
+                                                                    <!--<input type="text" class="white-text" value="Profesional nutricion" name="profesional-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" disabled>-->
+
+                                                                    <br>
+
+                                                                    <div class="input-field col s12 m12">
+                                                                        <select class="icons" name="profesionalId">
+                                                                          <option disabled selected>Seleccione el profesional de Cardilogía</option>
+                                                                          <option value="8" data-icon="../especialidades/imagenes/Ignacio%20Dallo.jpg">Ignacio Dallo</option>
+                                                                          <option value="9" data-icon="../especialidades/imagenes/Gabriel Gaggiotti Pierini.jpg">Matias Bosio</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <br>
 
                                                                     <input type="text" class="datepicker" name="fecha-turno" placeholder="Seleccione la fecha en que desea solicitar el turno" required>
 
-                                                                    <input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>
+                                                                    <!--<input type="text" class="timepicker" name="hora-turno" placeholder="Seleccione la hora en que desea solicitar el turno" required>-->
 
-                                                                    <br><br><br><br><br><br>
+                                                                    <br><br>
+
+                                                                    <div class="input-field col s12">
+                                                                        <select name="hora-turno">
+                                                                          <optgroup label="Horarios de mañana">
+                                                                            <option value="07:00 AM">07:00 HS</option>
+                                                                            <option value="07:30 AM">07:30 HS</option>
+                                                                            <option value="08:00 AM">08:00 HS</option>
+                                                                            <option value="08:30 AM">08:30 HS</option>
+                                                                            <option value="09:00 AM">09:00 HS</option>
+                                                                            <option value="09:30 AM">09:30 HS</option>
+                                                                            <option value="10:00 AM">10:00 HS</option>
+                                                                            <option value="10:30 AM">10:30 HS</option>
+                                                                            <option value="11:00 AM">11:00 HS</option>
+                                                                            <option value="11:30 AM">11:30 HS</option>
+                                                                            <option value="12:00 AM">12:00 HS</option>
+                                                                            <option value="12:30 AM">12:30 HS</option>
+                                                                          </optgroup>
+                                                                          <optgroup label="Horario de tarde">
+                                                                            <option value="04:00 PM">04:00 HS</option>
+                                                                            <option value="04:30 PM">04:30 HS</option>
+                                                                            <option value="05:00 PM">05:00 HS</option>
+                                                                            <option value="05:30 PM">05:30 HS</option>
+                                                                            <option value="06:00 PM">06:00 HS</option>
+                                                                            <option value="06:30 PM">06:30 HS</option>
+                                                                            <option value="07:00 PM">07:00 HS</option>
+                                                                            <option value="07:30 PM">07:30 HS</option>
+                                                                            <option value="08:00 PM">08:00 HS</option>
+                                                                            <option value="08:30 PM">08:30 HS</option>
+                                                                          </optgroup>
+                                                                        </select>
+                                                                        <label>Seleccione un horario:</label>
+                                                                    </div>
+
+                                                                    <br><br><br><br>
 
                                                                     <button class="btn" type="submit">Confirmar turno</button>
                                                                     
-                                                                    <button class="btn red modal-close">Cancelar</button>
+                                                                    <br><br>
 
                                                                 </div>
-                                                                
-                                                                 <br><br>
                                                                 
                                                             </form>
                                                         
@@ -731,17 +917,14 @@
                                                                                             <td><?php
 
                                                                                             switch ($dato_turno_traumatologia['id_profesional']) {
-                                                                                                case 1:
-                                                                                                    echo "Profesional Traumatologia";
+                                                                                                case 8:
+                                                                                                    echo "Ignacio Dallo";
                                                                                                     break;
-                                                                                                case 2:
-                                                                                                    echo "Profesional Cardiologia";
+                                                                                                case 9:
+                                                                                                    echo "Gabriel Gaggiotti Pierini";
                                                                                                     break;
-                                                                                                case 3:
-                                                                                                    echo "Profesional Nutricion";
-                                                                                                    break;
-                                                                                                case 4:
-                                                                                                    echo "Profesional Clinica Medica";
+                                                                                                default:
+                                                                                                    echo "Profesioanal Nuevo";
                                                                                                     break;
 
                                                                                             }
@@ -863,7 +1046,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.datepicker');
         var instances = M.Datepicker.init(elems, {
-            format: 'dddd dd mmmm yyyy',
+            format: 'dd/mm/yyyy',
             disableWeekends: true,
             minDate: FechaActual,
             i18n: {
@@ -897,6 +1080,8 @@
     <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
     <script type="text/javascript" src="../js/app.js"></script>
     <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <!--Se inicializa el select-->
+    <script type="text/javascript" src="../js/inicializador-select.js"></script>
 
 </body>
 
