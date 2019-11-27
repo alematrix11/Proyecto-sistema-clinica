@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.button{
+    width: 300px;
+    display: block;
+    background: linear-gradient(180deg, #1a237e, #18ffff);
+    padding: 1px 40px;
+    text-align: center;
+    margin: auto;
+    margin-top: 6px;
+    margin-right: 40px;
+    border-radius: 5px;
+    color: white;
+}
+
+.button:hover{
+    transform: translateY(8px);
+    border: 2px solid #03a9f4;
+    transition: all 400ms;
+    box-shadow: 0px 30px 5px -15px rgba(0,0,0,0.4);
+}

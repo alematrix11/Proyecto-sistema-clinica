@@ -56,10 +56,8 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="">Turnos del día</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="../administrador_valido.php">Turnos del día</a></li>
                         
-                        <li><a href="#">Quienes Somos</a></li>
-                        <li><a href="#">Especialidades</a></li>
 
                     <!-- Dropdown Trigger -->
                     <li><a class="waves-effect waves-light blue darken-2 btn-large" href="cerrar_admin.php">Cerrar sesión</a></li>

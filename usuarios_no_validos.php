@@ -14,8 +14,21 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/estilos.css">
-
-    <title>Inicio de sesion incorrecto</title>
+    
+    <!--File of Materialize-->
+    <script type="text/javascript" src="js/inicializadores-para-materialize.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.tooltipped');
+            var instances = M.Tooltip.init(elems, {
+                margin: 480,
+                position: 'top'
+            });
+          });
+    </script>
+    
+    <title>Usuario incorrecto</title>
 
 </head>
 
@@ -43,7 +56,43 @@
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light blue darken-2 btn-large" href="index.php">Inicio</a></li>
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Solicitar turno</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="#solicitar_turno">Solicitar turno</a></li>
+
+                            <!-- Solicitar turno - Iniciar sesion 14/10/2019 -->
+                            <div id="solicitar_turno" class="modal">
+                                <div class="modal-content">
+                                    <h4 class="black-text center">Debes iniciar sesion para poder solicitar turnos</h4>
+                                    <p class="black-text">Para iniciar sesion debes ingresar con tu usuario y contraseña</p>
+
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    <!--Formulario de login de los paciente-->
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+
+                                    <form action="loguear-paciente.php" method="POST">
+
+                                        <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
+                                        <label for="loginEmail"></label>
+
+                                        <input id="loginContrasena" type="password" name="contrasena_paciente" placeholder="Ingrese su contraseña">
+                                        <label for="loginContrasena"></label>
+
+                                        <button class="btn" type="submit">Iniciar sesion</button>
+                                        
+                                    </form>
+
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    <!--Finaliza el formulario de login de los pacientes-->
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                </div>
+                            </div>
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
 
@@ -65,6 +114,11 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
+                    
+                    <div class="row">
+                    
+                    <div class="input-field col l4 s12">
+                    
                     <span class="card-title">Usuario incorrecto</span>
                     <p>Usted ha ingresado una direccion de correo electronico que no se encuentra en el sistema o intento ingresar al sistema sin loguearse primero.</p>
                     <p>Debe ingresar con su usuario y contraseña nuevamente.</p>
@@ -73,29 +127,28 @@
                     
                     <strong><a href="#">¿Usted todavia no se ha registrado en la clinica? Puede hacer desde la pagina pincipal presionando en el boton "Quiero registrame".</a></strong>
                     
-                </div>
+                    </div>
+                    
+                    <div class="col l8 s12 right-align">
+                    <a href="#solicitar_turno" class="modal-trigger tooltipped" data-position="top" data-tooltip="Volver a intentar iniciar sesion"><img src="img/iconos/refresh.png" width="164"></a>
+                    <br>
+                    <a href="#solicitar_turno" class="btn right modal-trigger">Volver a intentar</a>
+                    
+                    </div>
+                        
+                    </div>
+                    
+                    <br><br><br><br><br><br><br><br><br><br>
+                        
                 <div class="card-action">
                     <a href="index.php">Regresar a la pagina principal</a>
+                </div>
+                    
                 </div>
             </div>
         </div>
     </div>
-
-    <!--SECCION DEL BANNER Y SUS IMAGENES 04/09/19-->
-    <div class="full-silder">
-        
-        <div class="carousel carousel-slider" data-indicators="true">
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img1"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img2"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img3"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img4"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img5"></a>
-    	</div>
-        
-        <div class="next"><i class="material-icons large">navigate_next</i></div>
-     	<div class="prev"><i class="material-icons large">navigate_before</i></div>
-        
-    </div>
+    
     
     <!--SECCION DEL FOOTER 06/09/19-->
     <footer class="page-footer teal lighten-2">

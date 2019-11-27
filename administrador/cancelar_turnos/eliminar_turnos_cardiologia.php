@@ -18,10 +18,12 @@
     
     if($sentencia_eliminando -> execute()){
         
-        echo "Se ha cancelado el turno correctamente <br>".$fecha_eliminada."<br>".$hora_eliminada;
+        //echo "Se ha cancelado el turno correctamente <br>".$fecha_eliminada."<br>".$hora_eliminada;
         
-        //return header ("Location: profesional_eliminado_actualizado.php");
-    
+        $_SESSION['turno_cancelado'] = $fecha_eliminada." ".$hora_eliminada;
+            
+        return header ("Location: turnos_cancelados.php");
+
     }
     else{
         return "Error";

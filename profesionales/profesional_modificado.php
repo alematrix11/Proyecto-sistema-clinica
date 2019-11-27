@@ -117,13 +117,31 @@
                         
                     ?></p>
                     
-                    <br>
+                        <div class="row">
+
+                            <div class="input-field col l4 s12">
+
+                            <br>
+
+                            <img src="iconos/check.png">
+
+                            </div>
                     
-                    <img src="iconos/check.png">
                     
-                    <br>
+                            <div class="col l8 s12 right-align">
+                            
+                            <a class="tooltipped" data-position="top" data-tooltip="Volve a la pagina principal de administracion" href="../administrador/administrador_valido.php"><img class="center" src="../administrador/iconos/browser.png" width="196"></a>
+                            
+                            <br>
+                                
+                            <a class="btn tooltipped" data-position="top" data-tooltip="Volve a la pagina principal de administracion" href="../administrador/administrador_valido.php">Volver a administrar</a>
+                                
+                            </div>
                     
+                        </div>
+                
                 </div>
+                
                 <div class="card-action">
                     <a href="../index.php">Regresar a la pagina principal</a>
                 </div>

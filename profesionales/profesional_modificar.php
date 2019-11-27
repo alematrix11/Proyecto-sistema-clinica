@@ -16,28 +16,29 @@
     $email_modificar = $_POST['emailP'];
     $matricula_modificar = $_POST['matriculaP'];
     
-    /*var_dump($id_modificar);
+    var_dump($id_modificar);
     var_dump($nombre_modificar);
     var_dump($apellido_modificar);
     var_dump($especialidad_modificar);
     var_dump($dni_modificar);
     var_dump($telefono_modificar);
     var_dump($email_modificar);
-    var_dump($matricula_modificar);*/
+    var_dump($matricula_modificar);
 
     
-    $sentencia_actualizacion = 'UPDATE profesionales SET nombre_p = ?, apellido_p = ?, especialidad_p = ?, dni_p = ?, telefono_p = ?, email_p = ?, matricula_p = ? WHERE id_profesional = ?';
-    $sentencia_actualizando = $conexion_bdd_admin->prepare($sentencia_actualizacion);
-    $sentencia_actualizando -> execute(array($nombre_modificar,$apellido_modificar,$especialidad_modificar,$dni_modificar,$telefono_modificar,$email_modificar,$matricula_modificar,$id_modificar));
+    $sentencia_actualizacion = 'UPDATE profesionales SET nombre_p = ?, apellido_p = ?, dni_p = ?, telefono_p = ?, email_p = ?, matricula_p = ?  WHERE id_profesional = ?';
+    $sentencia_actualizando = $conexion_bdd_admin -> prepare($sentencia_actualizacion);
+    $sentencia_actualizando -> execute(array($nombre_modificar, $apellido_modificar, $dni_modificar, $telefono_modificar, $email_modificar, $matricula_modificar, $id_modificar));
+    
     
     if($sentencia_actualizando){
-        
-        
+            
         $sql_consulta_nombre = 'SELECT * FROM profesionales WHERE nombre_p = ?';
         $consulta_nombre = $conexion_bdd_admin -> prepare($sql_consulta_nombre);
         $consulta_nombre -> execute(array($nombre_modificar));
         $resultado_verificacion_nombre = $consulta_nombre->fetch();
         
+        var_dump($resultado_verificacion_nombre['nombre_p']);
         
         $nombre_editado = $resultado_verificacion_nombre['nombre_p'];
         

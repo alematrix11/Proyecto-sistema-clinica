@@ -18,6 +18,16 @@
     <!--File of Materialize-->
     <script type="text/javascript" src="js/inicializadores-para-materialize.js"></script>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.tooltipped');
+            var instances = M.Tooltip.init(elems, {
+                margin: 480,
+                position: 'top'
+            });
+          });
+    </script>
+    
     <title>Contraseña incorrecta</title>
 
 </head>
@@ -25,12 +35,6 @@
 <body>
 
     <!--SECCION DEL MENU, LOGO Y OPCIONES 03/09/19-->
-
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">Obras Sociales</a></li>
-      <li><a href="#!">Especialistas</a></li>
-    </ul>
 
     <!--Nav que contiene la opciones del menú-->
     <nav class="teal lighten-2" style="min-height: 150px">
@@ -85,11 +89,7 @@
                                 </div>
                             </div>
                         
-                        <li><a href="#">Quienes Somos</a></li>
-                        <li><a href="#">Especialidades</a></li>
-
-                    <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Más Información<i class="material-icons right">arrow_drop_down</i></a></li>
+                        
                     </ul>
 
                 </div>
@@ -106,37 +106,39 @@
         <div class="col s12 m12">
             <div class="card blue-grey darken-1 z-depth-4">
                 <div class="card-content white-text">
+                    
+                    <div class="row">
+                    
+                    <div class="input-field col l4 s12">
+                        
                     <span class="card-title">La contraseña ingresada es incorrecta</span>
                     <p>Usted ha ingresado una contraseña que no se encuentra en el sistema.</p>
                     <p>Por favor ingrese con su usuario y contraseña nuevamente</p>
-                    
                     <br>
-                    
                     <strong><a href="#">¿Usted todavia no se ha registrado en la clinica?</a></strong>
                     
-                </div>
+                    </div>
+                    
+                    <div class="col l8 s12 right-align">
+                    <a href="#solicitar_turno" class="modal-trigger tooltipped" data-position="top" data-tooltip="Volver a intentar iniciar sesion"><img src="img/iconos/refresh.png" width="164"></a>
+                    <br>
+                    <a href="#solicitar_turno" class="btn right modal-trigger">Volver a intentar</a>
+                    </div>
+                        
+                    </div>
+                    
+                    <br><br><br><br><br><br><br><br><br><br>
+                    
                 <div class="card-action">
-                    <a href="index.php">Regresar a la pagina principal</a>
+                    <a class="modal-trigger" href="index.php">Regresar a la pagina principal</a>
+                </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 
-    <!--SECCION DEL BANNER Y SUS IMAGENES 04/09/19-->
-    <div class="full-silder">
-        
-        <div class="carousel carousel-slider" data-indicators="true">
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img1"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img2"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img3"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img4"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img5"></a>
-    	</div>
-        
-        <div class="next"><i class="material-icons large">navigate_next</i></div>
-     	<div class="prev"><i class="material-icons large">navigate_before</i></div>
-        
-    </div>
+    
     
     <!--SECCION DEL FOOTER 06/09/19-->
     <footer class="page-footer teal lighten-2">

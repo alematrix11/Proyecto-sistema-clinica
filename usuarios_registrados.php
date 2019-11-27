@@ -78,7 +78,10 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/estilos.css">
-
+    
+    <!--File of Materialize-->
+    <script type="text/javascript" src="js/inicializadores-para-materialize.js"></script>
+    
     <title>Usuario registrado</title>
 
 </head>
@@ -86,12 +89,6 @@
 <body>
 
     <!--SECCION DEL MENU, LOGO Y OPCIONES 03/09/19-->
-
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">Obras Sociales</a></li>
-      <li><a href="#!">Especialistas</a></li>
-    </ul>
 
     <!--Nav que contiene la opciones del menú-->
     <nav class="teal lighten-2" style="min-height: 150px">
@@ -107,11 +104,49 @@
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light blue darken-2 btn-large" href="index.php">Inicio</a></li>
-                        <li><a href="#">Quienes Somos</a></li>
-                        <li><a href="#">Especialidades</a></li>
                         
-                        <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Más Información<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="#solicitar_turno">Solicitar turno</a></li>
+
+                            <!-- Solicitar turno - Iniciar sesion 14/10/2019 -->
+                            <div id="solicitar_turno" class="modal">
+                                <div class="modal-content">
+                                    <h4 class="black-text center">Debes iniciar sesion para poder solicitar turnos</h4>
+                                    <p class="black-text">Para iniciar sesion debes ingresar con tu usuario y contraseña</p>
+
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    <!--Formulario de login de los paciente-->
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+
+                                    <form action="loguear-paciente.php" method="POST">
+
+                                        <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
+                                        <label for="loginEmail"></label>
+
+                                        <input id="loginContrasena" type="password" name="contrasena_paciente" placeholder="Ingrese su contraseña">
+                                        <label for="loginContrasena"></label>
+                                        
+                                        <br>
+                                        
+                                        <button class="btn light-blue darken-4" type="submit">Iniciar sesion</button>
+
+                                    </form>
+
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    <!--Finaliza el formulario de login de los pacientes-->
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                </div>
+                            </div>
+                        
+                        <li><a href="pro.php">Profesionales</a></li>
+                        <li><a href="especialidades.php">Especialidades</a></li>
                         
                     </ul>
 
@@ -136,8 +171,10 @@
                     
                         <br>
                         <img src="profesionales/iconos/check.png">
-                        <br><br>
-                    
+                        <br><br><br><br>
+                        <br><br><br><br>
+                        <br><br><br><br>
+                        <br><br><br><br>
                         <div class="card-action">
                             <a href="index.php">Regresar a la pagina principal</a>
                         </div>
@@ -146,21 +183,6 @@
                 
             </div>
         </div>
-    </div>
-
-    <!--SECCION DEL BANNER Y SUS IMAGENES 04/09/19-->
-    <div class="full-silder">
-        <div class="carousel carousel-slider" data-indicators="true">
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img1"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img2"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img3"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img4"></a>
-    		<a href="#" class="carousel-item"><img class="responsive-img clinica-img5"></a>
-    	</div>
-        
-        <div class="next"><i class="material-icons large">navigate_next</i></div>
-     	<div class="prev"><i class="material-icons large">navigate_before</i></div>
-        
     </div>
     
     <!--SECCION DEL FOOTER 06/09/19-->
@@ -175,10 +197,10 @@
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Opciones</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Inicio</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Turnos</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Especialidades</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Profesionales</a></li>
+                  <li><a class="grey-text text-lighten-3" href="index.php">Inicio</a></li>
+                  <li><a class="grey-text text-lighten-3 modal-trigger" href="#solicitar_turno">Turnos</a></li>
+                  <li><a class="grey-text text-lighten-3" href="especialidades.php">Especialidades</a></li>
+                  <li><a class="grey-text text-lighten-3" href="pro.php">Profesionales</a></li>
                 </ul>
               </div>
             </div>

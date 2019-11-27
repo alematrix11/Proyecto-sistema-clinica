@@ -1,3 +1,13 @@
+<?php
+
+    include_once 'mostrar_listado.php';
+
+    //Se llama a la conexion a la base de datos
+    $object = new Connection();
+    $connection = $object ->Connect();
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -43,12 +53,6 @@
 
     <!--SECCION DEL MENU, LOGO Y OPCIONES 03/09/19-->
 
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">Obras Sociales</a></li>
-      <li><a href="#!">Especialistas</a></li>
-    </ul>
-
     <!--Nav que contiene la opciones del menú-->
     <nav class="teal lighten-2" style="min-height: 150px">
 
@@ -61,9 +65,6 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Solicitar turno</a></li>
-                        <li><a href="#">Quienes Somos</a></li>
-                        <li><a href="#">Especialidades</a></li>
 
                     <!-- Dropdown Trigger -->
                     <li><a class="waves-effect waves-light blue darken-2 btn-large" href="../administrador/cerrar_admin.php">Cerrar sesión</a></li>
@@ -205,7 +206,7 @@
                                                         </div>
 
                                                         <div class="input-field col l12 m12 s12">
-                                                        <input type="text" id="especialidadP" name="especialidadP" class="validate" placeholder="" required>
+                                                        <input type="text" id="especialidadP" name="especialidadP" class="validate" placeholder="" readonly>
                                                         <label for="especialidadP">Especialidad:</label>
                                                         </div>
 
@@ -298,7 +299,10 @@
 
     <!--File of JS Materialize (Se debe cargar ultimo para que se visualize correctamente el carrusel)-->
     <script type="text/javascript" src="../js/materialize.min.js"></script>
-
+    
+    <!--File of DataTables JS-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    
     <!--Script de JavaScript para capturar con el boton editar los datos del registro 04/11/2019-->
     <script>
 

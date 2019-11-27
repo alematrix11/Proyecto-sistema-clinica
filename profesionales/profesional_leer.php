@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--File of Materialize-->
-    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
     <!--File of Materialize-->
     <script type="text/javascript" src="../js/inicializadores-para-materialize.js"></script>
@@ -60,11 +60,6 @@
 
     <!--SECCION DEL MENU, LOGO Y OPCIONES 03/09/19-->
 
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">Obras Sociales</a></li>
-      <li><a href="#!">Especialistas</a></li>
-    </ul>
 
     <!--Nav que contiene la opciones del menú-->
     <nav class="teal lighten-2" style="min-height: 150px">
@@ -78,10 +73,6 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#">Solicitar turno</a></li>
-                        <li><a href="#">Quienes Somos</a></li>
-                        <li><a href="#">Especialidades</a></li>
-
                     <!-- Dropdown Trigger -->
                     <li><a class="waves-effect waves-light blue darken-2 btn-large" href="../administrador/cerrar_admin.php">Cerrar sesión</a></li>
                     </ul>
@@ -209,9 +200,9 @@
 
                 </div>
                 <div class="card-action">
-                    <a class="btn blue" href="reportes-profesionales/reportes_profesionales.php">Descargar listado con DNI</a>
-                    <a class="btn blue" href="reportes-profesionales/reportes_profesionales_matriculas.php">Descargar listado con matriculas</a>
-                    <a class="btn blue" href="../administrador/administrador_valido.php">Ir a actualizaciones de profesionales</a>
+                    <a class="btn blue darken-4" href="reportes-profesionales/reportes_profesionales.php">Descargar listado</a>
+                    <a class="btn blue darken-4" href="reportes-profesionales/reportes_profesionales_matriculas.php">Descargar listado matriculas</a>
+                    <a class="btn blue darken-4" href="../administrador/administrador_valido.php">Ir a actualizaciones de profesionales</a>
                     <span class="right">Sistema actualizado 2019</span>
                 </div>
               </div>

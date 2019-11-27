@@ -31,11 +31,7 @@
     
     <!--SECCION DEL MENU, LOGO Y OPCIONES 03/09/19-->
 
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">Obras Sociales</a></li>
-      <li><a href="#!">Especialistas</a></li>
-    </ul>
+    
 
     <!--Nav que contiene la opciones del menú-->
     <nav class="teal lighten-2" style="min-height: 150px">
@@ -53,9 +49,6 @@
                         <li><a class="waves-effect waves-light blue darken-2 btn-large" href="../index.php">Inicio</a></li>
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
-                        
-                        <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Más Información<i class="material-icons right">arrow_drop_down</i></a></li>
                         
                         <li><a class="waves-effect waves-light blue darken-2 btn-large" href="../cerrar.php">Cerrar sesión</a></li>
                         
@@ -109,8 +102,45 @@
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Opciones</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Inicio</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Turnos</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../index.php">Inicio</a></li>
+                  <li><a class="grey-text text-lighten-3 modal-trigger" href="#solicitar_turno">Turnos</a></li>
+                    
+                    <!-- Solicitar turno - Iniciar sesion 14/10/2019 -->
+                            <div id="solicitar_turno" class="modal">
+                                <div class="modal-content">
+                                    <h4 class="black-text center">Debes iniciar sesion para poder solicitar turnos</h4>
+                                    <p class="black-text">Para iniciar sesion debes ingresar con tu usuario y contraseña</p>
+
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    <!--Formulario de login de los paciente-->
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+
+                                    <form action="../loguear-paciente.php" method="POST">
+
+                                        <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
+                                        <label for="loginEmail"></label>
+
+                                        <input id="loginContrasena" type="password" name="contrasena_paciente" placeholder="Ingrese su contraseña">
+                                        <label for="loginContrasena"></label>
+
+                                        <button class="btn light-blue darken-4" type="submit">Iniciar sesion</button>
+
+                                    </form>
+
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    <!--Finaliza el formulario de login de los pacientes-->
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                </div>
+                            </div>
+                    
                   <li><a class="grey-text text-lighten-3" href="#!">Especialidades</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Profesionales</a></li>
                 </ul>

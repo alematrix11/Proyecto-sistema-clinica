@@ -1,5 +1,7 @@
 <?php
-
+        
+    session_start();
+    
     include_once '../profesionales/mostrar_listado.php';
 
     //Se llama a la conexion a la base de datos
@@ -10,25 +12,22 @@
         //Sentencias para consultar turnos de las especialidades de la clinica
         
         //Se realiza una consulta selecionando los datos de la tabla de los turnos de cardiologia, y se ordenan por fechas mas recientes
-        $consulta_turnos_cardiologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM cardiologia_turnos ORDER BY `fecha` ASC";
+        $consulta_turnos_cardiologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora, nombre, apellido FROM cardiologia_turnos INNER JOIN registro_pacientes ON cardiologia_turnos.id_paciente = registro_pacientes.id ORDER BY `id_turno` DESC";
         $consultando_turnos_cardiologia = $connection-> prepare($consulta_turnos_cardiologia);
         $consultando_turnos_cardiologia -> execute();
         $datos_turnos_cardiologia = $consultando_turnos_cardiologia -> fetchALL(PDO::FETCH_ASSOC);
-        
-        //Se realiza una consulta selecionando los datos de la tabla de los turnos de clinica medica, y se ordenan por fechas mas recientes
-        $consulta_turnos_clinica_medica = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM clinica_medica_turnos ORDER BY `fecha` ASC";
+
+        $consulta_turnos_clinica_medica = "SELECT id_turno, id_profesional, id_paciente, fecha, hora, nombre, apellido FROM clinica_medica_turnos INNER JOIN registro_pacientes ON clinica_medica_turnos.id_paciente = registro_pacientes.id ORDER BY `id_turno` DESC";
         $consultando_turnos_clinica_medica = $connection-> prepare($consulta_turnos_clinica_medica);
         $consultando_turnos_clinica_medica -> execute();
         $datos_turnos_clinica_medica = $consultando_turnos_clinica_medica -> fetchALL(PDO::FETCH_ASSOC);
-        
-        //Se realiza una consulta selecionando los datos de la tabla de los turnos de nutricion, y se ordenan por fechas mas recientes
-        $consulta_turnos_nutricion = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM nutricion_turnos ORDER BY `fecha` ASC";
+
+        $consulta_turnos_nutricion = "SELECT id_turno, id_profesional, id_paciente, fecha, hora, nombre, apellido FROM nutricion_turnos INNER JOIN registro_pacientes ON nutricion_turnos.id_paciente = registro_pacientes.id ORDER BY `id_turno` DESC";
         $consultando_turnos_nutricion = $connection-> prepare($consulta_turnos_nutricion);
         $consultando_turnos_nutricion -> execute();
         $datos_turnos_nutricion = $consultando_turnos_nutricion -> fetchALL(PDO::FETCH_ASSOC);
-        
-        //Se realiza una consultan selecionando los datos de la tabla de los turnos de traumatologia, y se ordenan por fechas mas recientes
-        $consulta_turnos_traumatologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora FROM traumatologia_turnos ORDER BY `fecha` ASC";
+
+        $consulta_turnos_traumatologia = "SELECT id_turno, id_profesional, id_paciente, fecha, hora, nombre, apellido FROM traumatologia_turnos INNER JOIN registro_pacientes ON traumatologia_turnos.id_paciente = registro_pacientes.id ORDER BY `id_turno` DESC";
         $consultando_turnos_traumatologia = $connection-> prepare($consulta_turnos_traumatologia);
         $consultando_turnos_traumatologia -> execute();
         $datos_turnos_traumatologia = $consultando_turnos_traumatologia -> fetchALL(PDO::FETCH_ASSOC);
@@ -51,7 +50,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/estilos.css">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    
+    <link rel="stylesheet" href="../administrador/turnos_del_dia/boton/estilos-boton.css">
+    <link rel="stylesheet" href="../administrador/turnos_del_dia/boton/efecto-boton.js">
     
     <!--File of Materialize-->
     <script type="text/javascript" src="../js/inicializadores-para-materialize.js"></script>
@@ -75,11 +75,6 @@
 
     <!--SECCION DEL MENU, LOGO Y OPCIONES 03/09/19-->
 
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">Obras Sociales</a></li>
-      <li><a href="#!">Especialistas</a></li>
-    </ul>
 
     <!--Nav que contiene la opciones del menú-->
     <nav class="teal lighten-2" style="min-height: 160px">
@@ -94,13 +89,34 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn btn-large modal-trigger" href="">Turnos del día</a></li>
+                        <li><a class="button modal-trigger" href="turnos_del_dia/turnos_del_dia.php">TURNOS RECIENTES</a></li>
                         
-                        <li><a href="#">Quienes Somos</a></li>
-                        <li><a href="#">Especialidades</a></li>
+                            <div class="modal" id="turnos_del_dia">
+                                
+                                <div class="modal-content black-text">
+                                    
+                                  <h4>Seleccione una fecha del dia:</h4>
+                                    
+                                    <form action="turnos_del_dia/turnos_del_dia.php" method="POST">
+                                        
+                                        <div>
+                                            
+                                            <input type="date" name="fecha-turno-dia-de-hoy" placeholder="Seleccione la fecha del dia de hoy">
+                                            
+                                            <button type="submit">Consultar turnos</button>
+                                            
+                                        </div>
+                                        
+                                    </form>
+                                  
+                                </div>
+                                <div class="modal-footer">
+                                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                </div>
 
-                    <!-- Dropdown Trigger -->
-                    <li><a class="waves-effect waves-light blue darken-2 btn-large" href="cerrar_admin.php">Cerrar sesión</a></li>
+                            </div>
+                        
+                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="cerrar_admin.php">Cerrar sesión</a></li>
                     </ul>
 
                 </div>
@@ -127,7 +143,7 @@
                         
                             //Continuamos con la sesion del administrado y mostramos un mensaje con el nombre del usuario admin
                         
-                            session_start();
+                            
                         
                             $adminSesion = 'Administrador';
                         
@@ -284,9 +300,9 @@
                                                                                       <tr>
                                                                                           <th class="black-text">Turno</th>
                                                                                           <th class="black-text">Profesional</th>
-                                                                                          <th class="black-text">Paciente</th>
                                                                                           <th class="black-text">Fecha</th>
                                                                                           <th class="black-text">Hora</th>
+                                                                                          <th class="black-text">Paciente</th>
                                                                                       </tr>
                                                                                     </thead>
 
@@ -296,10 +312,10 @@
 
                                                                                             //Se establece un foreach para recorrer todos los datos de los profesionales que hay en la base de datos
                                                                                             foreach($datos_turnos_cardiologia as $dato_turno_cardiologia){
-
+                                                                                            
                                                                                         ?>
-
-                                                                                          <tr>
+                                                                                        
+                                                                                        <tr>
                                                                                             <td><?php echo $dato_turno_cardiologia['id_turno'] ?></td>
                                                                                             
                                                                                             <td><?php
@@ -311,22 +327,23 @@
                                                                                                 case 2:
                                                                                                     echo "Matias Bosio";
                                                                                                     break;
-                                                                                                default: 
-                                                                                                    echo "Profesional Nuevo";
-                                                                                                    break;
                                                                                             }
                                                                                             
-                                                                                            
-                                                                                                
                                                                                              ?></td>
-                                                                                            <td><?php echo $dato_turno_cardiologia['id_paciente'] ?></td>
+                                                                                            
                                                                                             <td><?php echo $dato_turno_cardiologia['fecha'] ?></td>
                                                                                             <td><?php echo $dato_turno_cardiologia['hora'] ?></td>
-                                                                                          </tr>
+                                                                                            <td><?php echo $dato_turno_cardiologia['nombre']." ".$dato_turno_cardiologia['apellido'] ?></td>
+                                                                                        </tr>
 
-                                                                                        <?php } ?>
+                                                                                        
+                                                                                            <?php
 
-                                                                                    </tbody>
+                                                                                                }
+
+                                                                                            ?>
+                                                                                     
+                                                                                     </tbody>
 
                                                                                 </table>
                                                                 </div>
@@ -485,9 +502,9 @@
                                                                                       <tr>
                                                                                           <th class="black-text">Turno</th>
                                                                                           <th class="black-text">Profesional</th>
-                                                                                          <th class="black-text">Paciente</th>
                                                                                           <th class="black-text">Fecha</th>
                                                                                           <th class="black-text">Hora</th>
+                                                                                          <th class="black-text">Paciente</th>
                                                                                       </tr>
                                                                                     </thead>
 
@@ -510,21 +527,16 @@
                                                                                                     echo "Agustina Yodice";
                                                                                                     break;
                                                                                                 case 7:
-                                                                                                    echo "Veronica
-                                                                                                    Zurvarra";
+                                                                                                    echo "Veronica Zurvarra";
                                                                                                     break;
-                                                                                                default:
-                                                                                                    echo "Profesional Nuevo";
-                                                                                                    break;
-
                                                                                             }
                                                                                             
                                                                                             
                                                                                                 
-                                                                                             ?></td>
-                                                                                            <td><?php echo $dato_turno_clinica_medica['id_paciente'] ?></td>
+                                                                                            ?></td>
                                                                                             <td><?php echo $dato_turno_clinica_medica['fecha'] ?></td>
                                                                                             <td><?php echo $dato_turno_clinica_medica['hora'] ?></td>
+                                                                                            <td><?php echo $dato_turno_clinica_medica['nombre']." ".$dato_turno_clinica_medica['apellido'] ?></td>
                                                                                           </tr>
 
                                                                                         <?php } ?>
@@ -693,9 +705,9 @@
                                                                                       <tr>
                                                                                           <th class="black-text">Turno</th>
                                                                                           <th class="black-text">Profesional</th>
-                                                                                          <th class="black-text">Paciente</th>
                                                                                           <th class="black-text">Fecha</th>
                                                                                           <th class="black-text">Hora</th>
+                                                                                          <th class="black-text">Paciente</th>
                                                                                       </tr>
                                                                                     </thead>
 
@@ -704,16 +716,16 @@
                                                                                         <?php
 
                                                                                             //Se establece un foreach para recorrer todos los datos de los profesionales que hay en la base de datos
-                                                                                            foreach($datos_turnos_nutricion as $dato_turnos_nutricion){
+                                                                                            foreach($datos_turnos_nutricion as $dato_turno_nutricion){
 
                                                                                         ?>
 
                                                                                           <tr>
-                                                                                            <td><?php echo $dato_turnos_nutricion['id_turno'] ?></td>
+                                                                                            <td><?php echo $dato_turno_nutricion['id_turno'] ?></td>
                                                                                             
                                                                                             <td><?php
 
-                                                                                            switch ($dato_turnos_nutricion['id_profesional']) {
+                                                                                            switch ($dato_turno_nutricion['id_profesional']) {
                                                                                                 case 3:
                                                                                                     echo "Marcelo
                                                                                                     Blank";
@@ -721,18 +733,15 @@
                                                                                                 case 4:
                                                                                                     echo "Virginia Borga";
                                                                                                     break;
-                                                                                                default:
-                                                                                                    echo "Profesional Nuevo";
-                                                                                                    break;
-
                                                                                             }
                                                                                             
                                                                                             
                                                                                                 
                                                                                             ?></td>
-                                                                                            <td><?php echo $dato_turnos_nutricion['id_paciente'] ?></td>
-                                                                                            <td><?php echo $dato_turnos_nutricion['fecha'] ?></td>
-                                                                                            <td><?php echo $dato_turnos_nutricion['hora'] ?></td>
+                                                                                            
+                                                                                            <td><?php echo $dato_turno_nutricion['fecha'] ?></td>
+                                                                                            <td><?php echo $dato_turno_nutricion['hora'] ?></td>
+                                                                                            <td><?php echo $dato_turno_nutricion['nombre'].$dato_turno_nutricion['apellido'] ?></td>
                                                                                           </tr>
 
                                                                                         <?php } ?>
@@ -896,9 +905,9 @@
                                                                                       <tr>
                                                                                           <th class="black-text">Turno</th>
                                                                                           <th class="black-text">Profesional</th>
-                                                                                          <th class="black-text">Paciente</th>
                                                                                           <th class="black-text">Fecha</th>
                                                                                           <th class="black-text">Hora</th>
+                                                                                          <th class="black-text">Paciente</th>
                                                                                       </tr>
                                                                                     </thead>
 
@@ -923,18 +932,15 @@
                                                                                                 case 9:
                                                                                                     echo "Gabriel Gaggiotti Pierini";
                                                                                                     break;
-                                                                                                default:
-                                                                                                    echo "Profesioanal Nuevo";
-                                                                                                    break;
-
                                                                                             }
                                                                                             
                                                                                             
                                                                                                 
                                                                                              ?></td>
-                                                                                            <td><?php echo $dato_turno_traumatologia['id_paciente'] ?></td>
+                                                                                            
                                                                                             <td><?php echo $dato_turno_traumatologia['fecha'] ?></td>
                                                                                             <td><?php echo $dato_turno_traumatologia['hora'] ?></td>
+                                                                                            <td><?php echo $dato_turno_traumatologia['nombre']." ".$dato_turno_traumatologia['apellido'] ?></td>
                                                                                           </tr>
 
                                                                                         <?php } ?>
@@ -978,16 +984,16 @@
                     <div id="actualizaciones-de-profesionales" class="modal">
                         <div class="modal-content center">
                             <h4 class="black-text center">Administracion de personal</h4>
-                            <p class="black-text">En esta sesion puede agregar nuevos profesionales al sistema de la clinica, realizar modificaciones y dar de baja profesionales.</p>
+                            <p class="black-text">En esta sesion puede agregar nuevos profesionales al sistema de la clinica, realizar modificaciones y cambiar el estado de los profesionales.</p>
                             
                             <br>
                             
                             
                             <!--Botones para actualizar el personal de la clinica 26/10/19-->
-                            <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_leer.php" href="../profesionales/profesional_nuevo.php"><i class="material-icons right">list</i>Ver listado de profesionales</a>
+                            <a class="waves-effect waves-light btn light-green accent-4" href="../profesionales/profesional_leer.php"><i class="material-icons right">list</i>Ver listado de profesionales</a>
                             <a class="waves-effect waves-light btn blue" href="../profesionales/profesional_nuevo.php"><i class="material-icons right">add</i>Nuevo profesional</a>
                             <a class="waves-effect waves-light btn yellow accent-4 modal-trigger" href="../profesionales/profesional_editar.php"><i class="material-icons right">edit</i>Editar profesional</a>
-                            <a class="waves-effect waves-light btn red" href="../profesionales/profesional_eliminado.php"><i class="material-icons right">clear</i>Eliminar profesional</a>
+                            <a class="waves-effect waves-light btn red" href="../profesionales/profesional_estado.php"><i class="material-icons right">settings</i>Cambiar estado</a>
                             
                            
                         </div>

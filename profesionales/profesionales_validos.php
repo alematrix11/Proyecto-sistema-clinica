@@ -48,7 +48,43 @@
             <div class="col l7 m7 s7">
                 <div class="nav-wrapper right">
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light blue darken-2 btn-large" href="#solicitar_turno">Solicitar turno</a></li>
+                        <li><a class="waves-effect waves-light blue darken-2 btn-large modal-trigger" href="#solicitar_turno">Solicitar turno</a></li>
+                        
+                        <div id="solicitar_turno" class="modal">
+                                <div class="modal-content">
+                                    <h4 class="black-text center">Debes iniciar sesion para poder solicitar turnos</h4>
+                                    <p class="black-text">Para iniciar sesion debes ingresar con tu usuario y contraseña</p>
+
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+                                    <!--Formulario de login de los paciente-->
+                                    <!--------------------------------------->
+                                    <!--------------------------------------->
+
+                                    <form action="../loguear-paciente.php" method="POST">
+
+                                        <input id="loginEmail" type="email" name="usuario_paciente" placeholder="Ingrese su email">
+                                        <label for="loginEmail"></label>
+
+                                        <input id="loginContrasena" type="password" name="contrasena_paciente" placeholder="Ingrese su contraseña">
+                                        <label for="loginContrasena"></label>
+
+                                        <button class="btn light-blue darken-4" type="submit">Iniciar sesion</button>
+
+                                    </form>
+
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+                                    <!--Finaliza el formulario de login de los pacientes-->
+                                    <!---------------------------------------------------->
+                                    <!---------------------------------------------------->
+
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                </div>
+                            </div>
+                        
                         <li><a href="#">Quienes Somos</a></li>
                         <li><a href="#">Especialidades</a></li>
                         

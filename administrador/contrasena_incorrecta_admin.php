@@ -69,6 +69,8 @@
                     <!--Agregar modal para pasos a seguir con problemas de logue con el administrador-->
                     <strong><a href="#">¿Usted no logra acceder con el usuario administrador?</a></strong>
                     
+                    <a class="btn right">Volver a intentar</a>
+                    
                     <br>
                     
                 </div>

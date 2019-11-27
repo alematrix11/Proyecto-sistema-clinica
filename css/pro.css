@@ -1,0 +1,41 @@
+.cabezera{
+    height: 600px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url("../img/img-pro/fondo-pro.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding-top: 230px;
+    padding-left: 40px;
+    filter: drop-shadow(2px 2px 2px rgb(72, 78, 78));
+}
+.cabezera img{
+    width: 50px;
+    padding-right: 10px;
+}
+h1{
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 50px;
+    text-align: center;
+    color: white;
+}
+.section{
+    padding-top: 50px;
+    height: 500px;
+}
+.img-pro{
+    float: right;
+}
+.img-pro img{
+    width: 70%;
+    border-radius: 50% !important;
+}
+.img-pro img:hover{
+    transition:all 1s ease;
+    transform: scale(0.9);
+    cursor: pointer;
+}
+.img-pro p{
+    font-size: 25px;
+    color: rgb(31, 29, 29);
+    font-family: 'Raleway', sans-serif;
+}

@@ -82,7 +82,7 @@
                         
                         <br><br>
                     
-                    <a href="javascript:history.go(-1);" class="btn right">Volver a intentar</a>
+                        <a href="javascript:history.go(-1);" class="btn right">Volver a intentar</a>
                     
                         <br><br>
                         
